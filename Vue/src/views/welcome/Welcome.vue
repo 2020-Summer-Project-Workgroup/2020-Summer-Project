@@ -21,7 +21,7 @@ export default {
 
 .welcome h1 {
   color: #333;
-  font-family: "Hiragino Sans GB", Helvetica;
+  font-family: 'Hiragino Sans GB', 'Neue Haas Grotesk', 'Helvetica Neue', Helvetica, serif;
   margin: 0;
   padding: 0;
   position: relative;
