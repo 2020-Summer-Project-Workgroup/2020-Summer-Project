@@ -49,7 +49,7 @@ export default {
     -webkit-clip-path: ellipse(12.5vw 12.5vw at 0%);
     clip-path: ellipse(12.5vw 12.5vw at 0%);
   }
-  50% {
+  65% {
     -webkit-clip-path: ellipse(12.5vw 12.5vw at 100%);
     clip-path: ellipse(12.5vw 12.5vw at 100%);
   }
