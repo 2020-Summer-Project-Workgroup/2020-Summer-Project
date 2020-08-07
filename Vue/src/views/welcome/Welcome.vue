@@ -25,7 +25,7 @@ export default {
   margin: 0;
   padding: 0;
   position: relative;
-  font-size: 7.5vw;
+  font-size: 8.5vw;
   letter-spacing: -0.3rem;
 }
 
@@ -35,10 +35,10 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-clip-path: ellipse(150px 150px at 0%);
-  clip-path: ellipse(150px 150px at 0%);
+  -webkit-clip-path: ellipse(12.5vw 12.5vw at 0%);
+  clip-path: ellipse(12.5vw 12.5vw at 0%);
   animation: spotlight 5s infinite;
-  background-image: url("~assets/img/welcome/Lighting.jpg");
+  background-image: url("https://images.unsplash.com/photo-1579547621869-0ddb5f237392?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80");
   background-size: 150%;
   background-position: center center;
   -webkit-background-clip: text;
@@ -46,16 +46,16 @@ export default {
 
 @keyframes spotlight {
   0% {
-    -webkit-clip-path: ellipse(150px 150px at 0%);
-    clip-path: ellipse(150px 150px at 0%);
+    -webkit-clip-path: ellipse(12.5vw 12.5vw at 0%);
+    clip-path: ellipse(12.5vw 12.5vw at 0%);
   }
   50% {
-    -webkit-clip-path: ellipse(150px 150px at 100%);
-    clip-path: ellipse(150px 150px at 100%);
+    -webkit-clip-path: ellipse(12.5vw 12.5vw at 100%);
+    clip-path: ellipse(12.5vw 12.5vw at 100%);
   }
   100% {
-    -webkit-clip-path: ellipse(150px 150px at 0%);
-    clip-path: ellipse(150px 150px at 0%);
+    -webkit-clip-path: ellipse(12.5vw 12.5vw at 0%);
+    clip-path: ellipse(12.5vw 12.5vw at 0%);
   }
 }
 </style>
