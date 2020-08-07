@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <h1>2020暑假小学期前端项目</h1>
+    <Welcome/>
   </div>
 </template>
 
 <script>
+import Welcome from "@/views/welcome/Welcome";
 export default {
   name: 'App',
   components: {
+    Welcome
   }
 }
 </script>
 
 <style>
-
+body {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
 </style>
