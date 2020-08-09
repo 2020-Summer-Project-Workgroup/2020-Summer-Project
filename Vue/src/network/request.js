@@ -4,7 +4,7 @@ import axios from 'axios';
  * when use it in outer module
  * (maybe you can add a layer to manage url)
  * ```javascript
- * import {request}
+ * import {request} from 'network/request.js'
  * request({
  *   url: 8036
  * }).then(res => {
