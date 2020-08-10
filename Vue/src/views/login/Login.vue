@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import {checkInformation} from "@/network/login";
+
 export default {
   name: "Login",
   data() {
@@ -22,7 +24,11 @@ export default {
   },
   methods: {
     submit() {
-
+      checkInformation(this.username, this.password).then(res => {
+        console.log(res)
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }
