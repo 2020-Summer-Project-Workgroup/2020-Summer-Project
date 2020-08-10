@@ -1,18 +1,15 @@
 <template>
   <div id="app">
     <TabBar/>
-    <Login/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-// import Welcome from "@/views/welcome/Welcome";
 import TabBar from "@/component/tarBar/TabBar";
-import Login from "@/views/login/Login";
 export default {
   name: 'App',
   components: {
-    Login,
     TabBar
   }
 }
