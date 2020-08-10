@@ -1,18 +1,19 @@
 <template>
   <div id="app">
     <TabBar/>
-    <Welcome/>
+    <Login/>
   </div>
 </template>
 
 <script>
-import Welcome from "@/views/welcome/Welcome";
+// import Welcome from "@/views/welcome/Welcome";
 import TabBar from "@/component/tarBar/TabBar";
+import Login from "@/views/login/Login";
 export default {
   name: 'App',
   components: {
-    TabBar,
-    Welcome
+    Login,
+    TabBar
   }
 }
 </script>
