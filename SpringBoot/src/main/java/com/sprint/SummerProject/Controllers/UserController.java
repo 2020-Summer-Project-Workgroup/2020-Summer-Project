@@ -22,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping("/users/tel")
-    public Response addUser(@RequestParam String tel, @RequestParam String password) {
+    public Response addUserByTel(@RequestParam String tel, @RequestParam String password) {
         User user = userRepository.findUserByTel(tel);
         if(user == null) {
             userRepository.save(new User("手机用户" + tel,
