@@ -32,4 +32,17 @@ public class UserController {
             return new Response(403, "手机号已存在，请登录");
         }
     }
+
+    @PostMapping("/users/email")
+    public Response addUserByEmail(@RequestParam String email, @RequestParam String password) {
+        User user = userRepository.findUserByEmail(email);
+        if(user == null) {
+            userRepository.save(new User(email.split("@")[0],
+                    email, null, password, null));
+            return new Response(200, "注册成功");
+        } else {
+            return new Response(403, "邮箱已存在，请登录");
+        }
+    }
+
 }
