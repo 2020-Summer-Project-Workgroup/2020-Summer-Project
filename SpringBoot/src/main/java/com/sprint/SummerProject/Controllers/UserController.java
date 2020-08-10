@@ -2,14 +2,11 @@ package com.sprint.SummerProject.Controllers;
 
 import com.sprint.SummerProject.Models.User;
 import com.sprint.SummerProject.Repositories.UserRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
 public class UserController {
 
     private UserRepository userRepository;
@@ -18,8 +15,17 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/users/all")
     public List<User> getAll() {
         return userRepository.findAll();
+    }
+
+    @PostMapping("/users/tel")
+    public User addUser(@RequestParam String tel, @RequestParam String password) {
+        User user = userRepository.findUserByTel(tel);
+        if(user == null) {
+            userRepository.save(new User("手机用户" + tel,
+                    null, tel, password, null));
+        }
     }
 }
