@@ -3,17 +3,28 @@
     <div class="title">
       <span>登录</span>
     </div>
-    <form class="login-form">
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <button type="submit">登录</button>
-    </form>
+    <div class="login-form">
+      <input type="text" placeholder="username" v-model="username"/>
+      <input type="password" placeholder="password" v-model="password"/>
+      <button @click="submit">登录</button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Login"
+  name: "Login",
+  data() {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    submit() {
+
+    }
+  }
 }
 </script>
 
