@@ -2,10 +2,10 @@ package com.sprint.SummerProject.utils;
 
 public class Response {
 
-    private Integer status;
+    private int status;
     private String message;
 
-    public Response(Integer status, String message) {
+    public Response(int status, String message) {
         this.status = status;
         this.message = message;
     }
