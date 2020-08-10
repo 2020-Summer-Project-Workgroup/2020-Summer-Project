@@ -30,6 +30,5 @@ public class MongoDBConfig {
         return strings ->{
             commentRepository.save(new Comment("LSS", new Binary(b), new Binary(b), new Date()));
         };
-
     }
 }
