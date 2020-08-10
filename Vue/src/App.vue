@@ -1,18 +1,16 @@
 <template>
   <div id="app">
     <TabBar/>
-    <Welcome/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Welcome from "@/views/welcome/Welcome";
 import TabBar from "@/component/tarBar/TabBar";
 export default {
   name: 'App',
   components: {
-    TabBar,
-    Welcome
+    TabBar
   }
 }
 </script>
