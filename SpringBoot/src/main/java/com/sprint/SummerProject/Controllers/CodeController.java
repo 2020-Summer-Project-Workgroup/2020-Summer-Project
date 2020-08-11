@@ -1,8 +1,8 @@
 package com.sprint.SummerProject.Controllers;
 
 import com.aliyuncs.exceptions.ClientException;
-import com.sprint.SummerProject.service.CodeService;
-import com.sprint.SummerProject.util.Response;
+import com.sprint.SummerProject.Services.CodeService;
+import com.sprint.SummerProject.Utils.Response;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;

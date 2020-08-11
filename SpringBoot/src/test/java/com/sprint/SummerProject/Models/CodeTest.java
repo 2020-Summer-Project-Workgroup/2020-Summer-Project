@@ -1,6 +1,5 @@
-package com.sprint.SummerProject.models;
+package com.sprint.SummerProject.Models;
 
-import com.sprint.SummerProject.Models.Code;
 import org.junit.jupiter.api.Test;
 
 public class CodeTest {
