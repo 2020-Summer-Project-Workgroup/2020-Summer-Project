@@ -113,11 +113,20 @@ export default {
           this.codeStatus = 1
         }
       } else {
-        sendCodeToEmail(this.email).then(res => {
-          console.log(res)
-        }).catch(err => {
-          console.log(err)
-        })
+        if (/^([a-zA-Z\d])(\w|-)+@[a-zA-Z\d]+(\.[a-zA-Z]{2,4})+$/.test(this.email)) {
+          sendCodeToEmail(this.email).then(res => {
+            console.log(res)
+            if (JSON.parse(res)[0] === 200) {
+              this.codeStatus = 2
+            } else {
+              this.codeStatus = 1
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        } else {
+          this.codeStatus = 1
+        }
       }
     },
     checkCode() {
