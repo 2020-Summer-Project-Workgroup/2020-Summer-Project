@@ -25,7 +25,7 @@
       <div class="form-item">
         <label for="code" style="top: 183px">输入验证码</label>
         <span>{{codeMsg}}</span>
-        <input type="text" id="code" name="code" v-model="code" style="top: 219px"/>
+        <input type="text" id="code" name="code" v-model="code" style="top: 219px" @blur="checkCode"/>
         <button id="send-code" @click="sendCode">发送验证码</button>
       </div>
       <div class="form-item">
