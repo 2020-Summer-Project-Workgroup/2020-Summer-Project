@@ -1,4 +1,4 @@
-package com.sprint.SummerProject.Utils;
+package com.sprint.SummerProject.utils;
 
 import java.util.Random;
 

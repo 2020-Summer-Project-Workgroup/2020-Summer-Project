@@ -1,4 +1,4 @@
-package com.sprint.SummerProject.Controllers;
+package com.sprint.SummerProject.controllers;
 
 import com.aliyuncs.exceptions.ClientException;
 import com.sprint.SummerProject.Services.CodeService;

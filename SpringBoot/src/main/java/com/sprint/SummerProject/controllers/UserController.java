@@ -1,7 +1,7 @@
-package com.sprint.SummerProject.Controllers;
+package com.sprint.SummerProject.controllers;
 
-import com.sprint.SummerProject.Models.User;
-import com.sprint.SummerProject.Repositories.UserRepository;
+import com.sprint.SummerProject.models.User;
+import com.sprint.SummerProject.repositories.UserRepository;
 import com.sprint.SummerProject.utils.Response;
 import org.springframework.web.bind.annotation.*;
 

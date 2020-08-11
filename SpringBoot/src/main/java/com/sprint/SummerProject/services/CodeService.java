@@ -1,4 +1,4 @@
-package com.sprint.SummerProject.Services;
+package com.sprint.SummerProject.services;
 
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
@@ -7,7 +7,7 @@ import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
-import com.sprint.SummerProject.Models.Code;
+import com.sprint.SummerProject.models.Code;
 import com.sprint.SummerProject.Utils.CodeGenerator;
 
 import java.util.Map;

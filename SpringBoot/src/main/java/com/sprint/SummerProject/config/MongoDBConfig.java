@@ -1,8 +1,8 @@
-package com.sprint.SummerProject.Config;
+package com.sprint.SummerProject.config;
 
-import com.sprint.SummerProject.Models.Comment;
-import com.sprint.SummerProject.Repositories.CommentRepository;
-import com.sprint.SummerProject.Repositories.UserRepository;
+import com.sprint.SummerProject.models.Comment;
+import com.sprint.SummerProject.repositories.CommentRepository;
+import com.sprint.SummerProject.repositories.UserRepository;
 import org.bson.types.Binary;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
