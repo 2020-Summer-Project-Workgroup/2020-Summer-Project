@@ -33,13 +33,20 @@
         <input type="password" id="password" name="password" v-model="password" style="top: 330px"/>
       </div>
       <button id="register" @click="submit">注册并登录</button>
-      <span id="to-login">已有账号？点此登录</span>
+      <span id="to-login" @click="toLogin">已有账号？点此登录</span>
     </div>
   </div>
 </template>
 
 <script>
-import {checkCodeToEmail, checkCodeToTel, sendCodeToEmail, sendCodeToTel} from "@/network/register";
+import {
+  addUserByEmail,
+  addUserByTel,
+  checkCodeToEmail,
+  checkCodeToTel,
+  sendCodeToEmail,
+  sendCodeToTel
+} from "@/network/register";
 
 export default {
   name: "Register",
@@ -63,26 +70,63 @@ export default {
       this.reset()
     },
     submit() {
-
-    },
-    sendCode() {
-      if (this.isTel) {
-        if((/^1[3456789]\d{9}$/.test(this.tel))) {
-          this.codeStatus = 2
-          sendCodeToTel(this.tel).then(res => {
-            console.log(res)
+      if (this.codeStatus === 4) {
+        if (this.isTel) {
+          addUserByTel(this.tel, this.password).then(res => {
+            const response = JSON.parse(res)
+            if (response[0] === 200) {
+              this.$router.replace('/desktop')
+            } else {
+              console.log(res)
+            }
           }).catch(err => {
             console.log(err)
           })
         } else {
-          this.codeStatus = 1;
+          addUserByEmail(this.email, this.password).then(res => {
+            const response = JSON.parse(res)
+            if (response[0] === 200) {
+              this.$router.replace('/desktop')
+            } else {
+              console.log(res)
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        }
+      }
+    },
+    sendCode() {
+      if (this.isTel) {
+        if((/^1[3456789]\d{9}$/.test(this.tel))) {
+          sendCodeToTel(this.tel).then(res => {
+            console.log(res)
+            if (JSON.parse(res)[0] === 200) {
+              this.codeStatus = 2
+            } else {
+              this.codeStatus = 1
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        } else {
+          this.codeStatus = 1
         }
       } else {
-        sendCodeToEmail(this.email).then(res => {
-          console.log(res)
-        }).catch(err => {
-          console.log(err)
-        })
+        if (/^([a-zA-Z\d])(\w|-)+@[a-zA-Z\d]+(\.[a-zA-Z]{2,4})+$/.test(this.email)) {
+          sendCodeToEmail(this.email).then(res => {
+            console.log(res)
+            if (JSON.parse(res)[0] === 200) {
+              this.codeStatus = 2
+            } else {
+              this.codeStatus = 1
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        } else {
+          this.codeStatus = 1
+        }
       }
     },
     checkCode() {
@@ -108,6 +152,9 @@ export default {
       this.code = ''
       this.password = ''
       this.codeStatus = 0
+    },
+    toLogin() {
+      this.$router.push('/login');
     }
   },
   computed: {
@@ -214,7 +261,7 @@ export default {
 
 .register-form button {
   position: absolute;
-  background: #54A293;
+  background-color: #54A293;
   border: none;
   border-radius: 5px;
   font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
@@ -222,6 +269,15 @@ export default {
   font-style: normal;
   font-weight: normal;
   color: #FFFFFF;
+}
+
+.register-form button:hover {
+  background-color: #368375;
+}
+
+.register-form button:active {
+  background-color: #368375;
+  color: #FFF492;
 }
 
 #register {
@@ -257,5 +313,10 @@ export default {
   font-size: 20px;
   line-height: 26px;
   color: #62AAFF;
+}
+
+#to-login:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 </style>
