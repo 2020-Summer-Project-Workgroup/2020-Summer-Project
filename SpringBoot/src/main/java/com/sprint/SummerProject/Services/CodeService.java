@@ -1,15 +1,14 @@
-package com.sprint.SummerProject.service;
+package com.sprint.SummerProject.Services;
 
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
-import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.sprint.SummerProject.Models.Code;
-import com.sprint.SummerProject.util.CodeGenerator;
+import com.sprint.SummerProject.Utils.CodeGenerator;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
