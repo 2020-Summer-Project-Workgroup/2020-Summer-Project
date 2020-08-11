@@ -7,7 +7,7 @@ public class Code {
     private String code;
     private Calendar time;
 
-    Code(String code) {
+    public Code(String code) {
         this.code = code;
         this.time = Calendar.getInstance();
     }
@@ -16,6 +16,10 @@ public class Code {
         Calendar now = Calendar.getInstance();
         now.add(Calendar.MINUTE, -10);
         return now.before(time);
+    }
+
+    public String getCode() {
+        return this.code;
     }
 
     @Override
