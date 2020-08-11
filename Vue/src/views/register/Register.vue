@@ -11,12 +11,13 @@
       <div class="form-item">
         <label for="code" style="top: 183px">输入验证码</label>
         <input type="text" id="code" name="code" style="top: 219px"/>
+        <button id="send-code" @click="sendCode">发送验证码</button>
       </div>
       <div class="form-item">
         <label for="password" style="top: 294px">输入密码</label>
         <input type="password" id="password" name="password" style="top: 330px"/>
       </div>
-      <button @click="submit">注册并登录</button>
+      <button id="register" @click="submit">注册并登录</button>
       <span>已有账号？点此登录</span>
     </div>
   </div>
@@ -27,6 +28,9 @@ export default {
   name: "Register",
   methods: {
     submit() {
+
+    },
+    sendCode() {
 
     }
   }
@@ -51,7 +55,7 @@ export default {
 .title {
   padding: 20px;
   font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
-  "PingFang SC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 41px;
@@ -95,7 +99,7 @@ export default {
   left: calc(50% - 310px/2 - 103px);
   position: absolute;
   font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
-  "PingFang SC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -104,22 +108,35 @@ export default {
 }
 
 .register-form button {
+  position: absolute;
+  background: #54A293;
+  border: none;
+  border-radius: 5px;
+  font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
+  "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: #FFFFFF;
+}
+
+#register {
   width: 508px;
   height: 60px;
   left: calc(50% - 508px/2 - 4px);
   top: 424px;
-  position: absolute;
-  background: #54A293;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  border: none;
-  border-radius: 5px;
-  font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
-  "PingFang SC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  font-style: normal;
-  font-weight: normal;
   font-size: 25px;
   line-height: 33px;
-  color: #FFFFFF;
+}
+
+#send-code {
+  width: 109px;
+  height: 34px;
+  left: calc(50% - 109px/2 + 186px);
+  top: 232px;
+  font-size: 16px;
+  line-height: 21px;
+  z-index: 20;
 }
 
 .register-form span {
@@ -129,7 +146,7 @@ export default {
   left: calc(50% - 182px/2);
   bottom: 50px;
   font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
-  "PingFang SC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
