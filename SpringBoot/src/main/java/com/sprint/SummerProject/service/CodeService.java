@@ -9,9 +9,13 @@ import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 
+import java.util.Map;
+
 public class CodeService {
 
-    public void sendCode(String tel) {
+    public static Map<String, >
+
+    public static void sendCode(String tel) {
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "<accessKeyId>", "<accessSecret>");
         IAcsClient client = new DefaultAcsClient(profile);
 
