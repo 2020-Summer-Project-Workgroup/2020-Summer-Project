@@ -5,12 +5,22 @@
     </div>
     <div class="register-form">
       <div class="form-item">
-        <label for="username" style="top: 70px">
-          <span :style="telColor" @click="switchToTel">输入手机</span>
-          /
-          <span :style="emailColor" @click="switchToEmail">邮箱</span>
-        </label>
-        <input type="text" id="username" name="username" v-model="tel" style="top: 104px"/>
+        <div v-if="isTel">
+          <label for="tel" style="top: 70px">
+            <span :style="telColor" @click="switchToTel">输入手机</span>
+            /
+            <span :style="emailColor" @click="switchToEmail">邮箱</span>
+          </label>
+          <input type="text" id="tel" name="username" v-model="tel" style="top: 104px"/>
+        </div>
+        <div v-else>
+          <label for="email" style="top: 70px">
+            <span :style="telColor" @click="switchToTel">输入手机</span>
+            /
+            <span :style="emailColor" @click="switchToEmail">邮箱</span>
+          </label>
+          <input type="text" id="email" name="username" v-model="email" style="top: 104px"/>
+        </div>
       </div>
       <div class="form-item">
         <label for="code" style="top: 183px">输入验证码</label>
@@ -29,7 +39,7 @@
 </template>
 
 <script>
-import {sendCodeToEmail, sendCodeToTel} from "@/network/register";
+import {checkCodeToEmail, checkCodeToTel, sendCodeToEmail, sendCodeToTel} from "@/network/register";
 
 export default {
   name: "Register",
@@ -46,9 +56,11 @@ export default {
   methods: {
     switchToTel() {
       this.isTel = true
+      this.reset()
     },
     switchToEmail() {
       this.isTel = false
+      this.reset()
     },
     submit() {
 
@@ -74,7 +86,28 @@ export default {
       }
     },
     checkCode() {
-
+      if (this.codeStatus === 2 || this.codeStatus === 3) {
+        if (this.isTel) {
+          checkCodeToTel(this.tel, this.code).then(res => {
+            console.log(res)
+          }).catch(err => {
+            console.log(err)
+          })
+        } else {
+          checkCodeToEmail(this.email, this.code).then(res => {
+            console.log(res)
+          }).catch(err => {
+            console.log(err)
+          })
+        }
+      }
+    },
+    reset() {
+      this.tel = ''
+      this.email = ''
+      this.code = ''
+      this.password = ''
+      this.codeStatus = 0
     }
   },
   computed: {
