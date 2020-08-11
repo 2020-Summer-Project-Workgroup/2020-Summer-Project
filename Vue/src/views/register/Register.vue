@@ -39,7 +39,14 @@
 </template>
 
 <script>
-import {checkCodeToEmail, checkCodeToTel, sendCodeToEmail, sendCodeToTel} from "@/network/register";
+import {
+  addUserByEmail,
+  addUserByTel,
+  checkCodeToEmail,
+  checkCodeToTel,
+  sendCodeToEmail,
+  sendCodeToTel
+} from "@/network/register";
 
 export default {
   name: "Register",
@@ -63,7 +70,31 @@ export default {
       this.reset()
     },
     submit() {
-
+      if (this.codeStatus === 4) {
+        if (this.isTel) {
+          addUserByTel(this.tel, this.password).then(res => {
+            const response = JSON.parse(res)
+            if (response[0] === 200) {
+              this.$router.replace('/desktop')
+            } else {
+              console.log(res)
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        } else {
+          addUserByEmail(this.email, this.password).then(res => {
+            const response = JSON.parse(res)
+            if (response[0] === 200) {
+              this.$router.replace('/desktop')
+            } else {
+              console.log(res)
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        }
+      }
     },
     sendCode() {
       if (this.isTel) {
