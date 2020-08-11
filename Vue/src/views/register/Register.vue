@@ -33,7 +33,7 @@
         <input type="password" id="password" name="password" v-model="password" style="top: 330px"/>
       </div>
       <button id="register" @click="submit">注册并登录</button>
-      <span id="to-login">已有账号？点此登录</span>
+      <span id="to-login" @click="toLogin">已有账号？点此登录</span>
     </div>
   </div>
 </template>
@@ -109,6 +109,9 @@ export default {
       this.password = ''
       this.codeStatus = 0
     },
+    toLogin() {
+      this.$router.push('/login');
+    }
   },
   computed: {
     telColor() {
