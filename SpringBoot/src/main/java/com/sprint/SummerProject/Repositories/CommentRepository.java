@@ -1,6 +1,6 @@
-package com.sprint.SummerProject.repositories;
+package com.sprint.SummerProject.Repositories;
 
-import com.sprint.SummerProject.models.Comment;
+import com.sprint.SummerProject.Models.Comment;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

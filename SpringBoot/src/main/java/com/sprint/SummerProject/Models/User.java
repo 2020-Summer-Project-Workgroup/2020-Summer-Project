@@ -1,4 +1,4 @@
-package com.sprint.SummerProject.models;
+package com.sprint.SummerProject.Models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
