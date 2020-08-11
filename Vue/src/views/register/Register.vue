@@ -52,11 +52,15 @@ export default {
 
     },
     sendCode() {
-      sendCodeToTel(this.tel).then(res => {
-        console.log(res)
-      }).catch(err => {
-        console.log(err)
-      })
+      if (this.isTel) {
+        sendCodeToTel(this.tel).then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
+      } else {
+        1
+      }
     }
   },
   computed: {
