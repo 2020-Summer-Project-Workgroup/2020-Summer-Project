@@ -14,6 +14,7 @@
       </div>
       <div class="form-item">
         <label for="code" style="top: 183px">输入验证码</label>
+        <span>{{codeMsg}}</span>
         <input type="text" id="code" name="code" v-model="code" style="top: 219px"/>
         <button id="send-code" @click="sendCode">发送验证码</button>
       </div>
@@ -28,7 +29,7 @@
 </template>
 
 <script>
-import {sendCodeToTel} from "@/network/register";
+import {sendCodeToEmail, sendCodeToTel} from "@/network/register";
 
 export default {
   name: "Register",
@@ -38,7 +39,8 @@ export default {
       email: '',
       code: '',
       password: '',
-      isTel: true
+      isTel: true,
+      codeStatus: 0
     }
   },
   methods: {
@@ -53,14 +55,26 @@ export default {
     },
     sendCode() {
       if (this.isTel) {
-        sendCodeToTel(this.tel).then(res => {
+        if((/^1[3456789]\d{9}$/.test(this.tel))) {
+          this.codeStatus = 2
+          sendCodeToTel(this.tel).then(res => {
+            console.log(res)
+          }).catch(err => {
+            console.log(err)
+          })
+        } else {
+          this.codeStatus = 1;
+        }
+      } else {
+        sendCodeToEmail(this.email).then(res => {
           console.log(res)
         }).catch(err => {
           console.log(err)
         })
-      } else {
-        1
       }
+    },
+    checkCode() {
+
     }
   },
   computed: {
@@ -78,6 +92,19 @@ export default {
         return {color: '#606060'}
       }
     },
+    codeMsg() {
+      if (this.codeStatus === 1) {
+        return '手机号或邮箱不合法'
+      } else if (this.codeStatus === 2) {
+        return '发送成功'
+      } else if (this.codeStatus === 3) {
+        return '验证码输入有误'
+      } else if (this.codeStatus === 4) {
+        return '验证通过'
+      } else {
+        return ''
+      }
+    }
   }
 }
 </script>

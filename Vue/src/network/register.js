@@ -41,3 +41,14 @@ export function sendCodeToEmail(email) {
     }
   })
 }
+
+export function checkCodeToTel(tel, code) {
+  return request({
+    url: '/code/tel',
+    method: 'GET',
+    params: {
+      tel: tel,
+      code: code
+    }
+  })
+}
