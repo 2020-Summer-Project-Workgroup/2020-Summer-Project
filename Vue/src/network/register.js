@@ -52,3 +52,14 @@ export function checkCodeToTel(tel, code) {
     }
   })
 }
+
+export function checkCodeToEmail(email, code) {
+  return request({
+    url: '/code/email',
+    method: 'GET',
+    params: {
+      email: email,
+      code: code
+    }
+  })
+}
