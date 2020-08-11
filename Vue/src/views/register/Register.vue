@@ -5,12 +5,27 @@
     </div>
     <div class="register-form">
       <div class="form-item">
-        <label for="username" style="top: 70px">输入手机/邮箱</label>
-        <input type="text" id="username" name="username" v-model="tel" style="top: 104px"/>
+        <div v-if="isTel">
+          <label for="tel" style="top: 70px">
+            <span :style="telColor" @click="switchToTel">输入手机</span>
+            /
+            <span :style="emailColor" @click="switchToEmail">邮箱</span>
+          </label>
+          <input type="text" id="tel" name="username" v-model="tel" style="top: 104px"/>
+        </div>
+        <div v-else>
+          <label for="email" style="top: 70px">
+            <span :style="telColor" @click="switchToTel">输入手机</span>
+            /
+            <span :style="emailColor" @click="switchToEmail">邮箱</span>
+          </label>
+          <input type="text" id="email" name="username" v-model="email" style="top: 104px"/>
+        </div>
       </div>
       <div class="form-item">
         <label for="code" style="top: 183px">输入验证码</label>
-        <input type="text" id="code" name="code" v-model="code" style="top: 219px"/>
+        <span>{{codeMsg}}</span>
+        <input type="text" id="code" name="code" v-model="code" style="top: 219px" @blur="checkCode"/>
         <button id="send-code" @click="sendCode">发送验证码</button>
       </div>
       <div class="form-item">
@@ -18,13 +33,13 @@
         <input type="password" id="password" name="password" v-model="password" style="top: 330px"/>
       </div>
       <button id="register" @click="submit">注册并登录</button>
-      <span>已有账号？点此登录</span>
+      <span id="to-login">已有账号？点此登录</span>
     </div>
   </div>
 </template>
 
 <script>
-import {sendCodeToTel} from "@/network/register";
+import {checkCodeToEmail, checkCodeToTel, sendCodeToEmail, sendCodeToTel} from "@/network/register";
 
 export default {
   name: "Register",
@@ -33,19 +48,95 @@ export default {
       tel: '',
       email: '',
       code: '',
-      password: ''
+      password: '',
+      isTel: true,
+      codeStatus: 0
     }
   },
   methods: {
+    switchToTel() {
+      this.isTel = true
+      this.reset()
+    },
+    switchToEmail() {
+      this.isTel = false
+      this.reset()
+    },
     submit() {
 
     },
     sendCode() {
-      sendCodeToTel(this.tel).then(res => {
-        console.log(res)
-      }).catch(err => {
-        console.log(err)
-      })
+      if (this.isTel) {
+        if((/^1[3456789]\d{9}$/.test(this.tel))) {
+          this.codeStatus = 2
+          sendCodeToTel(this.tel).then(res => {
+            console.log(res)
+          }).catch(err => {
+            console.log(err)
+          })
+        } else {
+          this.codeStatus = 1;
+        }
+      } else {
+        sendCodeToEmail(this.email).then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
+      }
+    },
+    checkCode() {
+      if (this.codeStatus === 2 || this.codeStatus === 3) {
+        if (this.isTel) {
+          checkCodeToTel(this.tel, this.code).then(res => {
+            console.log(res)
+          }).catch(err => {
+            console.log(err)
+          })
+        } else {
+          checkCodeToEmail(this.email, this.code).then(res => {
+            console.log(res)
+          }).catch(err => {
+            console.log(err)
+          })
+        }
+      }
+    },
+    reset() {
+      this.tel = ''
+      this.email = ''
+      this.code = ''
+      this.password = ''
+      this.codeStatus = 0
+    }
+  },
+  computed: {
+    telColor() {
+      if (this.isTel) {
+        return {color: '#606060'}
+      } else {
+        return {color: '#CFCFCF'}
+      }
+    },
+    emailColor() {
+      if (this.isTel) {
+        return {color: '#CFCFCF'}
+      } else {
+        return {color: '#606060'}
+      }
+    },
+    codeMsg() {
+      if (this.codeStatus === 1) {
+        return '手机号或邮箱不合法'
+      } else if (this.codeStatus === 2) {
+        return '发送成功'
+      } else if (this.codeStatus === 3) {
+        return '验证码输入有误'
+      } else if (this.codeStatus === 4) {
+        return '验证通过'
+      } else {
+        return ''
+      }
     }
   }
 }
@@ -153,7 +244,7 @@ export default {
   z-index: 20;
 }
 
-.register-form span {
+#to-login {
   position: absolute;
   width: 182px;
   height: 24px;
