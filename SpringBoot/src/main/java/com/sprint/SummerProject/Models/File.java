@@ -3,6 +3,7 @@ package com.sprint.SummerProject.Models;
 import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,7 @@ public class File {
     Binary content;
     Date time;
     List<Comment> comments;
-    List<Map<String ,String >> access;
+    List<Map<String, String>> access;
 
     public File(String title, Binary content, Date time, List<Comment> comments, List<Map<String, String>> access) {
         this.title = title;

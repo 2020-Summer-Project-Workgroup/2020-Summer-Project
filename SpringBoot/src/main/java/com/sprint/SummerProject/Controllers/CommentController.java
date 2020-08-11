@@ -11,14 +11,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/comments")
 public class CommentController {
-    private CommentRepository commentRepository;
+    private final CommentRepository commentRepository;
 
     public CommentController(CommentRepository commentRepository) {
         this.commentRepository = commentRepository;
     }
 
     @GetMapping("/all")
-    public List<Comment> getAll(){
+    public List<Comment> getAll() {
         return commentRepository.findAll();
     }
 }

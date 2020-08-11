@@ -12,7 +12,7 @@ public class Group {
     String id;
     String name;
     List<File> files;
-    List<Map<String ,String >> members;
+    List<Map<String, String>> members;
 
     public Group(String name, List<File> files, List<Map<String, String>> members) {
         this.name = name;
