@@ -9,14 +9,6 @@ import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 
-/*
-pom.xml
-<dependency>
-  <groupId>com.aliyun</groupId>
-  <artifactId>aliyun-java-sdk-core</artifactId>
-  <version>4.5.3</version>
-</dependency>
-*/
 public class CodeService {
 
     public void sendCode(String tel) {
