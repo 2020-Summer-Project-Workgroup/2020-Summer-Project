@@ -108,7 +108,7 @@ export default {
       this.code = ''
       this.password = ''
       this.codeStatus = 0
-    }
+    },
   },
   computed: {
     telColor() {
@@ -214,7 +214,7 @@ export default {
 
 .register-form button {
   position: absolute;
-  background: #54A293;
+  background-color: #54A293;
   border: none;
   border-radius: 5px;
   font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
@@ -222,6 +222,15 @@ export default {
   font-style: normal;
   font-weight: normal;
   color: #FFFFFF;
+}
+
+.register-form button:hover {
+  background-color: #368375;
+}
+
+.register-form button:active {
+  background-color: #368375;
+  color: #FFF492;
 }
 
 #register {
@@ -257,5 +266,10 @@ export default {
   font-size: 20px;
   line-height: 26px;
   color: #62AAFF;
+}
+
+#to-login:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 </style>
