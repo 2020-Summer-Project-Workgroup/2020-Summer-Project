@@ -5,7 +5,11 @@
     </div>
     <div class="register-form">
       <div class="form-item">
-        <label for="username" style="top: 70px">输入手机/邮箱</label>
+        <label for="username" style="top: 70px">
+          <span :style="telColor" @click="switchToTel">输入手机</span>
+          /
+          <span :style="emailColor" @click="switchToEmail">邮箱</span>
+        </label>
         <input type="text" id="username" name="username" v-model="tel" style="top: 104px"/>
       </div>
       <div class="form-item">
@@ -18,7 +22,7 @@
         <input type="password" id="password" name="password" v-model="password" style="top: 330px"/>
       </div>
       <button id="register" @click="submit">注册并登录</button>
-      <span>已有账号？点此登录</span>
+      <span id="to-login">已有账号？点此登录</span>
     </div>
   </div>
 </template>
@@ -33,10 +37,17 @@ export default {
       tel: '',
       email: '',
       code: '',
-      password: ''
+      password: '',
+      isTel: true
     }
   },
   methods: {
+    switchToTel() {
+      this.isTel = true
+    },
+    switchToEmail() {
+      this.isTel = false
+    },
     submit() {
 
     },
@@ -47,6 +58,22 @@ export default {
         console.log(err)
       })
     }
+  },
+  computed: {
+    telColor() {
+      if (this.isTel) {
+        return {color: '#606060'}
+      } else {
+        return {color: '#CFCFCF'}
+      }
+    },
+    emailColor() {
+      if (this.isTel) {
+        return {color: '#CFCFCF'}
+      } else {
+        return {color: '#606060'}
+      }
+    },
   }
 }
 </script>
@@ -153,7 +180,7 @@ export default {
   z-index: 20;
 }
 
-.register-form span {
+#to-login {
   position: absolute;
   width: 182px;
   height: 24px;
