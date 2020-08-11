@@ -99,14 +99,18 @@ export default {
     sendCode() {
       if (this.isTel) {
         if((/^1[3456789]\d{9}$/.test(this.tel))) {
-          this.codeStatus = 2
           sendCodeToTel(this.tel).then(res => {
             console.log(res)
+            if (JSON.parse(res)[0] === 200) {
+              this.codeStatus = 2
+            } else {
+              this.codeStatus = 1
+            }
           }).catch(err => {
             console.log(err)
           })
         } else {
-          this.codeStatus = 1;
+          this.codeStatus = 1
         }
       } else {
         sendCodeToEmail(this.email).then(res => {
