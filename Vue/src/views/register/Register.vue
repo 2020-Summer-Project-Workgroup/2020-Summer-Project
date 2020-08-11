@@ -6,16 +6,16 @@
     <div class="register-form">
       <div class="form-item">
         <label for="username" style="top: 70px">输入手机/邮箱</label>
-        <input type="text" id="username" name="username" style="top: 104px"/>
+        <input type="text" id="username" name="username" v-model="tel" style="top: 104px"/>
       </div>
       <div class="form-item">
         <label for="code" style="top: 183px">输入验证码</label>
-        <input type="text" id="code" name="code" style="top: 219px"/>
+        <input type="text" id="code" name="code" v-model="code" style="top: 219px"/>
         <button id="send-code" @click="sendCode">发送验证码</button>
       </div>
       <div class="form-item">
         <label for="password" style="top: 294px">输入密码</label>
-        <input type="password" id="password" name="password" style="top: 330px"/>
+        <input type="password" id="password" name="password" v-model="password" style="top: 330px"/>
       </div>
       <button id="register" @click="submit">注册并登录</button>
       <span>已有账号？点此登录</span>
@@ -24,14 +24,28 @@
 </template>
 
 <script>
+import {sendCodeToTel} from "@/network/register";
+
 export default {
   name: "Register",
+  data() {
+    return {
+      tel: '',
+      email: '',
+      code: '',
+      password: ''
+    }
+  },
   methods: {
     submit() {
 
     },
     sendCode() {
-
+      sendCodeToTel(this.tel).then(res => {
+        console.log(res)
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }
