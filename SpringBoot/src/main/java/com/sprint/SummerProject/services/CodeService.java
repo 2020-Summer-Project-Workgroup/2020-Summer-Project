@@ -1,4 +1,4 @@
-package com.sprint.SummerProject.Services;
+package com.sprint.SummerProject.services;
 
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
