@@ -1,6 +1,6 @@
-package com.sprint.SummerProject.Repositories;
+package com.sprint.SummerProject.repository;
 
-import com.sprint.SummerProject.Models.User;
+import com.sprint.SummerProject.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
