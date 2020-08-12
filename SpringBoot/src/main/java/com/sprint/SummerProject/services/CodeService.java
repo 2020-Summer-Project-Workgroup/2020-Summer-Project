@@ -7,8 +7,8 @@ import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
-import com.sprint.SummerProject.Models.Code;
-import com.sprint.SummerProject.Utils.CodeGenerator;
+import com.sprint.SummerProject.models.Code;
+import com.sprint.SummerProject.utils.CodeGenerator;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

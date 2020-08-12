@@ -1,8 +1,8 @@
-package com.sprint.SummerProject.Config;
+package com.sprint.SummerProject.config;
 
-import com.sprint.SummerProject.Models.Comment;
-import com.sprint.SummerProject.Repositories.CommentRepository;
-import com.sprint.SummerProject.Repositories.UserRepository;
+import com.sprint.SummerProject.models.Comment;
+import com.sprint.SummerProject.repository.CommentRepository;
+import com.sprint.SummerProject.repository.UserRepository;
 import org.bson.types.Binary;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +17,7 @@ public class MongoDBConfig {
 
     @Bean
     CommandLineRunner commandLineRunner(CommentRepository commentRepository) {
+        //这里只是为了制造一个用于测试的byte[]
         byte[] b = new byte[4];
         b[0] = (byte) (16 & 0xff);
         b[1] = (byte) (16 >> 8 & 0xff);

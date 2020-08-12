@@ -1,4 +1,4 @@
-package com.sprint.SummerProject.Models;
+package com.sprint.SummerProject.models;
 
 import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
