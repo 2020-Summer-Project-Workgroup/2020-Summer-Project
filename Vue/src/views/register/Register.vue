@@ -6,7 +6,7 @@
     <div class="register-form">
       <div class="form-item">
         <div v-if="isTel">
-          <label for="tel" style="top: 10.97%">
+          <label for="tel" style="top: 11.97%">
             <span :style="telColor" @click="switchToTel">输入手机</span>
             /
             <span :style="emailColor" @click="switchToEmail">邮箱</span>
@@ -23,13 +23,13 @@
         </div>
       </div>
       <div class="form-item">
-        <label for="code" style="top: 29.93%">输入验证码</label>
+        <label for="code" style="top: 30.93%">输入验证码</label>
         <span class="code-message" :style="codeMsgColor">{{codeMsg}}</span>
         <input type="text" id="code" name="code" v-model="code" style="top: 37.06%" @blur="checkCode"/>
         <button id="send-code" @click="sendCode">发送验证码</button>
       </div>
       <div class="form-item">
-        <label for="password" style="top: 49.26%">输入密码</label>
+        <label for="password" style="top: 50.26%">输入密码</label>
         <input type="password" id="password" name="password" v-model="password" style="top: 55.84%"/>
       </div>
       <button id="register" @click="submit">注册并登录</button>
