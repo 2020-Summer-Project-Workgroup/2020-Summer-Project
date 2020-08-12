@@ -224,8 +224,8 @@ export default {
 .title {
   padding: 20px;
   position: relative;
-  font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
-  "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 41px;
@@ -253,8 +253,8 @@ input {
   left: 14.17%;
   position: absolute;
   font-size: 20px;
-  font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
-  "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: #ffffff;
   border: 1px solid #cfcfcf;
   border-radius: 5px;
@@ -276,8 +276,8 @@ input:focus {
 label {
   left: 14.17%;
   position: absolute;
-  font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
-  "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -292,8 +292,8 @@ button {
   border-radius: 5px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%,
   rgba(255, 255, 255, 0) 100%), #54A293;
-  font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
-  "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   color: #FFFFFF;
@@ -349,8 +349,8 @@ button:active {
   top: 87.73%;
   bottom: 7.81%;
   position: absolute;
-  font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
-  "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
