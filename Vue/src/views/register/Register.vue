@@ -6,34 +6,34 @@
     <div class="register-form">
       <div class="form-item">
         <div v-if="isTel">
-          <label for="tel" style="top: 70px">
+          <label for="tel" style="top: 10.97%">
             <span :style="telColor" @click="switchToTel">输入手机</span>
             /
             <span :style="emailColor" @click="switchToEmail">邮箱</span>
           </label>
-          <input type="text" id="tel" name="username" v-model="tel" style="top: 104px"/>
+          <input type="text" id="tel" name="username" v-model="tel" style="top: 17.6%"/>
         </div>
         <div v-else>
-          <label for="email" style="top: 70px">
+          <label for="email" style="top: 10.97%">
             <span :style="telColor" @click="switchToTel">输入手机</span>
             /
             <span :style="emailColor" @click="switchToEmail">邮箱</span>
           </label>
-          <input type="text" id="email" name="username" v-model="email" style="top: 104px"/>
+          <input type="text" id="email" name="username" v-model="email" style="top: 17.6%"/>
         </div>
       </div>
       <div class="form-item">
-        <label for="code" style="top: 183px">输入验证码</label>
-        <span>{{codeMsg}}</span>
-        <input type="text" id="code" name="code" v-model="code" style="top: 219px" @blur="checkCode"/>
+        <label for="code" style="top: 29.93%">输入验证码</label>
+        <span class="code-message" :style="codeMsgColor">{{codeMsg}}</span>
+        <input type="text" id="code" name="code" v-model="code" style="top: 37.06%" @blur="checkCode"/>
         <button id="send-code" @click="sendCode">发送验证码</button>
       </div>
       <div class="form-item">
-        <label for="password" style="top: 294px">输入密码</label>
-        <input type="password" id="password" name="password" v-model="password" style="top: 330px"/>
+        <label for="password" style="top: 49.26%">输入密码</label>
+        <input type="password" id="password" name="password" v-model="password" style="top: 55.84%"/>
       </div>
       <button id="register" @click="submit">注册并登录</button>
-      <span id="to-login" @click="toLogin">已有账号？点此登录</span>
+      <span class="text-link" @click="toLogin">已有账号？点此登录</span>
     </div>
   </div>
 </template>
@@ -101,10 +101,14 @@ export default {
         if((/^1[3456789]\d{9}$/.test(this.tel))) {
           sendCodeToTel(this.tel).then(res => {
             console.log(res)
-            if (JSON.parse(res)[0] === 200) {
-              this.codeStatus = 2
+            if (res instanceof Object) {
+              if (JSON.parse(res)[0] === 200) {
+                this.codeStatus = 2
+              } else {
+                this.codeStatus = 3
+              }
             } else {
-              this.codeStatus = 1
+              this.codeStatus = 3
             }
           }).catch(err => {
             console.log(err)
@@ -116,10 +120,14 @@ export default {
         if (/^([a-zA-Z\d])(\w|-)+@[a-zA-Z\d]+(\.[a-zA-Z]{2,4})+$/.test(this.email)) {
           sendCodeToEmail(this.email).then(res => {
             console.log(res)
-            if (JSON.parse(res)[0] === 200) {
-              this.codeStatus = 2
+            if (res instanceof Object) {
+              if (JSON.parse(res)[0] === 200) {
+                this.codeStatus = 2
+              } else {
+                this.codeStatus = 3
+              }
             } else {
-              this.codeStatus = 1
+              this.codeStatus = 3
             }
           }).catch(err => {
             console.log(err)
@@ -178,11 +186,20 @@ export default {
       } else if (this.codeStatus === 2) {
         return '发送成功'
       } else if (this.codeStatus === 3) {
-        return '验证码输入有误'
+        return '发送失败'
       } else if (this.codeStatus === 4) {
         return '验证通过'
+      } else if (this.codeStatus === 5) {
+        return '验证码输入有误'
       } else {
         return ''
+      }
+    },
+    codeMsgColor() {
+      if (this.codeStatus % 2 === 0) {
+        return {color: '#54A293'}
+      } else {
+        return {color: '#FF4747'}
       }
     }
   }
@@ -191,11 +208,11 @@ export default {
 
 <style scoped>
 .register-container {
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   position: absolute;
-  min-height: calc(100vh - 60px);
   background-color: rgba(242, 244, 244, 1);
   display: flex;
   flex-direction: column;
@@ -206,6 +223,7 @@ export default {
 
 .title {
   padding: 20px;
+  position: relative;
   font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
   "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   font-style: normal;
@@ -213,42 +231,50 @@ export default {
   font-size: 41px;
   line-height: 54px;
   color: #616161;
+  z-index: 5;
 }
 
 .register-form {
-  height: 591px;
-  width: 720px;
+  width: 32.81vw;
+  height: 62.12vh;
+  padding: 0;
+  margin: 0;
   position: relative;
   background: #FFFFFF;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05);
   border: none;
   border-radius: 10px;
+  z-index: 0;
 }
 
-.register-form input {
-  width: 508px;
-  height: 60px;
-  left: calc(50% - 508px/2 - 4px);
+input {
+  width: 70.55%;
+  height: 10.15%;
+  left: 14.17%;
   position: absolute;
+  font-size: 20px;
+  font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
+  "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   background: #ffffff;
   border: 1px solid #cfcfcf;
   border-radius: 5px;
   box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.05), 0 4px 4px rgba(0, 0, 0, 0.05);
+  z-index: 10;
 }
 
-.register-form input:hover {
+input:hover {
   border: 1px solid #54A293;
   background-color: #F2F4F4;
 }
 
-.register-form input:focus {
+input:focus {
   outline: none;
   border: 1px solid #54A293;
   background-color: #F2F4F4;
 }
 
-.register-form label {
-  left: calc(50% - 310px/2 - 103px);
+label {
+  left: 14.17%;
   position: absolute;
   font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
   "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
@@ -257,13 +283,15 @@ export default {
   font-size: 20px;
   line-height: 20px;
   color: #606060;
+  z-index: 5;
 }
 
-.register-form button {
+button {
   position: absolute;
-  background-color: #54A293;
   border: none;
   border-radius: 5px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%,
+  rgba(255, 255, 255, 0) 100%), #54A293;
   font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
   "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   font-style: normal;
@@ -271,41 +299,56 @@ export default {
   color: #FFFFFF;
 }
 
-.register-form button:hover {
+button:hover {
   background-color: #368375;
 }
 
-.register-form button:active {
+button:active {
+  outline: none;
   background-color: #368375;
   color: #FFF492;
 }
 
 #register {
-  width: 508px;
-  height: 60px;
-  left: calc(50% - 508px/2 - 4px);
-  top: 424px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 70.56%;
+  left: 14.17%;
+  top: 71.74%;
+  bottom: 18.1%;
   font-size: 25px;
   line-height: 33px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+  z-index: 5;
 }
 
 #send-code {
-  width: 109px;
-  height: 34px;
-  left: calc(50% - 109px/2 + 186px);
-  top: 232px;
+  width: 95px;
+  left: calc(83.33% - 95px);
+  top: 39.25%;
+  bottom: 54.99%;
   font-size: 16px;
   line-height: 21px;
   z-index: 20;
 }
 
-#to-login {
+.code-message {
+  right: 16%;
+  top: 30.3%;
+  bottom: 65.99%;
   position: absolute;
-  width: 182px;
-  height: 24px;
-  left: calc(50% - 182px/2);
-  bottom: 50px;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 24px;
+  z-index: 12;
+}
+
+.text-link {
+  left: calc(50% - 91px);
+  top: 87.73%;
+  bottom: 7.81%;
+  position: absolute;
   font-family: "Hiragino Sans GB", "Helvetica Neue", Helvetica,
   "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   font-style: normal;
@@ -313,9 +356,10 @@ export default {
   font-size: 20px;
   line-height: 26px;
   color: #62AAFF;
+  z-index: 12;
 }
 
-#to-login:hover {
+.text-link:hover {
   cursor: pointer;
   text-decoration: underline;
 }
