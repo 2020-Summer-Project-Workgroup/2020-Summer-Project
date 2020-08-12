@@ -62,33 +62,45 @@ export default {
   },
   methods: {
     switchToTel() {
-      this.isTel = true
-      this.reset()
+      if (!this.isTel) {
+        this.isTel = true
+        this.reset()
+      }
     },
     switchToEmail() {
-      this.isTel = false
-      this.reset()
+      if (this.isTel) {
+        this.isTel = false
+        this.reset()
+      }
     },
     submit() {
       if (this.codeStatus === 4) {
         if (this.isTel) {
           addUserByTel(this.tel, this.password).then(res => {
-            const response = JSON.parse(res)
-            if (response[0] === 200) {
-              this.$router.replace('/desktop')
+            if (res instanceof Object) {
+              if (JSON.parse(res)[0] === 200) {
+                this.$router.replace('/desktop')
+              } else {
+                console.log(res)
+                // need to negotiate.
+              }
             } else {
-              console.log(res)
+              // need to negotiate.
             }
           }).catch(err => {
             console.log(err)
           })
         } else {
           addUserByEmail(this.email, this.password).then(res => {
-            const response = JSON.parse(res)
-            if (response[0] === 200) {
-              this.$router.replace('/desktop')
+            if (res instanceof Object) {
+              if (JSON.parse(res)[0] === 200) {
+                this.$router.replace('/desktop')
+              } else {
+                console.log(res)
+                // need to negotiate.
+              }
             } else {
-              console.log(res)
+              // need to negotiate.
             }
           }).catch(err => {
             console.log(err)
@@ -142,12 +154,30 @@ export default {
         if (this.isTel) {
           checkCodeToTel(this.tel, this.code).then(res => {
             console.log(res)
+            if (res instanceof Object) {
+              if (JSON.parse(res)[0] === 200) {
+                this.codeStatus = 4
+              } else {
+                this.codeStatus = 5
+              }
+            } else {
+              this.codeStatus = 3
+            }
           }).catch(err => {
             console.log(err)
           })
         } else {
           checkCodeToEmail(this.email, this.code).then(res => {
             console.log(res)
+            if (res instanceof Object) {
+              if (JSON.parse(res)[0] === 200) {
+                this.codeStatus = 4
+              } else {
+                this.codeStatus = 5
+              }
+            } else {
+              this.codeStatus = 3
+            }
           }).catch(err => {
             console.log(err)
           })
