@@ -18,7 +18,9 @@ export default {
   name: "Login",
   data() {
     return {
-      username: '',
+      isTel: true,
+      tel: '',
+      email: '',
       password: ''
     }
   },
