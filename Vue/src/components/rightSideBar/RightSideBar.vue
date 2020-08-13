@@ -100,12 +100,12 @@
 	}
 
 	#RBar {
-		display: -webkit-flex;
-		flex-flow: column wrap;
-		justify-content: center;
-		align-content: center;
-		width: 437px;
-		height: 798px;
+		position: absolute;
+    width: 23.49vw;
+    height: calc(100vh - 68px);
+    right: 0;
+    bottom: 0;
+    padding-top: 30px;
 	}
 
 	#From {

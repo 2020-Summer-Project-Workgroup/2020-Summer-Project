@@ -1,20 +1,22 @@
 <template>
-  <div v-if="showChangePassword" id="change-password">
-    <span class="text-link" id="close" @click="close">X</span>
-    <span class="text-link" id="to-user-space" @click="toUserSpace">>>个人信息</span>
-    <div class="form-item">
-      <label for="old-password" style="top: 12.52%">输入旧密码</label>
-      <input type="text" id="old-password" name="password" v-model="OldPassword" style="top: 18.49%"/>
+  <div v-if="showChangePassword" id="change-password-container">
+    <div id="change-password">
+      <span class="text-link" id="close" @click="close">X</span>
+      <span class="text-link" id="to-user-space" @click="toUserSpace">>>个人信息</span>
+      <div class="form-item">
+        <label for="old-password" style="top: 12.52%">输入旧密码</label>
+        <input type="text" id="old-password" name="password" v-model="OldPassword" style="top: 18.49%"/>
+      </div>
+      <div class="form-item">
+        <label for="new-password" style="top: 32.45%">新密码</label>
+        <input type="password" id="new-password" name="password" v-model="newPassword" style="top: 38.94%"/>
+      </div>
+      <div class="form-item">
+        <label for="password-confirm" style="top: 52.76%">密码确认</label>
+        <input type="password" id="password-confirm" name="password" v-model="passwordConfirm" style="top: 58.67%"/>
+      </div>
+      <button id="confirm" @click="submit">完成修改</button>
     </div>
-    <div class="form-item">
-      <label for="new-password" style="top: 32.45%">新密码</label>
-      <input type="password" id="new-password" name="password" v-model="newPassword" style="top: 38.94%"/>
-    </div>
-    <div class="form-item">
-      <label for="password-confirm" style="top: 52.76%">密码确认</label>
-      <input type="password" id="password-confirm" name="password" v-model="passwordConfirm" style="top: 58.67%"/>
-    </div>
-    <button id="confirm" @click="submit">完成修改</button>
   </div>
 </template>
 
@@ -48,8 +50,18 @@ export default {
 </script>
 
 <style scoped>
+#change-password-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(207, 207, 207, 0.3);
+  z-index: 30;
+}
+
 #change-password {
-  position: relative;
+  position: absolute;
   width: 32.81vw;
   height: 59.12vh;
   left: 33.59vw;
@@ -57,6 +69,7 @@ export default {
   background: #FFFFFF;
   box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
+  z-index: 35;
 }
 
 input {

@@ -1,6 +1,6 @@
 <template>
   <div class="main-bar">
-    <img id="logo" src="~assets/logo.png">
+    <img id="logo" src="~assets/pinetree.png">
     <span id="title">轻松文档</span>
     <SearchBar/>
     <UserIcon/>
@@ -8,10 +8,12 @@
 </template>
 
 <script>
-import SearchBar from "components/tarBar/SearchBar";
-import UserIcon from "@/components/tarBar/UserIcon";
+import SearchBar from "components/tabBar/SearchBar";
+import UserIcon from "@/components/tabBar/UserIcon";
 export default {
-  components: {UserIcon, SearchBar}
+  components: {UserIcon, SearchBar},
+  methods: {
+  }
 }
 </script>
 
@@ -27,7 +29,11 @@ export default {
 }
 
 #logo {
-
+  position: absolute;
+  left: 1.98vw;
+  top: 18px;
+  width: 25px;
+  height: 25px;
 }
 
 #title {
