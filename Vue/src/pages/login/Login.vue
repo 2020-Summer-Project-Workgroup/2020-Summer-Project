@@ -66,6 +66,10 @@ export default {
     submit() {
       checkInformation(this.username, this.password).then(res => {
         console.log(res)
+        if (res instanceof Object) {
+          const data = JSON.parse(res).data
+          console.log(data)
+        }
       }).catch(err => {
         console.log(err)
       })
@@ -97,7 +101,8 @@ export default {
   right: 0;
   bottom: 0;
   position: absolute;
-  background-color: rgba(242, 244, 244, 1);
+  background-image: url("~assets/background.png");
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;

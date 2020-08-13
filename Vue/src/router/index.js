@@ -1,8 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-const Login = () => import('views/login/Login')
-const Register = () => import('views/register/Register')
+const Login = () => import('pages/login/Login')
+const Register = () => import('pages/register/Register')
+const Desktop = () => import('pages/desktop/Desktop')
 
 Vue.use(VueRouter)
 
@@ -18,6 +19,10 @@ const routes = [
   {
     path: '/register',
     component: Register
+  },
+  {
+    path: '/desktop',
+    component: Desktop
   }
 ]
 const router = new VueRouter({

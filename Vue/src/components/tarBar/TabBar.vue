@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import TabBarItem from "@/component/tarBar/TabBarItem";
+import TabBarItem from "@/components/tarBar/TabBarItem";
 export default {
   name: "TabBar",
   components: {TabBarItem}
