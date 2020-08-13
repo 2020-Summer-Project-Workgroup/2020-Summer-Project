@@ -1,5 +1,5 @@
 <template>
-	<div id="app" >
+	<div id="file-list" >
 		<table>
 			<tr>
 				<th id="head1" align="left">
@@ -57,9 +57,14 @@
 		flex-shrink: 1;
 	}
 	
-	#app {
+	#file-list {
 		display: -webkit-flex;
 		flex-direction: column;
+    position: absolute;
+    top: 68px;
+    bottom: 0;
+    left: 17.6%;
+    right: 23.49%;
 	}
 	
 	#head1 {
