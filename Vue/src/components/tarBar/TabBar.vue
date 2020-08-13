@@ -3,13 +3,15 @@
     <img id="logo" src="~assets/logo.png">
     <span id="title">轻松文档</span>
     <SearchBar/>
+    <UserIcon/>
   </div>
 </template>
 
 <script>
 import SearchBar from "components/tarBar/SearchBar";
+import UserIcon from "@/components/tarBar/UserIcon";
 export default {
-  components: {SearchBar}
+  components: {UserIcon, SearchBar}
 }
 </script>
 

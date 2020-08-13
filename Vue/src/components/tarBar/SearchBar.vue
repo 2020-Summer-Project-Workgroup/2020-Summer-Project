@@ -19,7 +19,7 @@ export default {
 <style scoped>
 .search-bar {
   position: absolute;
-  right: 243px;
+  right: 12.66vw;
   top: 15px;
 }
 
