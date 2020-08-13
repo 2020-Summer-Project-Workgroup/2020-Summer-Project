@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import SearchBar from "components/tarBar/SearchBar";
-import UserIcon from "@/components/tarBar/UserIcon";
+import SearchBar from "components/tabBar/SearchBar";
+import UserIcon from "@/components/tabBar/UserIcon";
 export default {
   components: {UserIcon, SearchBar}
 }
