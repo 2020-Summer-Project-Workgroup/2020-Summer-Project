@@ -1,9 +1,9 @@
 <template>
   <div class="main-bar">
-    <img id="logo" src="~assets/logo.png">
+    <img id="logo" src="~assets/pinetree.png">
     <span id="title">轻松文档</span>
     <SearchBar/>
-    <UserIcon/>
+    <UserIcon @click="openUserSpace"/>
   </div>
 </template>
 
@@ -11,7 +11,12 @@
 import SearchBar from "components/tabBar/SearchBar";
 import UserIcon from "@/components/tabBar/UserIcon";
 export default {
-  components: {UserIcon, SearchBar}
+  components: {UserIcon, SearchBar},
+  methods: {
+    openUserSpace() {
+      this.$store.commit('openUserSpace')
+    }
+  }
 }
 </script>
 
@@ -27,7 +32,11 @@ export default {
 }
 
 #logo {
-
+  position: absolute;
+  left: 1.98vw;
+  top: 18px;
+  width: 25px;
+  height: 25px;
 }
 
 #title {

@@ -17,6 +17,9 @@ export default {
     },
     closeChangePassword(state) {
       state.showChangePassword = false
+    },
+    openUserSpace(state) {
+      state.showUserSpace = true
     }
   },
   getters: {
