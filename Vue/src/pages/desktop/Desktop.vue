@@ -1,10 +1,14 @@
 <template>
-  <div></div>
+  <div>
+    <TabBar/>
+  </div>
 </template>
 
 <script>
+import TabBar from "@/components/tarBar/TabBar";
 export default {
-  name: "Desktop"
+  name: "Desktop",
+  components: {TabBar}
 }
 </script>
 
