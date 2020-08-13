@@ -1,4 +1,3 @@
-
 <template>
   <div class="LeftSideBar">
     <el-col :span="12">
@@ -36,7 +35,6 @@
   </div>
 </template>
 
-
 <script>
 export default {
   methods: {
@@ -52,17 +50,15 @@ export default {
 
 <style scoped>
 .LeftSideBar{
-
-}
-.menu_page{
   position: absolute;
   top: 68px;
-  bottom: 0px;
-  left: 0px;
-  min-height: 100%;
+  bottom: 0;
+  left: 0;
+  height: calc(100vh - 68px);
   background-color: #E5E5E5;
   z-index: 20;
 }
+
 .el-menu {
   border: none;
 }
