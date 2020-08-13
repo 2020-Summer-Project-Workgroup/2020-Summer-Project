@@ -1,13 +1,30 @@
 export default {
   state: {
-    showUserSpace: true
+    showUserSpace: false,
+    showChangePassword: true
   },
   mutations: {
-
+    changePasswordToUserSpace(state) {
+      state.showUserSpace = true
+      state.showChangePassword = false
+    },
+    userSpaceToChangePassword(state) {
+      state.showUserSpace = false
+      state.showChangePassword = true
+    },
+    closeUserSpace(state) {
+      state.showUserSpace = false
+    },
+    closeChangePassword(state) {
+      state.showChangePassword = false
+    }
   },
   getters: {
     showUserSpace(state) {
       return state.showUserSpace
+    },
+    showChangePassword(state) {
+      return state.showChangePassword
     }
   }
 }
