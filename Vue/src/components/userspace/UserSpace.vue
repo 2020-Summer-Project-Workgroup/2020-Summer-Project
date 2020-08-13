@@ -1,12 +1,14 @@
 <template>
-  <div v-if="showUserSpace" id="user-space">
-    <span class="text-link" id="close" @click="close">X</span>
-    <span class="text-link" id="to-change-password" @click="toChangePassword">>>修改密码</span>
-    <div id="info">
-      <h2 id="title">用户空间</h2>
-      <span id="tel">手机号：15911103365</span>
-      <br/>
-      <span id="email">邮箱：h56983577@126.com</span>
+  <div v-if="showUserSpace" id="user-space-container">
+    <div id="user-space">
+      <span class="text-link" id="close" @click="close">X</span>
+      <span class="text-link" id="to-change-password" @click="toChangePassword">>>修改密码</span>
+      <div id="info">
+        <h2 id="title">用户空间</h2>
+        <span id="tel">手机号：15911103365</span>
+        <br/>
+        <span id="email">邮箱：h56983577@126.com</span>
+      </div>
     </div>
   </div>
 </template>
@@ -31,6 +33,16 @@ export default {
 </script>
 
 <style scoped>
+#user-space-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(207, 207, 207, 0.3);
+  z-index: 30;
+}
+
 #user-space {
   position: absolute;
   width: 29.22vw;

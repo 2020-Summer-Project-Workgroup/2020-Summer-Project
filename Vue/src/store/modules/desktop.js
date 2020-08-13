@@ -1,6 +1,6 @@
 export default {
   state: {
-    showUserSpace: false,
+    showUserSpace: true,
     showChangePassword: false
   },
   mutations: {
