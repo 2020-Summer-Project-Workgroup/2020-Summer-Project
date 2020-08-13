@@ -1,10 +1,14 @@
 <template>
-  <div></div>
+  <div>
+    <UserSpace/>
+  </div>
 </template>
 
 <script>
+import UserSpace from "@/components/userspace/UserSpace";
 export default {
-  name: "Desktop"
+  name: "Desktop",
+  components: {UserSpace}
 }
 </script>
 
