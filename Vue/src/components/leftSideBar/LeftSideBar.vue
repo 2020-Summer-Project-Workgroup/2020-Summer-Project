@@ -52,15 +52,16 @@ export default {
 
 <style scoped>
 .LeftSideBar{
-  margin-top: 68px;
+
 }
 .menu_page{
-  position: fixed;
-  top: 71px;
-  left: 0;
+  position: absolute;
+  top: 68px;
+  bottom: 0px;
+  left: 0px;
   min-height: 100%;
   background-color: #E5E5E5;
-  z-index: 99;
+  z-index: 20;
 }
 .el-menu {
   border: none;
