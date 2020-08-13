@@ -66,6 +66,10 @@ export default {
     submit() {
       checkInformation(this.username, this.password).then(res => {
         console.log(res)
+        if (res instanceof Object) {
+          const data = JSON.parse(res).data
+          console.log(data)
+        }
       }).catch(err => {
         console.log(err)
       })
