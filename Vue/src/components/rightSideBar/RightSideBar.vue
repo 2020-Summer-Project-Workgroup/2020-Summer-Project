@@ -22,7 +22,7 @@
 				<a href="" /> 详情
 			</span>
 			<br />
-			<hr id="line" color="#616161" size="1px" width="80%" />
+			<hr id="line" color="#cfcfcf" size="1px" width="80%" />
 			<br />
 			<table>
 				<tbody>
