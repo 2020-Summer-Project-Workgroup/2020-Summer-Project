@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 
 const Login = () => import('pages/login/Login')
 const Register = () => import('pages/register/Register')
+const Desktop = () => import('pages/desktop/Desktop')
 
 Vue.use(VueRouter)
 
@@ -18,6 +19,10 @@ const routes = [
   {
     path: '/register',
     component: Register
+  },
+  {
+    path: '/desktop',
+    component: Desktop
   }
 ]
 const router = new VueRouter({
