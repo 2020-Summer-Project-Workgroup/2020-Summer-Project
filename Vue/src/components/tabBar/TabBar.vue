@@ -3,7 +3,7 @@
     <img id="logo" src="~assets/pinetree.png">
     <span id="title">轻松文档</span>
     <SearchBar/>
-    <UserIcon @click="openUserSpace"/>
+    <UserIcon/>
   </div>
 </template>
 
@@ -13,9 +13,6 @@ import UserIcon from "@/components/tabBar/UserIcon";
 export default {
   components: {UserIcon, SearchBar},
   methods: {
-    openUserSpace() {
-      this.$store.commit('openUserSpace')
-    }
   }
 }
 </script>

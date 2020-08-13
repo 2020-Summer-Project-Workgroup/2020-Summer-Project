@@ -1,7 +1,7 @@
 export default {
   state: {
     showUserSpace: false,
-    showChangePassword: true
+    showChangePassword: false
   },
   mutations: {
     changePasswordToUserSpace(state) {

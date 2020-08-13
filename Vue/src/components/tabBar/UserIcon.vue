@@ -1,6 +1,6 @@
 <template>
   <div id="user-icon">
-    <img src="~assets/logo.png">
+    <img src="~assets/logo.png" @click="openUserSpace">
   </div>
 </template>
 
@@ -10,6 +10,11 @@ export default {
   data() {
     return {
       url: ''
+    }
+  },
+  methods: {
+    openUserSpace() {
+      this.$store.commit('openUserSpace')
     }
   }
 }
