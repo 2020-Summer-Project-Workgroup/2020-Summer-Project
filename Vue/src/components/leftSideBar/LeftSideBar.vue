@@ -1,6 +1,6 @@
 
 <template>
-  <div class="">
+  <div class="LeftSideBar">
     <el-col :span="12">
       <el-menu
           default-active="2"
@@ -32,6 +32,7 @@
         </el-menu-item>
       </el-menu>
     </el-col>
+    <el-divider direction="vertical"></el-divider>
   </div>
 </template>
 
@@ -50,12 +51,15 @@ export default {
 </script>
 
 <style scoped>
+.LeftSideBar{
+  margin-top: 68px;
+}
 .menu_page{
   position: fixed;
   top: 71px;
   left: 0;
   min-height: 100%;
-  background-color: #324057;
+  background-color: #E5E5E5;
   z-index: 99;
 }
 .el-menu {
@@ -65,7 +69,7 @@ export default {
   margin-right: 5px;
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 180px;
+  width: 338px;
   min-height: 240px;
 }
 
