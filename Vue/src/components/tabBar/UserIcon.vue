@@ -1,6 +1,6 @@
 <template>
   <div id="user-icon">
-    <img src="~assets/logo.png" @click="openUserSpace">
+    <img src="~assets/picture.jpeg" @click="openUserSpace">
   </div>
 </template>
 
