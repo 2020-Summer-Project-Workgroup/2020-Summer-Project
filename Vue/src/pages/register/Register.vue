@@ -77,13 +77,8 @@ export default {
       if (this.codeStatus === 4) {
         if (this.isTel) {
           addUserByTel(this.tel, this.password).then(res => {
-            if (res instanceof Object) {
-              if (JSON.parse(res)[0] === 200) {
-                this.$router.replace('/desktop')
-              } else {
-                console.log(res)
-                // need to negotiate.
-              }
+            if (res instanceof Object && JSON.parse(res).data() === "Yes") {
+              this.$router.replace('/desktop')
             } else {
               // need to negotiate.
             }
@@ -92,13 +87,8 @@ export default {
           })
         } else {
           addUserByEmail(this.email, this.password).then(res => {
-            if (res instanceof Object) {
-              if (JSON.parse(res)[0] === 200) {
-                this.$router.replace('/desktop')
-              } else {
-                console.log(res)
-                // need to negotiate.
-              }
+            if (res instanceof Object && JSON.parse(res).data() === "Yes") {
+              this.$router.replace('/desktop')
             } else {
               // need to negotiate.
             }
@@ -113,12 +103,8 @@ export default {
         if((/^1[3456789]\d{9}$/.test(this.tel))) {
           sendCodeToTel(this.tel).then(res => {
             console.log(res)
-            if (res instanceof Object) {
-              if (JSON.parse(res)[0] === 200) {
-                this.codeStatus = 2
-              } else {
-                this.codeStatus = 3
-              }
+            if (res instanceof Object && JSON.parse(res).data() === "Yes") {
+              this.codeStatus = 2
             } else {
               this.codeStatus = 3
             }
@@ -132,12 +118,8 @@ export default {
         if (/^([a-zA-Z\d])(\w|-)+@[a-zA-Z\d]+(\.[a-zA-Z]{2,4})+$/.test(this.email)) {
           sendCodeToEmail(this.email).then(res => {
             console.log(res)
-            if (res instanceof Object) {
-              if (JSON.parse(res)[0] === 200) {
-                this.codeStatus = 2
-              } else {
-                this.codeStatus = 3
-              }
+            if (res instanceof Object && JSON.parse(res).data() === "Yes") {
+              this.codeStatus = 2
             } else {
               this.codeStatus = 3
             }
@@ -150,12 +132,12 @@ export default {
       }
     },
     checkCode() {
-      if (this.codeStatus === 2 || this.codeStatus === 3) {
+      if (this.codeStatus === 2 || this.codeStatus === 5) {
         if (this.isTel) {
           checkCodeToTel(this.tel, this.code).then(res => {
             console.log(res)
             if (res instanceof Object) {
-              if (JSON.parse(res)[0] === 200) {
+              if (JSON.parse(res).data() === "Yes") {
                 this.codeStatus = 4
               } else {
                 this.codeStatus = 5
@@ -170,7 +152,7 @@ export default {
           checkCodeToEmail(this.email, this.code).then(res => {
             console.log(res)
             if (res instanceof Object) {
-              if (JSON.parse(res)[0] === 200) {
+              if (JSON.parse(res).data() === "Yes") {
                 this.codeStatus = 4
               } else {
                 this.codeStatus = 5
@@ -244,6 +226,7 @@ export default {
   bottom: 0;
   position: absolute;
   background-image: url("~assets/background.png");
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
