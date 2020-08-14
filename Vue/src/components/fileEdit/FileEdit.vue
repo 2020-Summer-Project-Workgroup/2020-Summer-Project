@@ -9,6 +9,7 @@ import Vue from 'vue';
 import CKEditor from 'ckeditor4-vue';
 
 Vue.use(CKEditor);
+
 export default {
 	name: 'editor',
 	components: {
