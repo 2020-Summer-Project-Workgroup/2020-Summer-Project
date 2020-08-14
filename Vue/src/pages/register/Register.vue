@@ -243,7 +243,7 @@ export default {
   right: 0;
   bottom: 0;
   position: absolute;
-  background-color: rgba(242, 244, 244, 1);
+  background-image: url("~assets/background.png");
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -336,7 +336,6 @@ button:hover {
 button:active {
   outline: none;
   background-color: #368375;
-  color: #FFF492;
 }
 
 #register {
