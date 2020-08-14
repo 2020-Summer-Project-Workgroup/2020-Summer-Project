@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import {checkInformation} from "@/network/login";
+import {loginByEmail, loginByTel} from "@/network/login";
 
 export default {
   name: "Login",
@@ -64,15 +64,25 @@ export default {
     },
     // 网络请求方法
     submit() {
-      checkInformation(this.username, this.password).then(res => {
-        console.log(res)
-        if (res instanceof Object) {
-          const data = JSON.parse(res).data
-          console.log(data)
-        }
-      }).catch(err => {
-        console.log(err)
-      })
+      if (this.isTel) {
+        loginByTel(this.tel, this.password).then(res => {
+          console.log(res)
+          if (res instanceof Object && JSON.parse(res).data === "Yes") {
+            this.$router.replace('/desktop')
+          }
+        }).catch(err => {
+          console.log(err)
+        })
+      } else {
+        loginByEmail(this.email, this.password).then(res => {
+          console.log(res)
+          if (res instanceof Object && JSON.parse(res).data === "Yes") {
+            this.$router.replace('/desktop')
+          }
+        }).catch(err => {
+          console.log(err)
+        })
+      }
     },
   },
   computed: {
