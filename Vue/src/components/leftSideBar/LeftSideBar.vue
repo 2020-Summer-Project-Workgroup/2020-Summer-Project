@@ -9,16 +9,16 @@
         @close="handleClose">
       <el-submenu index="1" id="team-space">
         <template slot="title">
-          <i class="el-icon-user-solid"></i>
-          <span>团队空间</span>
+          <div class="left-side-bar-item">
+            <i class="el-icon-user-solid"></i>
+            <span>团队空间</span>
+          </div>
         </template>
-        <div class="team-space-list">
-          <el-menu-item-group>
-            <template slot="title"></template>
-            <el-menu-item class="team-space-item" index="1-1">轻松文档团队</el-menu-item>
-            <el-menu-item class="team-space-item" index="1-2">金刚石文档</el-menu-item>
-          </el-menu-item-group>
-        </div>
+        <el-menu-item-group>
+          <template slot="title"></template>
+          <el-menu-item index="1-1">轻松文档团队</el-menu-item>
+          <el-menu-item index="1-2">金刚石文档</el-menu-item>
+        </el-menu-item-group>
       </el-submenu>
       <el-menu-item class="left-side-bar-item" index="2">
         <i class="el-icon-user"></i>
@@ -49,7 +49,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .left-side-bar {
   position: absolute;
   top: 68px;
@@ -80,14 +80,14 @@ export default {
   background: rgba(0, 0, 0, 0);
 }
 
-.el-menu-vertical .team-space-item {
+#team-space /deep/ .el-menu{
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 26px;
-  background: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .el-menu-vertical #team-space {

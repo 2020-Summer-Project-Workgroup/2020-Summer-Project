@@ -5,7 +5,7 @@
     <ChangePassword/>
     <LeftSideBar/>
     <div class="v-line" id="left-separator"></div>
-    <FileList/>
+    <CollectionFile/>
     <div class="v-line" id="right-separator"></div>
     <RightSideBar/>
   </div>
@@ -17,10 +17,10 @@ import UserSpace from "@/components/userspace/UserSpace";
 import ChangePassword from "@/components/userspace/ChangePassword";
 import LeftSideBar from "@/components/leftSideBar/LeftSideBar";
 import RightSideBar from "@/components/rightSideBar/RightSideBar";
-import FileList from "@/components/fileList/FileList";
+import CollectionFile from "@/components/fileList/CollectionFile";
 export default {
   name: "Desktop",
-  components: {FileList, RightSideBar, LeftSideBar, ChangePassword, UserSpace, TabBar}
+  components: {CollectionFile, RightSideBar, LeftSideBar, ChangePassword, UserSpace, TabBar}
 }
 </script>
 
