@@ -7,16 +7,16 @@
         active-text-color="#54A193"
         @open="handleOpen"
         @close="handleClose">
-      <el-submenu class="left-side-bar-item" index="1" id="team-space">
+      <el-submenu index="1" id="team-space">
         <template slot="title">
           <i class="el-icon-user-solid"></i>
           <span>团队空间</span>
         </template>
-        <div id="team-space-item">
+        <div class="team-space-list">
           <el-menu-item-group>
             <template slot="title"></template>
-            <el-menu-item index="1-1">轻松文档团队</el-menu-item>
-            <el-menu-item index="1-2">金刚石文档</el-menu-item>
+            <el-menu-item class="team-space-item" index="1-1">轻松文档团队</el-menu-item>
+            <el-menu-item class="team-space-item" index="1-2">金刚石文档</el-menu-item>
           </el-menu-item-group>
         </div>
       </el-submenu>
@@ -56,31 +56,38 @@ export default {
   left: 0;
   height: calc(100vh - 68px);
   width: 17.6vw;
-  background-color: rgba(255, 255, 255, .15);
+  background-color: rgba(255, 255, 255, .4);
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 20px;
+  font-size: 30px;
   line-height: 26px;
 }
 
 .el-menu-vertical {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, .4);
 }
 
 .el-menu-vertical .left-side-bar-item:hover {
-  background-color: #FFFFFF;
+  color: #54A193;
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
 }
 
-.el-menu-vertical #team-space-item {
+.el-menu-vertical .left-side-bar-item:focus {
+  color: #54A193;
+  background: rgba(0, 0, 0, 0);
+}
+
+.el-menu-vertical .team-space-item {
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 26px;
-  background-color: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0);
 }
 
 .el-menu-vertical #team-space {
