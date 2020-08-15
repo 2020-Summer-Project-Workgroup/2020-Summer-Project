@@ -4,7 +4,14 @@
       <i class="el-icon-circle-close" id="close-user-space" @click="close"></i>
       <span class="span-user-space" id="title-user-space">个人信息</span>
       <div class="aline" id="above-line"></div>
-      <span class="span-user-space" id="username-user-space">{{userName}}</span>
+      <div id="avatar">
+        <el-avatar v-if="avatar!=null" :src="avatar" :size="81"></el-avatar>
+        <el-avatar v-else icon="el-icon-user-solid" :size="81"></el-avatar>
+      </div>
+      <div id="username-user-space">
+        <span class="span-user-space">{{username}}</span>
+        <i class="el-icon-edit"></i>
+      </div>
       <span class="span-user-space subtitle-user-space" id="email-user-space">邮箱</span>
       <span class="span-user-space info-user-space" id="userEmail-user-space">{{userEmail}}</span>
       <span class="span-user-space subtitle-user-space" id="tel-user-space">手机</span>
@@ -13,6 +20,7 @@
       <span class="span-user-space info-user-space" id="secret-user-space">{{userSecret}}</span>
       <span class="text-link" id="to-change-password" @click="toChangePassword">修改密码</span>
       <div class="aline" id="infer-line"></div>
+      <button id="logout">退出登录</button>
     </div>
   </div>
 </template>
@@ -20,6 +28,14 @@
 <script>
 export default {
   name: "UserSpace",
+  data() {
+    return {
+      username: ''
+    }
+  },
+  created() {
+    this.username = 'hzy'
+  },
   methods: {
     toChangePassword() {
       this.$store.commit('userSpaceToChangePassword')
@@ -32,9 +48,6 @@ export default {
     showUserSpace() {
       return this.$store.getters.showUserSpace
     },
-    userName() {
-      return 'wxy'
-    },
     userEmail() {
       return 'h56983577@126.com'
     },
@@ -43,6 +56,9 @@ export default {
     },
     userSecret() {
       return '********'
+    },
+    avatar() {
+      return null;
     }
   }
 }
@@ -57,6 +73,14 @@ export default {
   height: 100vh;
   background-color: rgba(207, 207, 207, 0.3);
   z-index: 30;
+}
+
+#user-space-container i {
+  position: absolute;
+}
+
+#user-space-container i:hover {
+  cursor: pointer;
 }
 
 #user-space {
@@ -82,6 +106,12 @@ export default {
   color: #CFCFCF;
 }
 
+#avatar {
+  position: absolute;
+  left: 9.29%;
+  top: 22.55%;
+}
+
 .span-user-space {
   position: absolute;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
@@ -103,16 +133,23 @@ export default {
 
 #title-user-space {
   top: 10.53%;
-  right: 65.92%;
+  left: 9.29%;
   font-size: 25px;
   line-height: 33px;
 }
 
-#username-user-space {
+#username-user-space span {
   top: 27.13%;
-  left: 33.01%;
+  left: 35.01%;
   font-size: 25px;
   line-height: 33px;
+}
+
+#username-user-space i {
+  top: 29.02%;
+  left: 50.1%;
+  font-size: 19px;
+  color: #CFCFCF;
 }
 
 #email-user-space {
@@ -179,9 +216,32 @@ export default {
 
 #to-change-password {
   left: 45.78%;
-  bottom: 88.48%;
+  bottom: 20.02%;
   position: absolute;
   font-size: 16px;
   line-height: 21px;
+}
+
+#logout {
+  position: absolute;
+  width: 103px;
+  height: 30px;
+  right: 11.39%;
+  bottom: 8.77%;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #E5E5E5;
+  border: 1px solid #CFCFCF;
+  box-sizing: border-box;
+  border-radius: 30px;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  color: #858585;
+}
+
+#logout:hover {
+  cursor: pointer;
 }
 </style>
