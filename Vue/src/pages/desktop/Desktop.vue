@@ -4,7 +4,9 @@
     <UserSpace/>
     <ChangePassword/>
     <LeftSideBar/>
+    <div class="v-line" id="left-separator"></div>
     <FileList/>
+    <div class="v-line" id="right-separator"></div>
     <RightSideBar/>
   </div>
 </template>
@@ -31,5 +33,24 @@ export default {
   bottom: 0;
   background-image: url("~assets/background.png");
   background-size: cover;
+}
+
+.v-line {
+  width: 1px;
+  background-color: #CFCFCF;
+}
+
+.desktop #left-separator {
+  position: absolute;
+  top: 68px;
+  bottom: 0;
+  left: 17.6vw;
+}
+
+.desktop #right-separator {
+  position: absolute;
+  top: 68px;
+  bottom: 0;
+  right: 19.84vw;
 }
 </style>
