@@ -1,14 +1,26 @@
 <template>
   <div v-if="showUserSpace" id="user-space-container">
     <div id="user-space">
-      <span class="text-link" id="close" @click="close">X</span>
-      <span class="text-link" id="to-change-password" @click="toChangePassword">>>修改密码</span>
-      <div id="info">
-        <h2 id="title">用户空间</h2>
-        <span id="tel">手机号：15911103365</span>
-        <br/>
-        <span id="email">邮箱：h56983577@126.com</span>
+      <i class="el-icon-circle-close" id="close-user-space" @click="close"></i>
+      <span class="span-user-space" id="title-user-space">个人信息</span>
+      <div class="aline" id="above-line"></div>
+      <div id="avatar">
+        <el-avatar v-if="avatar!=null" :src="avatar" :size="81"></el-avatar>
+        <el-avatar v-else icon="el-icon-user-solid" :size="81"></el-avatar>
       </div>
+      <div id="username-user-space">
+        <span class="span-user-space">{{username}}</span>
+        <i class="el-icon-edit"></i>
+      </div>
+      <span class="span-user-space subtitle-user-space" id="email-user-space">邮箱</span>
+      <span class="span-user-space info-user-space" id="userEmail-user-space">{{userEmail}}</span>
+      <span class="span-user-space subtitle-user-space" id="tel-user-space">手机</span>
+      <span class="span-user-space info-user-space" id="userTel-user-space">{{userTel}}</span>
+      <span class="span-user-space subtitle-user-space" id="password-user-space">密码</span>
+      <span class="span-user-space info-user-space" id="secret-user-space">{{userSecret}}</span>
+      <span class="text-link" id="to-change-password" @click="toChangePassword">修改密码</span>
+      <div class="aline" id="infer-line"></div>
+      <button id="logout">退出登录</button>
     </div>
   </div>
 </template>
@@ -16,6 +28,14 @@
 <script>
 export default {
   name: "UserSpace",
+  data() {
+    return {
+      username: ''
+    }
+  },
+  created() {
+    this.username = 'hzy'
+  },
   methods: {
     toChangePassword() {
       this.$store.commit('userSpaceToChangePassword')
@@ -27,6 +47,18 @@ export default {
   computed: {
     showUserSpace() {
       return this.$store.getters.showUserSpace
+    },
+    userEmail() {
+      return 'h56983577@126.com'
+    },
+    userTel() {
+      return '15911103365'
+    },
+    userSecret() {
+      return '********'
+    },
+    avatar() {
+      return null;
     }
   }
 }
@@ -43,12 +75,20 @@ export default {
   z-index: 30;
 }
 
+#user-space-container i {
+  position: absolute;
+}
+
+#user-space-container i:hover {
+  cursor: pointer;
+}
+
 #user-space {
   position: absolute;
-  width: 29.22vw;
-  height: 57.08vh;
-  left: 35.42vw;
-  top: 18.61vh;
+  width: 26.51vw;
+  height: 55.31vh;
+  left: 35.36vw;
+  top: 18.71vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,13 +98,113 @@ export default {
   border-radius: 10px;
 }
 
+#close-user-space {
+  position: absolute;
+  right: 5.26%;
+  top: 4.86%;
+  font-size: 30px;
+  color: #CFCFCF;
+}
+
+#avatar {
+  position: absolute;
+  left: 9.29%;
+  top: 22.55%;
+}
+
+.span-user-space {
+  position: absolute;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: #616161;
+}
+
+.subtitle-user-space {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.info-user-space {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#title-user-space {
+  top: 10.53%;
+  left: 9.29%;
+  font-size: 25px;
+  line-height: 33px;
+}
+
+#username-user-space span {
+  top: 27.13%;
+  left: 35.01%;
+  font-size: 25px;
+  line-height: 33px;
+}
+
+#username-user-space i {
+  top: 29.02%;
+  left: 50.1%;
+  font-size: 19px;
+  color: #CFCFCF;
+}
+
+#email-user-space {
+  top: 45.3%;
+  left: 11.79%;
+}
+
+#userEmail-user-space {
+  top: 45.3%;
+  left: 27.7%;
+}
+
+#tel-user-space {
+  bottom: 34.45%;
+  left: 11.79%;
+}
+
+#userTel-user-space {
+  bottom: 34.45%;
+  left: 27.7%;
+}
+
+#password-user-space {
+  bottom: 20.25%;
+  left: 11.79%;
+}
+
+#secret-user-space {
+  bottom: 20.25%;
+  left: 27.7%;
+}
+
+.aline {
+  background-color: #CFCFCF;
+  height: 1px;
+  position: absolute;
+}
+
+#above-line {
+  width: 50.09%;
+  top: 14.98%;
+  right: 16.22%;
+}
+
+#infer-line {
+  width: 68.09%;
+  bottom: 11.13%;
+  left: 16.04%;
+}
+
 .text-link {
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
-  line-height: 21px;
   color: #54A193;
   z-index: 12;
 }
@@ -75,15 +215,33 @@ export default {
 }
 
 #to-change-password {
-  left: calc(78.73% - 50px);
-  top: 6.25%;
-  bottom: 88.48%;
+  left: 45.78%;
+  bottom: 20.02%;
   position: absolute;
+  font-size: 16px;
+  line-height: 21px;
 }
 
-#close {
-  top: 0;
-  right: 0;
+#logout {
   position: absolute;
+  width: 103px;
+  height: 30px;
+  right: 11.39%;
+  bottom: 8.77%;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #E5E5E5;
+  border: 1px solid #CFCFCF;
+  box-sizing: border-box;
+  border-radius: 30px;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  color: #858585;
+}
+
+#logout:hover {
+  cursor: pointer;
 }
 </style>

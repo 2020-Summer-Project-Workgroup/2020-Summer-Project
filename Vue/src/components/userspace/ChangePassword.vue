@@ -1,7 +1,7 @@
 <template>
   <div v-if="showChangePassword" id="change-password-container">
     <div id="change-password">
-      <span class="text-link" id="close" @click="close">X</span>
+      <img id="close-change-password" src="~assets/close.png" @click="close">
       <span class="text-link" id="to-user-space" @click="toUserSpace">>>个人信息</span>
       <div class="form-item">
         <label for="old-password" style="top: 12.52%">输入旧密码</label>
@@ -70,6 +70,14 @@ export default {
   box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
   z-index: 35;
+}
+
+#close-change-password {
+  position: absolute;
+  left: 90.16%;
+  top: 4.69%;
+  width: 35px;
+  height: 35px;
 }
 
 input {

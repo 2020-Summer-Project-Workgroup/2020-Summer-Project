@@ -1,6 +1,7 @@
 <template>
-  <div id="user-icon">
-    <img src="~assets/picture.jpeg" @click="openUserSpace">
+  <div id="user-icon" @click="openUserSpace">
+    <el-avatar v-if="avatar!=null" :src="avatar"></el-avatar>
+    <el-avatar v-else icon="el-icon-user-solid"></el-avatar>
   </div>
 </template>
 
@@ -16,6 +17,12 @@ export default {
     openUserSpace() {
       this.$store.commit('openUserSpace')
     }
+  },
+  computed: {
+    avatar() {
+      // return require("@/assets/picture.jpeg")
+      return null;
+    }
   }
 }
 </script>
@@ -27,9 +34,8 @@ export default {
   top: 14px;
 }
 
-img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+#user-icon:hover {
+  cursor: pointer;
+  opacity: 50%;
 }
 </style>
