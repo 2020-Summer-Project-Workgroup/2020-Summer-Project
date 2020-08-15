@@ -4,7 +4,9 @@
     <UserSpace/>
     <ChangePassword/>
     <LeftSideBar/>
-    <FileList/>
+    <div class="v-line" id="left-separator"></div>
+    <CollectionFile/>
+    <div class="v-line" id="right-separator"></div>
     <RightSideBar/>
   </div>
 </template>
@@ -15,10 +17,10 @@ import UserSpace from "@/components/userspace/UserSpace";
 import ChangePassword from "@/components/userspace/ChangePassword";
 import LeftSideBar from "@/components/leftSideBar/LeftSideBar";
 import RightSideBar from "@/components/rightSideBar/RightSideBar";
-import FileList from "@/components/fileList/FileList";
+import CollectionFile from "@/components/fileList/CollectionFile";
 export default {
   name: "Desktop",
-  components: {FileList, RightSideBar, LeftSideBar, ChangePassword, UserSpace, TabBar}
+  components: {CollectionFile, RightSideBar, LeftSideBar, ChangePassword, UserSpace, TabBar}
 }
 </script>
 
@@ -31,5 +33,24 @@ export default {
   bottom: 0;
   background-image: url("~assets/background.png");
   background-size: cover;
+}
+
+.v-line {
+  width: 1px;
+  background-color: #CFCFCF;
+}
+
+.desktop #left-separator {
+  position: absolute;
+  top: 68px;
+  bottom: 0;
+  left: 17.6vw;
+}
+
+.desktop #right-separator {
+  position: absolute;
+  top: 68px;
+  bottom: 0;
+  right: 19.84vw;
 }
 </style>

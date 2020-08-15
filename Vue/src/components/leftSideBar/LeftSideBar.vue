@@ -1,37 +1,38 @@
 <template>
-  <div class="LeftSideBar">
-    <el-col :span="12">
-      <el-menu
-          default-active="2"
-          class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose">
-        <el-submenu index="1">
-          <template slot="title">
-            <i class="el-icon-location"></i>
+  <div class="left-side-bar">
+    <el-menu
+        default-active="3"
+        class="el-menu-vertical"
+        text-color="#616161"
+        active-text-color="#54A193"
+        @open="handleOpen"
+        @close="handleClose">
+      <el-submenu index="1" id="team-space">
+        <template slot="title">
+          <div class="left-side-bar-item">
+            <i class="el-icon-user-solid"></i>
             <span>团队空间</span>
-          </template>
-          <el-menu-item-group>
-            <template slot="title"></template>
-            <el-menu-item index="1-1">轻松文档团队</el-menu-item>
-            <el-menu-item index="1-2">金刚石文档</el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
-        <el-menu-item index="2">
-          <i class="el-icon-user"></i>
-          <span slot="title">我创建的</span>
-        </el-menu-item>
-        <el-menu-item index="3">
-          <i class="el-icon-star-off"></i>
-          <span slot="title">我收藏的</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <i class="el-icon-delete"></i>
-          <span slot="title">回收站</span>
-        </el-menu-item>
-      </el-menu>
-    </el-col>
-    <el-divider direction="vertical"></el-divider>
+          </div>
+        </template>
+        <el-menu-item-group>
+          <template slot="title"></template>
+          <el-menu-item index="1-1">轻松文档团队</el-menu-item>
+          <el-menu-item index="1-2">金刚石文档</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-menu-item class="left-side-bar-item" index="2">
+        <i class="el-icon-user"></i>
+        <span slot="title">我创建的</span>
+      </el-menu-item>
+      <el-menu-item class="left-side-bar-item" index="3">
+        <i class="el-icon-star-off"></i>
+        <span slot="title">我收藏的</span>
+      </el-menu-item>
+      <el-menu-item class="left-side-bar-item" index="4">
+        <i class="el-icon-delete"></i>
+        <span slot="title">回收站</span>
+      </el-menu-item>
+    </el-menu>
   </div>
 </template>
 
@@ -48,39 +49,49 @@ export default {
 }
 </script>
 
-<style scoped>
-.LeftSideBar{
+<style>
+.left-side-bar {
   position: absolute;
   top: 68px;
-  bottom: 0;
   left: 0;
   height: calc(100vh - 68px);
-  background-color: #E5E5E5;
-  z-index: 20;
+  width: 17.6vw;
+  background-color: rgba(255, 255, 255, .4);
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 26px;
 }
 
-.el-menu {
-  border: none;
-}
-.fa-margin {
-  margin-right: 5px;
-}
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 338px;
-  min-height: 240px;
+.el-menu-vertical {
+  background: rgba(255, 255, 255, .4);
 }
 
-.el-menu-vertical-demo {
-  width: 35px;
+.el-menu-vertical .left-side-bar-item:hover {
+  color: #54A193;
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
 }
-.el-submenu .el-menu-item {
-  min-width: 180px;
+
+.el-menu-vertical .left-side-bar-item:focus {
+  color: #54A193;
+  background: rgba(0, 0, 0, 0);
 }
-.hiddenDropdown,
-.hiddenDropname {
-  display: none;
+
+#team-space /deep/ .el-menu{
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 26px;
+  background-color: rgba(0, 0, 0, 0);
 }
-a {
-  text-decoration: none;
+
+.el-menu-vertical #team-space {
+  padding-top: 20px;
+  padding-bottom: 5px;
 }
 </style>
