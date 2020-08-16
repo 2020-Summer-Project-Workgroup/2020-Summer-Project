@@ -3,6 +3,7 @@
     <TabBar/>
     <UserSpace/>
     <ChangePassword/>
+    <AddEmail/>
     <LeftSideBar/>
     <div class="v-line" id="left-separator"></div>
     <CollectionFile/>
@@ -18,9 +19,10 @@ import ChangePassword from "@/components/userspace/ChangePassword";
 import LeftSideBar from "@/components/leftSideBar/LeftSideBar";
 import RightSideBar from "@/components/rightSideBar/RightSideBar";
 import CollectionFile from "@/components/fileList/CollectionFile";
+import AddEmail from "@/components/userspace/AddEmail";
 export default {
   name: "Desktop",
-  components: {CollectionFile, RightSideBar, LeftSideBar, ChangePassword, UserSpace, TabBar}
+  components: {AddEmail, CollectionFile, RightSideBar, LeftSideBar, ChangePassword, UserSpace, TabBar}
 }
 </script>
 
