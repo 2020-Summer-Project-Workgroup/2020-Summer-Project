@@ -8,7 +8,10 @@ import desktop from "@/store/modules/desktop";
 Vue.use(Vuex)
 
 const state = {
-
+  username: 'hzy',
+  tel: '15911103365',
+  email: '',
+  password: ''
 }
 
 const store = new Vuex.Store({

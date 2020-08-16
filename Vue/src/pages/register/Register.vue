@@ -77,20 +77,20 @@ export default {
       if (this.codeStatus === 4) {
         if (this.isTel) {
           addUserByTel(this.tel, this.password).then(res => {
-            if (res instanceof Object && JSON.parse(res).data() === "Yes") {
+            if (res === "Yes") {
               this.$router.replace('/desktop')
             } else {
-              // need to negotiate.
+              console.log(res)
             }
           }).catch(err => {
             console.log(err)
           })
         } else {
           addUserByEmail(this.email, this.password).then(res => {
-            if (res instanceof Object && JSON.parse(res).data() === "Yes") {
+            if (res === "Yes") {
               this.$router.replace('/desktop')
             } else {
-              // need to negotiate.
+              console.log(res)
             }
           }).catch(err => {
             console.log(err)
@@ -103,7 +103,8 @@ export default {
         if((/^1[3456789]\d{9}$/.test(this.tel))) {
           sendCodeToTel(this.tel).then(res => {
             console.log(res)
-            if (res instanceof Object && JSON.parse(res).data() === "Yes") {
+            console.log(typeof res)
+            if (res === "Yes") {
               this.codeStatus = 2
             } else {
               this.codeStatus = 3
@@ -118,7 +119,7 @@ export default {
         if (/^([a-zA-Z\d])(\w|-)+@[a-zA-Z\d]+(\.[a-zA-Z]{2,4})+$/.test(this.email)) {
           sendCodeToEmail(this.email).then(res => {
             console.log(res)
-            if (res instanceof Object && JSON.parse(res).data() === "Yes") {
+            if (res === "Yes") {
               this.codeStatus = 2
             } else {
               this.codeStatus = 3
@@ -132,18 +133,18 @@ export default {
       }
     },
     checkCode() {
-      if (this.codeStatus === 2 || this.codeStatus === 5) {
+      if (this.codeStatus === 2 || this.codeStatus === 5 || this.codeStatus === 7) {
         if (this.isTel) {
           checkCodeToTel(this.tel, this.code).then(res => {
             console.log(res)
-            if (res instanceof Object) {
-              if (JSON.parse(res).data() === "Yes") {
-                this.codeStatus = 4
-              } else {
-                this.codeStatus = 5
-              }
+            if (res === "Yes") {
+              this.codeStatus = 4
             } else {
-              this.codeStatus = 3
+              if (res === "No") {
+                this.codeStatus = 5
+              } else {
+                this.codeStatus = 7
+              }
             }
           }).catch(err => {
             console.log(err)
@@ -151,14 +152,14 @@ export default {
         } else {
           checkCodeToEmail(this.email, this.code).then(res => {
             console.log(res)
-            if (res instanceof Object) {
-              if (JSON.parse(res).data() === "Yes") {
-                this.codeStatus = 4
-              } else {
-                this.codeStatus = 5
-              }
+            if (res === "Yes") {
+              this.codeStatus = 4
             } else {
-              this.codeStatus = 3
+              if (res === "No") {
+                this.codeStatus = 5
+              } else {
+                this.codeStatus = 7
+              }
             }
           }).catch(err => {
             console.log(err)
@@ -203,6 +204,8 @@ export default {
         return '验证通过'
       } else if (this.codeStatus === 5) {
         return '验证码输入有误'
+      } else if (this.codeStatus === 7) {
+        return '验证码验证失败'
       } else {
         return ''
       }
