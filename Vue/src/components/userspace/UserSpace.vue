@@ -7,15 +7,20 @@
       <div id="avatar">
         <el-avatar v-if="avatar!=null" :src="avatar" :size="81"></el-avatar>
         <el-avatar v-else icon="el-icon-user-solid" :size="81"></el-avatar>
+        <div id="avatar-hover">
+          <i class="el-icon-upload2"></i>
+        </div>
       </div>
       <div id="username-user-space">
         <span class="span-user-space">{{username}}</span>
         <i class="el-icon-edit"></i>
       </div>
       <span class="span-user-space subtitle-user-space" id="email-user-space">邮箱</span>
-      <span class="span-user-space info-user-space" id="userEmail-user-space">{{userEmail}}</span>
+      <span v-if="hasEmail" class="span-user-space info-user-space" id="userEmail-user-space">{{userEmail}}</span>
+      <span v-if="!hasEmail" class="text-link" id="to-add-email" @click="toAddEmail">绑定邮箱</span>
       <span class="span-user-space subtitle-user-space" id="tel-user-space">手机</span>
-      <span class="span-user-space info-user-space" id="userTel-user-space">{{userTel}}</span>
+      <span v-if="hasTel" class="span-user-space info-user-space" id="userTel-user-space">{{userTel}}</span>
+      <span v-if="!hasTel" class="text-link" id="to-add-tel" @click="toAddTel">绑定手机</span>
       <span class="span-user-space subtitle-user-space" id="password-user-space">密码</span>
       <span class="span-user-space info-user-space" id="secret-user-space">{{userSecret}}</span>
       <span class="text-link" id="to-change-password" @click="toChangePassword">修改密码</span>
@@ -40,11 +45,23 @@ export default {
     toChangePassword() {
       this.$store.commit('userSpaceToChangePassword')
     },
+    toAddEmail() {
+      this.$store.commit('userSpaceToAddEmail')
+    },
+    toAddTel() {
+      this.$store.commit('userSpaceToAddTel')
+    },
     close() {
       this.$store.commit('closeUserSpace')
     }
   },
   computed: {
+    hasEmail() {
+      return false
+    },
+    hasTel() {
+      return false
+    },
     showUserSpace() {
       return this.$store.getters.showUserSpace
     },
@@ -110,6 +127,25 @@ export default {
   position: absolute;
   left: 9.29%;
   top: 22.55%;
+}
+
+#avatar-hover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 81px;
+  height: 81px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .4);
+  font-size: 40px;
+  display: none;
+}
+
+#avatar:hover #avatar-hover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .span-user-space {
@@ -217,6 +253,22 @@ export default {
 #to-change-password {
   left: 45.78%;
   bottom: 20.02%;
+  position: absolute;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+#to-add-email {
+  top: 46.3%;
+  left: 27.7%;
+  position: absolute;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+#to-add-tel {
+  bottom: 34.45%;
+  left: 27.7%;
   position: absolute;
   font-size: 16px;
   line-height: 21px;

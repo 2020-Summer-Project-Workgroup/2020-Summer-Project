@@ -22,7 +22,7 @@ export function request(config) {
   axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'; // 判断是否为ajax请求
   const instance = axios.create({
     baseURL: 'http://localhost:8036',
-    timeout: 5000
+    timeout: 10000
   })
   instance.interceptors.request.use(config => {
     return config
