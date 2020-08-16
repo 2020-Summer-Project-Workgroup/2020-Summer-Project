@@ -8,13 +8,13 @@
 
 <script>
 //import FileEdit from 'components/fileEdit/FileEdit.vue'
-import RightSideBar from 'components/rightSideBar/RightSideBar.vue'
+ import RightSideBar from 'components/rightSideBar/RightSideBar.vue'
 
 export default {
   name: 'App',
   components: {
 		//FileEdit,
-    RightSideBar
+    RightSideBar,
   }
 }
 </script>
