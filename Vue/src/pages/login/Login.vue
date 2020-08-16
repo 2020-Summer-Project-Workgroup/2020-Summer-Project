@@ -67,8 +67,10 @@ export default {
       if (this.isTel) {
         loginByTel(this.tel, this.password).then(res => {
           console.log(res)
-          if (res instanceof Object && JSON.parse(res).data === "Yes") {
+          if (res === "Yes") {
             this.$router.replace('/desktop')
+          } else {
+            console.log(res)
           }
         }).catch(err => {
           console.log(err)
@@ -76,8 +78,10 @@ export default {
       } else {
         loginByEmail(this.email, this.password).then(res => {
           console.log(res)
-          if (res instanceof Object && JSON.parse(res).data === "Yes") {
+          if (res === "Yes") {
             this.$router.replace('/desktop')
+          } else {
+            console.log(res)
           }
         }).catch(err => {
           console.log(err)
