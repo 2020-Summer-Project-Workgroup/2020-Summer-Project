@@ -21,24 +21,56 @@
 </template>
 
 <script>
+import {updatePasswordByTel} from "@/network/desktop";
+
 export default {
   name: "ChangePassword",
   data() {
     return {
       oldPassword: '',
       newPassword: '',
-      passwordConfirm: ''
+      passwordConfirm: '',
+      passwordStatus: 0
     }
   },
   methods: {
     toUserSpace() {
       this.$store.commit('changePasswordToUserSpace')
+      this.reset()
     },
     close() {
       this.$store.commit('closeChangePassword')
+      this.reset()
+    },
+    reset() {
+      this.oldPassword = ''
+      this.newPassword = ''
+      this.passwordConfirm = ''
+      this.passwordStatus = 0
     },
     submit() {
+      if (this.passwordStatus === 2 && this.newPassword === this.passwordConfirm) {
+        if (!(this.$store.getters.tel === '')) {
+          updatePasswordByTel(this.$store.getters.tel, this.newPassword).then(res => {
+            if (res === 'Yes') {
+              alert("修改成功！")
+            } else {
+              alert("网络错误，修改失败！")
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        } else {
 
+        }
+      }
+    },
+    checkPassword() {
+      if (this.oldPassword === this.$store.getters.password) {
+        this.passwordStatus = 2
+      } else {
+        this.passwordStatus = 1
+      }
     }
   },
   computed: {

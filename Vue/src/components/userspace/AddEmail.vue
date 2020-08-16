@@ -70,20 +70,22 @@ export default {
       }
     },
     checkCode() {
-      checkCodeToEmail(this.email, this.code).then(res => {
-        console.log(res)
-        if (res === "Yes") {
-          this.codeStatus = 4
-        } else {
-          if (res === "No") {
-            this.codeStatus = 5
+      if (this.codeStatus === 2 || this.codeStatus === 5 || this.codeStatus === 7) {
+        checkCodeToEmail(this.email, this.code).then(res => {
+          console.log(res)
+          if (res === "Yes") {
+            this.codeStatus = 4
           } else {
-            this.codeStatus = 7
+            if (res === "No") {
+              this.codeStatus = 5
+            } else {
+              this.codeStatus = 7
+            }
           }
-        }
-      }).catch(err => {
-        console.log(err)
-      })
+        }).catch(err => {
+          console.log(err)
+        })
+      }
     }
   },
   computed: {
