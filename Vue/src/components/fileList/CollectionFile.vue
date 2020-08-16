@@ -1,24 +1,8 @@
 <template>
   <div class="file-list">
-    <el-table
-        :data="tableData"
-        max-height="700"
-        id="table">
-      <el-table-column
-          prop="date"
-          label="日期"
-          width="180">
-      </el-table-column>
-      <el-table-column
-          prop="name"
-          label="姓名"
-          width="180">
-      </el-table-column>
-      <el-table-column
-          prop="address"
-          label="地址">
-      </el-table-column>
-    </el-table>
+    <ul>
+      <li v-for="item in tableData" :key="item">{{item}}</li>
+    </ul>
   </div>
 </template>
 
@@ -185,7 +169,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .file-list {
   position: absolute;
   top: 68px;
@@ -193,12 +177,6 @@ export default {
   left: 17.6vw;
   right: 19.84vw;
   background-color: #F2F4F4;
-  z-index: 0;
-}
-
-.file-list #table {
-  position: absolute;
-  bottom: 0;
   z-index: 0;
 }
 </style>
