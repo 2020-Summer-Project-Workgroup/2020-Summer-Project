@@ -1,133 +1,167 @@
 <template>
-	<div id="RBar">
-		<div class="button greenButton" id="newFile" @mouseenter="me1" @mouseleave="ml1" @click="cl1" :style="newStyle">
-			<!--待加入跳转链接-->
-			<span class="text">
-				新建
-			</span>
-		</div>
-		<br />
-		<div class="button stdButton" id="From" @mouseenter="me2" @mouseleave="ml2" @click="cl2" :style="newStyle">
-			<span class="text">
-				从模板新建
-			</span>
-		</div>
-		<br />
-		<div id="down">
-			<span class="stdFont">
-				最近浏览
-			</span>
-			&nbsp;
-			<span id="detail">
-				<a href="" /> 详情
-			</span>
-			<br />
-			<hr id="line" color="#cfcfcf" size="1px" width="80%" />
-			<br />
-			<table>
-				<tbody>
-					<tr v-for="file in files" :key="file.name">
-						<img :src="'../../assets/' + file.type + '.png'" /> {{ file.name }} <img id="setBut" src="../../assets/setting.png" alt="IMG" />
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
+  <div id="RBar">
+    <div class="button greenButton" id="newFile" @click="cl1" :style="newStyle">
+      <span class="text">新建</span>
+    </div>
+    <br />
+    <div class="button stdButton" id="from" @mouseenter="me2" @mouseleave="ml2" @click="cl2" :style="newStyle">
+      <span class="text">从模板新建</span>
+    </div>
+    <br />
+    <div id="down" class="StdSecond">
+      <span class="stdFont">最近浏览</span>
+      <span id="detail">
+        <a href /> 详情
+      </span>
+    </div>
+    <div class="ReftBarBottom">
+      <table>
+        <tbody>
+          <tr v-for="file in files" :key="file.name" class="stdFont">
+            <img src="../../assets/个人.png" v-if="file.type === 1" />
+            <img src="../../assets/团队.png" v-else-if="file.type === 2" />
+            <img src="../../assets/收藏.png" v-else-if="file.type === 3" />
+            {{ file.name }}
+            <i class="el-icon-s-tools"></i>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </template>
 
 <script>
-	export default {
-		data:function () {
-			
-			return {
-				files: [{
-						type: "个人",
-						name: "示例文档"
-					},
-					{
-						type: "团队",
-						name: "LSS"
-					},
-					{
-						type: "收藏",
-						name: "qwertyuiasdfghjkzxvcbnm"
-					},
-				],
-			}
-		},
-		methods:{
-			// add:function (fileType, fileName) {
-			// 	this.files.push({type: fileType, name: fileNmae});
-			// }
-		}
-	}
+export default {
+  components: {
+
+  },
+  data: function() {
+    return {
+      iconPath: "../../assets/个人.png",
+      files: [{
+          type: 1,  //1 代表个人文档
+          name: "示例文档",
+        },
+        {
+          type: 2,  //2 代表团队文档
+          name: "LSS",
+        },
+        {
+          type: 3,  //3 代表收藏文档
+          name: "qwertyuiasdfghjkzxvcbnm",
+        },
+      ],
+    };
+  },
+  
+  methods: {},
+};
 </script>
 
 <style scoped>
-	.button {
-		width: 241px;
-		height: 48px;
-		border-radius: 5px;
-	}
+.ReftBarBottom {
+  position: absolute;
+  height: 26px;
+  left: 42px;
+  top: 280px;
+  line-height: 26px;
+}
 
-	.stdButton {
-		background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #E5E5E5;
-	}
+.StdSecond {
+  position: absolute;
+  height: 27px;
+  left: 57px;
+  top: 234px;
+}
 
-	.greenButton {
-		background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #54A293;
-	}
+.button {
+  width: 241px;
+  height: 48px;
+  border-radius: 5px;
+}
 
-	.text {
-		line-height: 48px;
-	}
+.stdButton {
+  position: absolute;
+  width: 241px;
+  height: 48px;
+  left: 49px;
+  top: 123px;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+    #e5e5e5;
+  text-align: center;
+}
 
-	.stdFont {
-		font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 20px;
-		color: rgba(97, 97, 97, 1);
-	}
+.greenButton {
+  position: absolute;
+  width: 241px;
+  height: 48px;
+  left: 49px;
+  top: 62px;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0) 100%),
+    #54a293;
+}
 
-	#newFile {
-		font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 20px;
-		text-align: center;
-		color: rgb(255, 255, 255);
-	}
+.text {
+  margin-top: 62px;
+  line-height: 48px;
+}
 
-	#RBar {
-		position: absolute;
-    width: 23.49vw;
-    height: calc(100vh - 68px);
-    right: 0;
-    bottom: 0;
-    padding-top: 30px;
-	}
+.stdFont {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  color: rgba(97, 97, 97, 1);
+}
 
-	#From {
-		font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 20px;
-		text-align: center;
-		color: rgba(97, 97, 97, 1);
-		align-content: center;
-		align-items: center;
-	}
+#newFile {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
 
-	#detail {
-		font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		color: #54A293;
-	}
-	
-	#setBut {
-		align-self: flex-end;
-	}
+#RBar {
+  display: -webkit-flex;
+  display: flex;
+  width: 19.7vw;
+  height: calc(100vh - 68px);
+  right: 0;
+  bottom: 0;
+  padding-top: 30px;
+  background: rgba(255, 255, 255, 0.4);
+  top: 68px;
+  border-width: 1px;
+}
+
+#from {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  text-align: center;
+  color: rgba(97, 97, 97, 1);
+  align-content: center;
+  align-items: center;
+}
+
+#detail {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: #54a293;
+}
+
+#setBut {
+  align-self: flex-end;
+}
 </style>
