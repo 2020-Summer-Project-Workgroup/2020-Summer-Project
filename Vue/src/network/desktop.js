@@ -43,3 +43,25 @@ export function updateUsernameByEmail(email, username) {
     }
   })
 }
+
+export function updateTelByEmail(email, tel) {
+  return request({
+    url: '/user/email/tel',
+    method: 'PUT',
+    params: {
+      email: email,
+      tel: tel
+    }
+  })
+}
+
+export function updateEmailByTel(tel, email) {
+  return request({
+    url: '/user/tel/email',
+    method: 'PUT',
+    params: {
+      tel: tel,
+      email: email
+    }
+  })
+}

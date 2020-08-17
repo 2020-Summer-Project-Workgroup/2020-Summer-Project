@@ -1,6 +1,6 @@
 import {
   updatePasswordByEmail,
-  updatePasswordByTel,
+  updatePasswordByTel, updateTelByEmail,
   updateUsernameByEmail,
   updateUsernameByTel
 } from "@/network/desktop";
@@ -19,5 +19,8 @@ export default {
     } else {
       return updatePasswordByEmail(context.getters.email, password)
     }
+  },
+  updateTel(context, tel) {
+    return updateTelByEmail(context.getters.email, tel)
   }
 }
