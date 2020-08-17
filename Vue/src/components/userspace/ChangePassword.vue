@@ -29,8 +29,7 @@ export default {
     return {
       oldPassword: '',
       newPassword: '',
-      passwordConfirm: '',
-      passwordStatus: 0
+      passwordConfirm: ''
     }
   },
   methods: {
@@ -46,16 +45,18 @@ export default {
       this.oldPassword = ''
       this.newPassword = ''
       this.passwordConfirm = ''
-      this.passwordStatus = 0
     },
     submit() {
       if (this.passwordStatus === 2 && this.newPassword === this.passwordConfirm) {
         if (!(this.$store.getters.tel === '')) {
           updatePasswordByTel(this.$store.getters.tel, this.newPassword).then(res => {
             if (res === 'Yes') {
-              alert("修改成功！")
+              this.$message({
+                message: '修改成功！',
+                type: 'success'
+              })
             } else {
-              alert("网络错误，修改失败！")
+              this.$message.error('网络错误，修改失败！')
             }
           }).catch(err => {
             console.log(err)
@@ -63,9 +64,12 @@ export default {
         } else {
           updatePasswordByEmail(this.$store.getters.email, this.newPassword).then(res => {
             if (res === 'Yes') {
-              alert("修改成功！")
+              this.$message({
+                message: '修改成功！',
+                type: 'success'
+              })
             } else {
-              alert("网络错误，修改失败！")
+              this.$message.error('网络错误，修改失败！')
             }
           }).catch(err => {
             console.log(err)
