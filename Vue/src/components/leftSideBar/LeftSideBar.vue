@@ -1,10 +1,11 @@
 <template>
   <div class="left-side-bar">
     <el-menu
-        default-active="3"
+        :default-active="path[1]"
         class="el-menu-vertical"
         text-color="#616161"
         active-text-color="#54A193"
+        router
         @open="handleOpen"
         @close="handleClose">
       <el-submenu index="1" id="team-space">
@@ -20,15 +21,15 @@
           <el-menu-item index="1-2">金刚石文档</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
-      <el-menu-item class="left-side-bar-item" index="2">
+      <el-menu-item class="left-side-bar-item" :index="path[0]" >
         <i class="el-icon-user"></i>
         <span slot="title">我创建的</span>
       </el-menu-item>
-      <el-menu-item class="left-side-bar-item" index="3">
+      <el-menu-item class="left-side-bar-item" :index="path[1]">
         <i class="el-icon-star-off"></i>
         <span slot="title">我收藏的</span>
       </el-menu-item>
-      <el-menu-item class="left-side-bar-item" index="4">
+      <el-menu-item class="left-side-bar-item" :index="path[2]">
         <i class="el-icon-delete"></i>
         <span slot="title">回收站</span>
       </el-menu-item>
@@ -38,6 +39,16 @@
 
 <script>
 export default {
+  name: 'LeftSideBar',
+  data() {
+    return {
+      path: [
+          '/desktop/create',
+          '/desktop/collect',
+          '/desktop/team'
+      ]
+    }
+  },
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
