@@ -1,12 +1,8 @@
 <template>
   <div id="edit">
     <div id="top">
-        <!-- <span id="title">标题：</span> -->
         <input id="text" type="text" v-model="tltie" placeholder="标题"/>
         <div id="blank"></div>
-        <!-- <div id="save" @click="save">
-          <a href="">保存</a>
-        </div> -->
         <el-button id="save" :plain="true" @click="save">保存</el-button>
     </div>
     <ckeditor id="middle" v-model="editorData" :config="editorConfig"></ckeditor> 
@@ -33,7 +29,6 @@ export default {
         // The configuration of the editor.
         width: 1282.49,
         height: 610,
-        toolbar: [ [ 'Bold' ] ]
       }
     };
   },
@@ -63,7 +58,6 @@ export default {
   
   input {
     font-size: 20px;
-    
   }
   
 #edit {
