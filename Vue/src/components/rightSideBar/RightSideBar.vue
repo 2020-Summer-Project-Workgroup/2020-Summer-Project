@@ -73,31 +73,31 @@ export default {
 
 .RightBarBottom {
   position: absolute;
-  height: 26px;
-  left: 42px;
-  top: 280px;
+  height: 3vh;
+  left: 2.5vw;
+  top: 33.33vh;
   line-height: 26px;
 }
 
 .StdSecond {
   position: absolute;
-  height: 27px;
-  left: 57px;
-  top: 234px;
+  height: 3vh;
+  left: 2.7vw;
+  top: 27.02vh;
 }
 
 .button {
-  width: 241px;
-  height: 48px;
+  width: 12.55vw;
+  height: 5.54vh;
   border-radius: 5px;
 }
 
 .stdButton {
   position: absolute;
-  width: 241px;
-  height: 48px;
-  left: 49px;
-  top: 123px;
+  width: 12.55vw;
+  height: 5.54vh;
+  left: 2.7vw;
+  top: 14.20vh;
   background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
     #e5e5e5;
   text-align: center;
@@ -105,10 +105,10 @@ export default {
 
 .greenButton {
   position: absolute;
-  width: 241px;
-  height: 48px;
-  left: 49px;
-  top: 62px;
+  width: 12.55vw;
+  height: 5.54vh;
+  left: 2.7vw;
+  top: 7.15vh;
   background: linear-gradient(180deg,
     rgba(255, 255, 255, 0.2) 0%,
     rgba(255, 255, 255, 0) 100%),
@@ -116,8 +116,8 @@ export default {
 }
 
 .text {
-  margin-top: 62px;
-  line-height: 48px;
+  margin-top: 7.15vh;
+  line-height: 5.54vh;
 }
 
 .stdFont {
