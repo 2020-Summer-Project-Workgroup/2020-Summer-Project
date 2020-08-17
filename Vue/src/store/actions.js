@@ -26,5 +26,12 @@ export default {
   },
   updateEmail(context, email) {
     return updateEmailByTel(context.getters.tel, email)
+  },
+  initState(context) {
+    if (!(context.getters.tel === '')) {
+      //
+    } else {
+      //
+    }
   }
 }

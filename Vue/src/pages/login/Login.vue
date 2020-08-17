@@ -68,9 +68,12 @@ export default {
         loginByTel(this.tel, this.password).then(res => {
           console.log(res)
           if (res === "Yes") {
+            this.$store.commit('updateTel', this.tel)
             this.$router.replace('/desktop')
+          } else if (res === "No") {
+            this.$message.error('手机号或密码错误！')
           } else {
-            console.log(res)
+            this.$message.error('网络错误！')
           }
         }).catch(err => {
           console.log(err)
@@ -79,9 +82,12 @@ export default {
         loginByEmail(this.email, this.password).then(res => {
           console.log(res)
           if (res === "Yes") {
+            this.$store.commit('updateEmail', this.email)
             this.$router.replace('/desktop')
+          } else if (res === "No") {
+            this.$message.error('邮箱或密码错误！')
           } else {
-            console.log(res)
+            this.$message.error('网络错误！')
           }
         }).catch(err => {
           console.log(err)
