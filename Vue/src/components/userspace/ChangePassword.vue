@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import {updatePasswordByTel} from "@/network/desktop";
+import {updatePasswordByEmail, updatePasswordByTel} from "@/network/desktop";
 
 export default {
   name: "ChangePassword",
@@ -61,7 +61,15 @@ export default {
             console.log(err)
           })
         } else {
-
+          updatePasswordByEmail(this.$store.getters.email, this.newPassword).then(res => {
+            if (res === 'Yes') {
+              alert("修改成功！")
+            } else {
+              alert("网络错误，修改失败！")
+            }
+          }).catch(err => {
+            console.log(err)
+          })
         }
       }
     },
