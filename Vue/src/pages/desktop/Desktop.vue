@@ -7,7 +7,7 @@
     <AddTel/>
     <LeftSideBar/>
     <div class="v-line" id="left-separator"></div>
-    <CollectionFile/>
+    <Collect/>
     <div class="v-line" id="right-separator"></div>
     <RightSideBar/>
   </div>
@@ -19,12 +19,12 @@ import UserSpace from "@/components/userspace/UserSpace";
 import ChangePassword from "@/components/userspace/ChangePassword";
 import LeftSideBar from "@/components/leftSideBar/LeftSideBar";
 import RightSideBar from "@/components/rightSideBar/RightSideBar";
-import CollectionFile from "@/components/fileList/CollectionFile";
+import Collect from "@/components/fileList/Collect";
 import AddEmail from "@/components/userspace/AddEmail";
 import AddTel from "@/components/userspace/AddTel";
 export default {
   name: "Desktop",
-  components: {AddTel, AddEmail, CollectionFile, RightSideBar, LeftSideBar, ChangePassword, UserSpace, TabBar}
+  components: {AddTel, AddEmail, Collect, RightSideBar, LeftSideBar, ChangePassword, UserSpace, TabBar}
 }
 </script>
 
