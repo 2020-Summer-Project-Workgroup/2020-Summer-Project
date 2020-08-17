@@ -14,7 +14,7 @@
           <input type="text" id="tel" name="username" v-model="tel" style="top: 17.6%"/>
         </div>
         <div v-else>
-          <label for="email" style="top: 10.97%">
+          <label for="email" style="top: 11.97%">
             <span :style="telColor" @click="switchToTel">输入手机</span>
             /
             <span :style="emailColor" @click="switchToEmail">邮箱</span>
