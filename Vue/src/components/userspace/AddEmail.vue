@@ -51,7 +51,25 @@ export default {
       this.codeStatus = 0
     },
     submit() {
-
+      if (this.codeStatus === 4) {
+        if (this.password === this.$store.getters.password) {
+          this.$store.dispatch('updateEmail').then(res => {
+            if (res === 'Yes') {
+              this.$message({
+                message: '修改成功！',
+                type: 'success'
+              })
+              this.$store.commit('updateEmail', this.email)
+            } else {
+              this.$message.error('网络错误，修改失败！')
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        } else {
+          this.$message.error('密码错误！')
+        }
+      }
     },
     sendCode() {
       if (/^([a-zA-Z\d])(\w|-)+@[a-zA-Z\d]+(\.[a-zA-Z]{2,4})+$/.test(this.email)) {

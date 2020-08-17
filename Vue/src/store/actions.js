@@ -1,4 +1,5 @@
 import {
+  updateEmailByTel,
   updatePasswordByEmail,
   updatePasswordByTel, updateTelByEmail,
   updateUsernameByEmail,
@@ -22,5 +23,8 @@ export default {
   },
   updateTel(context, tel) {
     return updateTelByEmail(context.getters.email, tel)
+  },
+  updateEmail(context, email) {
+    return updateEmailByTel(context.getters.tel, email)
   }
 }
