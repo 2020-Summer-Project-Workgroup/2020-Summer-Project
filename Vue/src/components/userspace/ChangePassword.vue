@@ -5,7 +5,7 @@
       <span class="text-link" id="to-user-space" @click="toUserSpace">>>个人信息</span>
       <div class="form-item">
         <label for="old-password" style="top: 12.52%">输入旧密码</label>
-        <input type="text" id="old-password" name="password" v-model="OldPassword" style="top: 18.49%"/>
+        <input type="text" id="old-password" name="password" v-model="oldPassword" style="top: 18.49%"/>
       </div>
       <div class="form-item">
         <label for="new-password" style="top: 32.45%">新密码</label>
@@ -21,8 +21,6 @@
 </template>
 
 <script>
-import {updatePasswordByEmail, updatePasswordByTel} from "@/network/desktop";
-
 export default {
   name: "ChangePassword",
   data() {
@@ -47,41 +45,24 @@ export default {
       this.passwordConfirm = ''
     },
     submit() {
-      if (this.passwordStatus === 2 && this.newPassword === this.passwordConfirm) {
-        if (!(this.$store.getters.tel === '')) {
-          updatePasswordByTel(this.$store.getters.tel, this.newPassword).then(res => {
-            if (res === 'Yes') {
-              this.$message({
-                message: '修改成功！',
-                type: 'success'
-              })
-            } else {
-              this.$message.error('网络错误，修改失败！')
-            }
-          }).catch(err => {
-            console.log(err)
-          })
-        } else {
-          updatePasswordByEmail(this.$store.getters.email, this.newPassword).then(res => {
-            if (res === 'Yes') {
-              this.$message({
-                message: '修改成功！',
-                type: 'success'
-              })
-            } else {
-              this.$message.error('网络错误，修改失败！')
-            }
-          }).catch(err => {
-            console.log(err)
-          })
-        }
-      }
-    },
-    checkPassword() {
-      if (this.oldPassword === this.$store.getters.password) {
-        this.passwordStatus = 2
+      if (!(this.oldPassword === this.$store.getters.password)) {
+        this.$message.error('旧密码错误！')
+      } else if (!(this.newPassword === this.passwordConfirm)) {
+        this.$message.error('两次密码输入不一样！')
       } else {
-        this.passwordStatus = 1
+        this.$store.dispatch('updatePassword', this.newPassword).then(res => {
+          if (res === 'Yes') {
+            this.$message({
+              message: '修改成功！',
+              type: 'success'
+            })
+            this.$store.commit('updatePassword', this.newPassword)
+          } else {
+            this.$message.error('网络错误，修改失败！')
+          }
+        }).catch(err => {
+          console.log(err)
+        })
       }
     }
   },

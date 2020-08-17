@@ -1,4 +1,9 @@
-import {updateUsernameByEmail, updateUsernameByTel} from "@/network/desktop";
+import {
+  updatePasswordByEmail,
+  updatePasswordByTel,
+  updateUsernameByEmail,
+  updateUsernameByTel
+} from "@/network/desktop";
 
 export default {
   updateUsername(context, username) {
@@ -6,6 +11,13 @@ export default {
       return updateUsernameByTel(context.getters.tel, username)
     } else {
       return updateUsernameByEmail(context.getters.email, username)
+    }
+  },
+  updatePassword(context, password) {
+    if (!(context.getters.tel === '')) {
+      return updatePasswordByTel(context.getters.tel, password)
+    } else {
+      return updatePasswordByEmail(context.getters.email, password)
     }
   }
 }
