@@ -11,9 +11,12 @@
           <i class="el-icon-upload2"></i>
         </div>
       </div>
-      <div id="username-user-space">
-        <span class="span-user-space">{{username}}</span>
-        <i class="el-icon-edit"></i>
+      <div v-if="!changeName" class="username-user-space">
+        <span class="span-user-space">{{userName}}</span>
+        <i class="el-icon-edit" @click="changeName=!changeName"></i>
+      </div>
+      <div v-if="changeName" class="username-user-space">
+        <input type="text" v-model="username" @blur="commit"/>
       </div>
       <span class="span-user-space subtitle-user-space" id="email-user-space">邮箱</span>
       <span v-if="hasEmail" class="span-user-space info-user-space" id="userEmail-user-space">{{userEmail}}</span>
@@ -35,11 +38,12 @@ export default {
   name: "UserSpace",
   data() {
     return {
-      username: ''
+      username: '',
+      changeName: false
     }
   },
   created() {
-    this.username = 'hzy'
+    this.username = this.$store.getters.username
   },
   methods: {
     toChangePassword() {
@@ -53,23 +57,39 @@ export default {
     },
     close() {
       this.$store.commit('closeUserSpace')
+    },
+    commit() {
+      this.$store.dispatch('updateUsername', this.username).then(res => {
+        if (res === 'Yes') {
+          this.$store.commit('updateUsername', this.username)
+        } else {
+          this.$message.error('网络错误，用户名修改失败！')
+          this.username = this.$store.getters.username
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+      this.changeName = false
     }
   },
   computed: {
     hasEmail() {
-      return false
+      return !(this.$store.getters.email === '')
     },
     hasTel() {
-      return false
+      return !(this.$store.getters.tel === '')
     },
     showUserSpace() {
       return this.$store.getters.showUserSpace
     },
+    userName() {
+      return this.$store.getters.username
+    },
     userEmail() {
-      return 'h56983577@126.com'
+      return this.$store.getters.email
     },
     userTel() {
-      return '15911103365'
+      return this.$store.getters.tel
     },
     userSecret() {
       return '********'
@@ -174,18 +194,45 @@ export default {
   line-height: 33px;
 }
 
-#username-user-space span {
+.username-user-space span {
   top: 27.13%;
   left: 35.01%;
   font-size: 25px;
   line-height: 33px;
 }
 
-#username-user-space i {
+.username-user-space i {
   top: 29.02%;
   left: 50.1%;
   font-size: 19px;
   color: #CFCFCF;
+}
+
+.username-user-space input {
+  top: 26.13%;
+  left: 35.01%;
+  width: 50.55%;
+  height: 8.67%;
+  position: absolute;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #ffffff;
+  border: 1px solid #cfcfcf;
+  border-radius: 5px;
+  box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.05), 0 4px 4px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+  font-size: 19px;
+}
+
+.username-user-space input:hover {
+  border: 1px solid #54A293;
+  background-color: #F2F4F4;
+}
+
+.username-user-space input:focus {
+  outline: none;
+  border: 1px solid #54A293;
+  background-color: #F2F4F4;
 }
 
 #email-user-space {

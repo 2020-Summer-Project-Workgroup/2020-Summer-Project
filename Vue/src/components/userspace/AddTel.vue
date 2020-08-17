@@ -51,7 +51,25 @@ export default {
       this.codeStatus = 0
     },
     submit() {
-
+      if (this.codeStatus === 4) {
+        if (this.password === this.$store.getters.password) {
+          this.$store.dispatch('updateTel').then(res => {
+            if (res === 'Yes') {
+              this.$message({
+                message: '修改成功！',
+                type: 'success'
+              })
+              this.$store.commit('updateTel', this.tel)
+            } else {
+              this.$message.error('网络错误，修改失败！')
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        } else {
+          this.$message.error('密码错误！')
+        }
+      }
     },
     sendCode() {
       if((/^1[3456789]\d{9}$/.test(this.tel))) {

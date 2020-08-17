@@ -14,7 +14,7 @@
         <a href /> 详情
       </span>
     </div>
-    <div class="ReftBarBottom">
+    <div class="RightBarBottom">
       <table>
         <tbody>
           <tr v-for="file in files" :key="file.name" class="stdFont">
@@ -59,7 +59,19 @@ export default {
 </script>
 
 <style scoped>
-.ReftBarBottom {
+#RBar {
+  display: -webkit-flex;
+  display: flex;
+  position: absolute;
+  width: 19.7vw;
+  height: calc(100vh - 68px);
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+}
+
+.RightBarBottom {
   position: absolute;
   height: 26px;
   left: 42px;
@@ -127,19 +139,6 @@ export default {
   color: rgb(255, 255, 255);
 }
 
-#RBar {
-  display: -webkit-flex;
-  display: flex;
-  width: 19.7vw;
-  height: calc(100vh - 68px);
-  right: 0;
-  bottom: 0;
-  padding-top: 30px;
-  background: rgba(255, 255, 255, 0.4);
-  top: 68px;
-  border-width: 1px;
-}
-
 #from {
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
@@ -159,9 +158,5 @@ export default {
   font-weight: normal;
   font-size: 16px;
   color: #54a293;
-}
-
-#setBut {
-  align-self: flex-end;
 }
 </style>
