@@ -63,7 +63,7 @@ export default {
   display: -webkit-flex;
   display: flex;
   position: absolute;
-  width: 19.7vw;
+  width: 19.9vw;
   height: calc(100vh - 68px);
   right: 0;
   bottom: 0;
