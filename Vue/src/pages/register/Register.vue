@@ -73,14 +73,18 @@ export default {
         this.reset()
       }
     },
+    // 网络请求部分
     submit() {
       if (this.codeStatus === 4) {
         if (this.isTel) {
           addUserByTel(this.tel, this.password).then(res => {
             if (res === "Yes") {
+              this.$store.commit('updateTel', this.tel)
               this.$router.replace('/desktop')
+            } else if (res === "No") {
+              this.$message.error('用户已存在，请登录！')
             } else {
-              console.log(res)
+              this.$message.error('网络错误！')
             }
           }).catch(err => {
             console.log(err)
@@ -88,9 +92,12 @@ export default {
         } else {
           addUserByEmail(this.email, this.password).then(res => {
             if (res === "Yes") {
+              this.$store.commit('updateEmail', this.email)
               this.$router.replace('/desktop')
+            } else if (res === "No") {
+              this.$message.error('用户已存在，请登录！')
             } else {
-              console.log(res)
+              this.$message.error('网络错误！')
             }
           }).catch(err => {
             console.log(err)
