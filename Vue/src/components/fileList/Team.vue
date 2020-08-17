@@ -1,36 +1,34 @@
 <template>
-  <div id="TeamFile">
-    <div id="list">
-      <table id="form">
-        <tr id="head-row">
-          <th id="head1" align="left">
-            {{ teamName }}
-            <img id="icon" src="../../assets/收藏.png" alt="IMG"/>
-          </th>
-          <th id="head2" align="left">
-            创建者
-          </th>
-          <th id="head3" align="left">
-            修改时间
-          </th>
-          <th id="head4" align="left">
-            
-          </th>
-        </tr>
-        <tr>
-          <td colspan="4">
-            <hr size="1px" color="#CFCFCF" width="100%"/>
-          </td>
-        </tr>
-        <tr id="body-row" v-for="file in files" :key="file.name">
-          <td id="blank1"><a href="" >{{ file.name }}</a></td>
-          <td id="blank2"><a href="">{{ file.writter }}</a> </td>
-          <td id="blank3">{{ file.time }}</td>
-          <td id="blank4"><a href="" >删除</a></td>
-        </tr>
-      </table>
+  <div id="team">
+    <div id="head">
+      <tr>
+        <th id="MyCollectFont">
+          {{teamName}}
+          <i class="el-icon-user-solid"></i>
+        </th>
+        <th id="Creater">
+          创建者
+        </th>
+        <th id="CollectTime">
+          收藏时间
+        </th>
+      </tr>
+    </div>
+    <tr id="line">
+      <td>
+        <hr size="1px" color="#CFCFCF" width="100%"/>
+      </td>
+    </tr>
+    <div id="body" >
+      <div id="body-row" v-for="file in files" :key="file.name">
+        <div id="blank1"><a href="" >{{ file.name }}</a></div>
+        <td id="blank2"><a href="">{{ file.writter }}</a> </td>
+        <td id="blank3">{{ file.time }}</td>
+        <td id="blank4"><a href="" >删除</a></td>
+      </div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -68,108 +66,136 @@ a {
   color: #616161;
   text-decoration: none;
 }
-
-#collect {
+#team {
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
-  width: 75rem;
-  height: 49.875rem;
+  position: absolute;
+  left:17.6vw;
+  bottom: 0;
+  width: 62.5vw;
+  height: calc(100vh - 68px);
+  background-color: rgba(242, 244, 244, 1);
+}
+#head{
+  position: absolute;
+  bottom: 82.90vh;
+  left: 6.40vw;
+}
+#MyCollectFont{
+  width: 8.28vw;
+  height: 4.61vh;
+  font-family: Microsoft YaHei;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 3.23vh;
+  line-height: 4.27vh;
+  color: #616161;
+}
+#Creater{
+  position: absolute;
+  left: 25.31vw;
+  top: 1vh;
+  width: 4vw;
+  height: 3.23vh;
+  font-family: Microsoft YaHei;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.30vh;
+  line-height: 3.02vh;
+  color: #CFCFCF;
+}
+#CollectTime{
+  position: absolute;
+  width: 6.56vw;
+  height: 3.23vh;
+  left: 35.66vw;
+  top: 1vh;
+  font-family: Microsoft YaHei;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.30vh;
+  line-height: 3.02vh;
+  color: #CFCFCF;
+}
+#line{
+  position: absolute;
+  width: 49.94vw;
+  height: 0;
+  left: 5.10vw;
+  bottom: 81.29vh;
+  border: 0.2px solid #CFCFCF;
+}
+#body{
+  position: absolute;
+  height: 78vh;
+  width: 56vw;
+  left: 6.40vw;
+  top: 11.66vh;
   overflow-y: auto;
-  background-color: #e5e5e5;
+  overflow-x: hidden ;
+  bottom: 0;
 }
-
-#list {
-  width: 95%;
-  height: 100%;
-}
-
-#head-row {
-  height: 3rem;
-  align: center;
-  valign: bottom;
-}
-
 #body-row {
+  top:0.5vh;
   height: 3rem;
   valign: bottom;
 }
 
 #blank1 {
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  width: 25vw;
+  height: 4.15vh;
+  font-family: Microsoft YaHei;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
   line-height: 33px;
-  color: rgba(97, 97, 97, 1);
+  color: #616161;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
 }
 
 #blank2 {
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  position: absolute;
+  left: 25.31vw;
+  margin-top: -3.7vh;
+  font-family: Microsoft YaHei;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 26px;
-  color: rgba(97, 97, 97, 1);
+  color: #616161;
 }
 
 #blank3 {
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  position: absolute;
+  left: 35.66vw;
+  margin-top: -3.7vh;
+  font-family: Microsoft YaHei;
   font-style: normal;
   font-weight: normal;
-  font-size: 1.25rem;
-  line-height: 1.625rem;
-  color: rgba(97, 97, 97, 1);
+  font-size: 20px;
+  line-height: 26px;
+  color: #616161;
 }
 
 #blank4 {
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  position: absolute;
+  left: 44.66vw;
+  margin-top: -3.7vh;
+  font-family: Microsoft YaHei;
   font-style: normal;
   font-weight: normal;
-  font-size: 1rem;
-  line-height: 1.625rem;
-  color: #54A193;
+  font-size: 20px;
+  line-height: 26px;
+
+  /* 深灰 */
+
+  color: #616161;
 }
 
-#head1 {
-  width: 43.75rem;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 1.75rem;
-  color: rgba(97, 97, 97, 1);
-}
-
-#head2 {
-  width: 15.625rem;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  color: #CFCFCF;
-}
-
-#head3 {
-  width: 9.375rem;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  color: #CFCFCF;
-}
-
-#head4 {
-  width: 7rem;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  color: #CFCFCF;
-}
 </style>
