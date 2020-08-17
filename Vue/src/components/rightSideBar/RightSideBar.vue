@@ -18,8 +18,8 @@
       <table>
         <tbody>
           <tr v-for="file in files" :key="file.name" class="stdFont">
-            <img src="../../assets/个人.png" v-if="file.type === 1" />
-            <img src="../../assets/团队.png" v-else-if="file.type === 2" />
+            <i class="el-icon-user" v-if="file.type === 1"></i>
+            <i class="el-icon-user-solid" v-if="file.type === 2"></i>
             <img src="../../assets/收藏.png" v-else-if="file.type === 3" />
             {{ file.name }}
             <i class="el-icon-s-tools"></i>
