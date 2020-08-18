@@ -28,6 +28,7 @@ export default {
   position: absolute;
   background: #FFFFFF;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05);
+  z-index: 20;
 }
 
 #logo {
