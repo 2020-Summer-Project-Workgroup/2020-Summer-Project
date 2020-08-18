@@ -3,7 +3,7 @@
     <div id="head">
       <tr>
         <th id="MyCollectFont">
-          我创建的
+          回收站
           <i class="el-icon-user"></i>
         </th>
         <th id="Creater">
@@ -24,7 +24,7 @@
         <div id="blank1"><a href="" >{{ file.name }}</a></div>
         <td id="blank2"><a href="">{{ file.writter }}</a> </td>
         <td id="blank3">{{ file.time }}</td>
-        <td id="blank4"><a href="" @click="delFile">删除文档</a></td>
+        <td id="blank4"><a href="" @click="recovery">恢复文档</a></td>
       </div>
     </div>
   </div>
@@ -53,7 +53,7 @@ export default {
     }
   },
   methods: {
-    delFile: function() {
+    recovery: function() {
       
     }
   }

@@ -10,7 +10,7 @@
           创建者
         </th>
         <th id="CollectTime">
-          收藏时间
+          创建时间
         </th>
       </tr>
     </div>
@@ -24,7 +24,7 @@
         <div id="blank1"><a href="" >{{ file.name }}</a></div>
         <td id="blank2"><a href="">{{ file.writter }}</a> </td>
         <td id="blank3">{{ file.time }}</td>
-        <td id="blank4"><a href="" >删除</a></td>
+        <td id="blank4"><a href="" @click="delFile">删除文档</a></td>
       </div>
     </div>
   </div>
@@ -53,6 +53,11 @@ export default {
         {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
       ]
     }	
+  },
+  methods: {
+    delFile: function() {
+      
+    }
   }
 }
 </script>
