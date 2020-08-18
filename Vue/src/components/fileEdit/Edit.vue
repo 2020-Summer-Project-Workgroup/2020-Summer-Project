@@ -1,25 +1,30 @@
 <template>
-  <div id="edit">
-    <div id="top">
-        <input id="text" type="text" v-model="tltie" placeholder="标题"/>
-        <div id="blank"></div>
-        <el-button id="save" :plain="true" @click="save">保存</el-button>
+  <div id="container">
+    <div id="edit">
+      <div id="top">
+         <input id="text" type="text" v-model="tltie" placeholder="标题"/>
+         <div id="blank"></div>
+         <el-button id="save" :plain="true" @click="save">保存</el-button>
+      </div>
+      <ckeditor id="middle" v-model="editorData" :config="editorConfig"></ckeditor> 
     </div>
-    <ckeditor id="middle" v-model="editorData" :config="editorConfig"></ckeditor> 
-  </div>
+    <!-- <Comment id="comment"></Comment> -->
+   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import CKEditor from 'ckeditor4-vue'
+// import Comment from '../Comment/Comment.vue'
 
 Vue.use(CKEditor);
 
 export default {
-  name: 'edit',
+  name: 'Edit',
   components: {
     // Use the <ckeditor> component in this view.
-    ckeditor: CKEditor.component
+    ckeditor: CKEditor.component,
+    // Comment,
   },
   data() {
     return {
@@ -27,8 +32,8 @@ export default {
       editorData: '',
       editorConfig: {
         // The configuration of the editor.
-        width: 1282.49,
-        height: 610,
+        // width: 1282.49,
+         height: 600,
       }
     };
   },
@@ -59,18 +64,26 @@ export default {
   input {
     font-size: 20px;
   }
-  
+ 
+#container {
+  height: 84%;
+  width: 62.5%;
+}
 #edit {
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  width: 75rem;
+  position: absolute;
+  flex-shrink: 1;
+  top: 2rem;
+  left: 0rem;
+  width: 100%;
   height: 45.4375rem;
-  background-color: #FFFFFF;
+  /* background-color: #FFFFFF; */
 }
 
 #top {
@@ -113,8 +126,11 @@ export default {
 
 #middle {
   width: 95%;
-  height: 37.5rem;
   flex-grow: 0;
   flex-shrink: 0;
+}
+
+#comment {
+  background-color: #54A293;
 }
 </style>

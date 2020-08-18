@@ -1,84 +1,131 @@
 <template>
-  <div id="CommentPage">
-    <div class="Document" >
-      <tr>aaaa</tr>
-      <tr>aaaa</tr>
-      <tr>aaaa</tr>
-      <tr>aaaa</tr>
-      <tr>aaaa</tr>
-      <tr>aaaa</tr>
-      <tr>aaaa</tr>
-      <tr>aaaa</tr>
-      <tr>aaaa</tr>
-      <tr>aaaa</tr>
-      <tr>aaaa</tr>
-      <tr>aaaa</tr>
-      <tr>aaaa</tr>
-      <tr>aaaa</tr>
-      <tr>aaaa</tr>
-    </div>
-    <span class="font_comment">
-      评论
-    </span>
-    <div class="CommentEditPage">
-      <textarea name="reworkmes" cols="70" rows="3" class="TextareaComment" >请输入评论</textarea>
-    </div>
-    <div class="button greenButton" id="newFile" @click="cl1" :style="newStyle">
-      <span class="text">发送</span>
-    </div>
-    <div class="CommentAppearance">
-        <div class="OneComment">
-          <div class="CommentFont">
-            <span class="UserName">
-              这是昵称：
-            </span>
-            <span class="CommentAppearanceFont">
-              这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容这是评论内容
-            </span>
-          </div>
-          <div class="DeleteAndTime">
-            <i class="el-icon-delete"></i>
-            8月16日 9：26
+  <div id="container">
+    <div id="CommentPage">
+      <div id="top">
+        <Edit></Edit>
+      </div>
+    
+      <div id="middle">
+        <span id="font_comment">
+          评论
+        </span>
+        <br />
+        <div id="CommentEditPage">
+          <textarea name="reworkmes" cols="70" rows="3" id="TextareaComment" placeholder="请输入评论" v-model="commentInput"></textarea>
+        </div>
+        <div id="sendBut">
+          <a href="">发送</a>
+        </div>
+      </div>
+      <br />
+    
+      <div id="bottom">
+        <div id="comments" v-for="comment in comments" :key="comment">
+          <el-avatar id="avatar" :src="comment.avatar + '.jpg'"></el-avatar>
+          <div id="content">
+            <div id="commentText">
+              {{ comment.name }}
+              : {{ comment.text }}
+            </div>
+            <div id="date">
+              <i class="el-icon-delete-solid" @click="del"></i>
+              {{ comment.time }}
+            </div>
+            <br />
+            <el-divider></el-divider>
           </div>
         </div>
-    </div>
+      </div>
+    </div>  
   </div>
 </template>
 
 <script>
+import Edit from '../fileEdit/Edit.vue'
 export default {
-  name: "Comment"
+  name: "Comment",
+  components: {
+    Edit,
+  },
+  data() {
+    return {
+      showDel: false,
+      commentInput: "",
+      comments: [{
+        avatar: "头像",
+        name: "LSS",
+        time: "2020-8-19 09:41",
+        text: "【文档提交】提交代码时可以前后端分为两部分吗是必须分为两部分，并且每个组都需要有前端和后端两个git仓库，即前端后端在代码提交和修改上完全分离，并且注意在上传git上代码时不应该提交依赖包内容；然后在具体展示时可以放在同一个服务器上展示，前后端也可以有交互，例如后端对前端数据的渲染，这是完全没问题的。"
+      },
+      {avatar: "头像",
+        name: "LSS",
+        time: "2020-8-19 09:41",
+        text: "【文档提交】提交代码时可以前后端分为两部分吗是必须分为两部分，并且每个组都需要有前端和后端两个git仓库，即前端后端在代码提交和修改上完全分离，并且注意在上传git上代码时不应该提交依赖包内容；然后在具体展示时可以放在同一个服务器上展示，前后端也可以有交互，例如后端对前端数据的渲染，这是完全没问题的。"
+      },
+      {avatar: "头像",
+        name: "LSS",
+        time: "2020-8-19 09:41",
+        text: "【文档提交】提交代码时可以前后端分为两部分吗是必须分为两部分，并且每个组都需要有前端和后端两个git仓库，即前端后端在代码提交和修改上完全分离，并且注意在上传git上代码时不应该提交依赖包内容；然后在具体展示时可以放在同一个服务器上展示，前后端也可以有交互，例如后端对前端数据的渲染，这是完全没问题的。"
+      }
+      ]
+    }
+  },
+  methods: {
+    del: function() {
+      // let index = this.comments.indexOf(comment);
+      // if(index != -1){
+      //   this.comments.splice(index,1);
+      // }
+      console.log("Delete！");
+    }
+  }
 }
 </script>
 
 <style scoped>
-#CommentPage{
-  display: -webkit-flex;
-  flex-direction: column;
-  position: absolute;
-  top: 138px;
-  bottom: 0;
-  left: 17.6%;
-  right: 23.49%;
-  background: #FFFFFF;
-  padding-top: 4.61vh;
-  padding-left: 4.53vw;
+a:hover {color: #616161}
+
+a:link {color: #FFFFFF}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Microsoft YaHei", "微软雅黑";
+  font-size: 20px;
 }
 
-.Document{
-  height: 29.63vh;
-  width: 41.45vw;
+#CommentPage {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   position: absolute;
-  font-family: Microsoft YaHei;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 25px;
-  line-height: 43px;
-  color: #616161;
+  /* top: 138px; */
+  width: 50%;
+  height: 92%;
+  background: #FFFFFF;
+  /* padding-top: 4.61vh;
+  padding-left: 4.53vw; */
   overflow-y: auto;
 }
-.font_comment{
-  margin-top: 30.41vh;
+
+#top {
+  flex-shrink: 1;
+  width: 100%;
+  height: 84%;
+}
+
+#middle {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 48rem;
+  width: 90%;
+}
+
+#font_comment {
   font-family: Microsoft YaHei;
   font-style: normal;
   font-weight: bold;
@@ -87,13 +134,56 @@ export default {
   /* 浅灰 */
   color: #CFCFCF;
 }
-.CommentEditPage{
-  height: 11.54vh;
-  margin-top: 1vh;
-  border-radius: 5px;
-  border-color: #CFCFCF;
+
+#comments {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  flex-basis: 95%;
+  flex-wrap: nowrap;
+  width: 95%;
 }
-.TextareaComment{
+
+#avatar {
+  flex-shrink: 0;
+}
+
+#content {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+
+#commentText {
+  flex-shrink: 1;
+  color: #616161;
+  font-family: "Microsoft YaHei", "微软雅黑";
+  font-size: 20px;
+}
+
+#date {
+  align-self: flex-end;
+  color: #616161;
+  font-family: "Microsoft YaHei", "微软雅黑";
+  font-size: 16px;
+}
+#sendBut {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  height: 2.25rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #54A293;
+  border-radius: 5px;
+}
+
+#TextareaComment {
   resize:none;
   BACKGROUND: #FFFFFF;
   BORDER-TOP: #CFCFCF 1px solid;
@@ -108,89 +198,12 @@ export default {
   /* 深灰 */
   color: #616161;
 }
-.button {
-  width: 6.66vw;
-  height: 4.15vh;
-  border-radius: 5px;
-}
-.greenButton {
-  position: absolute;
-  width: 6.66vw;
-  height: 4.15vh;
-  left: 46.5vw;
-  top: 53vh;
-  /* 按钮绿_渐变 */
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #54A293;
-  border-radius: 5px;
-}
-#newFile {
-  font-family: SimHei;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 22px;
-  line-height: 25px;
-  text-align: center;
-  color: rgb(255, 255, 255);
-}
-.CommentAppearance{
-  top: 59vh;
-  height: 20vh;
-  width: 48.7vw;
-  position: absolute;
-  font-family: Microsoft YaHei;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 25px;
-  line-height: 43px;
-  color: #616161;
-  overflow-y: auto;
-}
-.OneComment{
-  position: absolute;
-  top:0.5vh;
-  height: 10vh;
-  width: 48.7vw;
-}
-.CommentFont{
-  height: 9vh;
-  width: 44.7vw;
-  left:4vw;
-  position: absolute;
-  font-family: Microsoft YaHei;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 26px;
-  /* 深灰 */
-  color: #616161;
-  overflow-y: auto;
-}
-.UserName{
-  font-family: Microsoft YaHei;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 26px;
-  color: #54A293;
-}
-.CommentAppearanceFont{
-  font-family: Microsoft YaHei;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 26px;
-  color: #616161;
-}
-.DeleteAndTime{
-  position: absolute;
-  top:9vh;
-  height: 1vh;
-  right: 0.52vw;
-  font-family: Microsoft YaHei;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 26px;
-  color: #616161;
+
+#bottom {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 </style>
