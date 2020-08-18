@@ -3,6 +3,7 @@
     <img id="logo" src="~assets/pinetree.png">
     <span id="title">轻松文档</span>
     <SearchBar/>
+    <Message/>
     <UserIcon/>
   </div>
 </template>
@@ -10,8 +11,9 @@
 <script>
 import SearchBar from "components/tabBar/SearchBar";
 import UserIcon from "@/components/tabBar/UserIcon";
+import Message from "@/components/tabBar/Message";
 export default {
-  components: {UserIcon, SearchBar},
+  components: {Message, UserIcon, SearchBar},
   methods: {
   }
 }
