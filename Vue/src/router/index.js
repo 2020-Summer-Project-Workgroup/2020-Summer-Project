@@ -7,6 +7,9 @@ const Desktop = () => import('pages/desktop/Desktop')
 const Collect = () => import('components/fileList/Collect')
 const Create = () => import('components/fileList/Create')
 const Team = () => import('components/fileList/Team')
+const Message = () => import('components/message/Message')
+const CommentMessage = () => import('components/message/Comments')
+const NoticeMessage = () => import('components/message/Notice')
 
 Vue.use(VueRouter)
 
@@ -42,6 +45,24 @@ const routes = [
       {
         path: 'team',
         component: Team
+      },
+      {
+        path: 'message',
+        component: Message,
+        children: [
+          {
+            path: '',
+            redirect: 'comment'
+          },
+          {
+            path: 'comment',
+            component: CommentMessage
+          },
+          {
+            path: 'notice',
+            component: NoticeMessage
+          }
+        ]
       }
     ]
   }

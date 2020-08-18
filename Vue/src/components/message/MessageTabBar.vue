@@ -52,6 +52,10 @@ export default {
   color: #616161;
 }
 
+#message-bar-container span:hover {
+  cursor: pointer;
+}
+
 #comment {
   left: 10.09%;
 }
@@ -74,6 +78,8 @@ export default {
   left: 10.09%;
   width: 75.86%;
   height: 1px;
+  background-color: #CFCFCF;
+  transform: rotate(-0.13deg);
 }
 
 .select-line {
@@ -81,7 +87,7 @@ export default {
   width: 113px;
   height: 0;
   left: 307px;
-  top: 95px;
-  border: 4px solid #54A193;
+  top: 94px;
+  border: 2px solid #54A193;
 }
 </style>

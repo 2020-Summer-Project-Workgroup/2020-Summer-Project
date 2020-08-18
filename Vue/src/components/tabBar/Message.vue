@@ -9,17 +9,15 @@
 <script>
 export default {
   name: "Message",
-  data() {
-    return {
-      value: 12
-    }
-  },
   methods: {
     watch() {
-      this.value = 0
+      this.$router.push('/desktop/message')
     }
   },
   computed: {
+    value() {
+      return 12
+    },
     isHidden() {
       return !(this.value > 0)
     }
