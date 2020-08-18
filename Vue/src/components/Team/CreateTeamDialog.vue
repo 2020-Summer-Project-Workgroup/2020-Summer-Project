@@ -35,6 +35,9 @@ export default {
 </script>
 
 <style scoped>
+button:focus {
+  outline: none
+}
 .CreateTeamDialog{
   position: fixed;
   width: 32.23vw;
@@ -60,7 +63,8 @@ export default {
   top: 5.77vh;
 }
 .NewTeamHeadFont{
-  font-family: Microsoft YaHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 3.23vh;
@@ -80,7 +84,8 @@ export default {
   /* 内外输入框阴影 */
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05), inset 0px 5px 5px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
-  font-family: Microsoft YaHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.30vh;
@@ -97,7 +102,8 @@ export default {
   top: 20.09vh;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #54A293;
   border-radius: 5px;
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.07vh;
