@@ -13,7 +13,7 @@
         <div id="CommentEditPage">
           <textarea name="reworkmes" cols="70" rows="3" id="TextareaComment" placeholder="请输入评论" v-model="commentInput"></textarea>
         </div>
-        <div id="sendBut">
+        <div id="sendBut" @click="sendComment">
           <a href="">发送</a>
         </div>
       </div>
@@ -28,7 +28,7 @@
               : {{ comment.text }}
             </div>
             <div id="date">
-              <i class="el-icon-delete-solid" @click="del"></i>
+              <i class="el-icon-delete-solid" @click="delComment"></i>
               {{ comment.time }}
             </div>
             <br />
@@ -42,6 +42,9 @@
 
 <script>
 import Edit from '../fileEdit/Edit.vue'
+import addComment from '../../network/edit.js'
+import deleteComment from '../../network/edit.js'
+
 export default {
   name: "Comment",
   components: {
@@ -49,35 +52,28 @@ export default {
   },
   data() {
     return {
+      editorData: 'lss<div id="sendBut"><a href="">发送</a></div>',
+      title: "",
       showDel: false,
       commentInput: "",
-      comments: [{
-        avatar: "头像",
-        name: "LSS",
-        time: "2020-8-19 09:41",
-        text: "【文档提交】提交代码时可以前后端分为两部分吗是必须分为两部分，并且每个组都需要有前端和后端两个git仓库，即前端后端在代码提交和修改上完全分离，并且注意在上传git上代码时不应该提交依赖包内容；然后在具体展示时可以放在同一个服务器上展示，前后端也可以有交互，例如后端对前端数据的渲染，这是完全没问题的。"
-      },
-      {avatar: "头像",
-        name: "LSS",
-        time: "2020-8-19 09:41",
-        text: "【文档提交】提交代码时可以前后端分为两部分吗是必须分为两部分，并且每个组都需要有前端和后端两个git仓库，即前端后端在代码提交和修改上完全分离，并且注意在上传git上代码时不应该提交依赖包内容；然后在具体展示时可以放在同一个服务器上展示，前后端也可以有交互，例如后端对前端数据的渲染，这是完全没问题的。"
-      },
-      {avatar: "头像",
-        name: "LSS",
-        time: "2020-8-19 09:41",
-        text: "【文档提交】提交代码时可以前后端分为两部分吗是必须分为两部分，并且每个组都需要有前端和后端两个git仓库，即前端后端在代码提交和修改上完全分离，并且注意在上传git上代码时不应该提交依赖包内容；然后在具体展示时可以放在同一个服务器上展示，前后端也可以有交互，例如后端对前端数据的渲染，这是完全没问题的。"
-      }
-      ]
+      comments: []
     }
   },
   methods: {
-    del: function() {
+    delComment: function() {
       // let index = this.comments.indexOf(comment);
       // if(index != -1){
       //   this.comments.splice(index,1);
       // }
+      // deleteComment(userId, fileId, this.commentInput);
       console.log("Delete！");
-    }
+    },
+    // sendComment: function(userId, commentInput){
+    //   
+    //   const time = new Date().toLocaleString();
+    //   this.comments.push({avatar: "", name: userId, text: this.commentInput, time: new Date().toLocaleString()});
+    //   addComment(fileId, userId, this.content);
+    // }
   }
 }
 </script>

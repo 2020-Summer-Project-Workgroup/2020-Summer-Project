@@ -4,27 +4,26 @@
       <div id="top">
          <input id="text" type="text" v-model="tltie" placeholder="标题"/>
          <div id="blank"></div>
-         <el-button id="save" :plain="true" @click="save">保存</el-button>
+         <el-button id="save" :plain="true" @click="upload">保存</el-button>
       </div>
       <ckeditor id="middle" v-model="editorData" :config="editorConfig"></ckeditor> 
     </div>
-    <!-- <Comment id="comment"></Comment> -->
+    
    </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import CKEditor from 'ckeditor4-vue'
-// import Comment from '../Comment/Comment.vue'
+import newFile from '../../network/edit.js'
 
 Vue.use(CKEditor);
-
+// CKEditor.config.readOnly = true;
 export default {
   name: 'Edit',
   components: {
     // Use the <ckeditor> component in this view.
     ckeditor: CKEditor.component,
-    // Comment,
   },
   data() {
     return {
@@ -33,17 +32,27 @@ export default {
       editorConfig: {
         // The configuration of the editor.
         // width: 1282.49,
-         height: 600,
+        height: 600,
+        readOnly: false,
+        
+        filebrowserImageBrowseUrl: '/browser/browse.php?type=Images',
+        filebrowserImageUploadUrl: '/uploader/upload.php?type=Images'
+        
       }
     };
   },
   methods:{
-    save() {
+    upload: function() {
       this.$message({
         message: '保存成功',
         center: true
       });
+      console.log("Save");
+      newFile("18182106", this.title, this.editorData);
     }
+  },
+  created: function() {
+    
   }
 }
 </script>
