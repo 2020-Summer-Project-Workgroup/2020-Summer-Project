@@ -6,6 +6,8 @@ import getters from "@/store/getters";
 import desktop from "@/store/modules/desktop";
 import team from "@/store/modules/team";
 import message from "@/store/modules/message";
+import files from "@/store/modules/files";
+import favorites from "@/store/modules/favorites";
 
 Vue.use(Vuex)
 
@@ -25,7 +27,9 @@ const store = new Vuex.Store({
   modules: {
     desktop,
     team,
-    message
+    message,
+    files,
+    favorites
   }
 })
 
