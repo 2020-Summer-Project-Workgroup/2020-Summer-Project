@@ -1,8 +1,8 @@
-import {request} from "@/network/request";
+import { request } from "@/network/request";
 
 export function newFile(userId, title, content) {
   return request({
-    url: '/file/user',
+    url: '/user',
     method: 'post',
     params: {
       userId: userId,
@@ -14,7 +14,7 @@ export function newFile(userId, title, content) {
 
 export function updateFile(userId, fileId, title, content) {
   return request({
-    url: '/file/user',
+    url: '/user',
     method: 'put',
     params: {
       userId: userId,
@@ -27,7 +27,7 @@ export function updateFile(userId, fileId, title, content) {
 
 export function getFile(userId, fileId) {
   return request({
-    url: '/file/user',
+    url: '/user/all',
     method: 'get',
     params: {
       userId: userId,
@@ -36,9 +36,50 @@ export function getFile(userId, fileId) {
   })
 }
 
+export function getFavotite(userId) {
+  return request({
+    url: '/user/favorite',
+    method: 'get',
+    params: {
+      userId: userId
+    }
+  })
+}
+
+export function updateFavotite(userId, fileId) {
+  return request({
+    url: '/user/favorite',
+    method: 'put',
+    params: {
+      userId: userId,
+      fileId: fileId
+    }
+  })
+}
+
+export function recycleFile(fileId) {
+  return request({
+    url: '/user/recycle',
+    method: 'put',
+    params: {
+      fileId: fileId
+    }
+  })
+}
+
+export function getRecycle(userId) {
+  return request({
+    url: '/user/recycle',
+    method: 'get',
+    params: {
+      userId: userId
+    }
+  })
+}
+
 export function deleteFile(userId, fileId) {
   return request({
-    url: '/file/user',
+    url: '/user',
     method: 'delete',
     params: {
       userId: userId,
