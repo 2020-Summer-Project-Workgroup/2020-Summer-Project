@@ -2,7 +2,7 @@
   <div id="container">
     <div id="edit">
       <div id="top">
-         <input id="text" type="text" v-model="tltie" placeholder="标题"/>
+         <input id="text" type="text" v-model="title" placeholder="标题"/>
          <div id="blank"></div>
          <el-button id="save" :plain="true" @click="upload">保存</el-button>
       </div>
@@ -16,6 +16,8 @@
 import Vue from 'vue'
 import CKEditor from 'ckeditor4-vue'
 import newFile from '../../network/edit.js'
+// import updateFile from '../../network/edit.js'
+import getFile from '../../network/edit.js'
 
 Vue.use(CKEditor);
 // CKEditor.config.readOnly = true;
@@ -46,12 +48,24 @@ export default {
         center: true
       });
       console.log("Save");
-      newFile("18182106", this.title, this.editorData);
+      
+      // newFile(this.$store.getters.userId, this.title, this.editorData);
+      newFile(this.$store.getters.userId, this.title, this.editorData).then(res => {
+        console.log(res);
+      }).catch(err => {
+         console.log(err);
+      });
+      console.log("Save");
     }
   },
-  created: function() {
-    
+  created() {
+    getFile(this.$store.getters.userId, this.$store.getters.fileId).then(res => {
+        console.log(res);
+      }).catch(err => {
+         console.log(err);
+      });
   }
+  
 }
 </script>
 

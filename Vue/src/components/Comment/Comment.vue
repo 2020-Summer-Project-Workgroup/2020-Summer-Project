@@ -4,7 +4,7 @@
       <div id="top">
         <Edit></Edit>
       </div>
-    
+      
       <div id="middle">
         <span id="font_comment">
           评论
@@ -65,7 +65,7 @@ export default {
       // if(index != -1){
       //   this.comments.splice(index,1);
       // }
-      // deleteComment(userId, fileId, this.commentInput);
+      // deleteComment(this.$store.getters.userId, fileId, this.commentInput);
       console.log("Delete!");
     },
     // sendComment: function(userId, commentInput){
