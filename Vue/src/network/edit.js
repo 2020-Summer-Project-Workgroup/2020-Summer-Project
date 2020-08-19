@@ -36,7 +36,7 @@ export function getFile(userId, fileId) {
   })
 }
 
-export function getFavotite(userId) {
+export function getFavorite(userId) {
   return request({
     url: '/user/favorite',
     method: 'get',
@@ -46,7 +46,7 @@ export function getFavotite(userId) {
   })
 }
 
-export function updateFavotite(userId, fileId) {
+export function updateFavorite(userId, fileId) {
   return request({
     url: '/user/favorite',
     method: 'put',
