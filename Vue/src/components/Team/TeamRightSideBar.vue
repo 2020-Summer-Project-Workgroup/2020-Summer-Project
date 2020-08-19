@@ -11,7 +11,7 @@
         <hr size="1px" color="#CFCFCF" width="100%"/>
       </td>
     </tr>
-    <button class="ManageButton" >
+    <button class="ManageButton" @click="openManageMember">
       管理成员
     </button>
     <div class="dropdown">
@@ -75,6 +75,9 @@ export default {
     showDetail() {
       this.$router.push('/desktop/recent')
     },
+    openManageMember() {
+      this.$store.commit('openManageMember')
+    }
   },
 };
 </script>
