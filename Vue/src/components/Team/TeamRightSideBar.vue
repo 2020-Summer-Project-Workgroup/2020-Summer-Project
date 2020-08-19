@@ -240,7 +240,6 @@ button:focus {
   top: 62.38vh;
   line-height: 26px;
   overflow-y: auto;
-  border: 0.2px solid #CFCFCF;
 }
 
 #BottomHidden{

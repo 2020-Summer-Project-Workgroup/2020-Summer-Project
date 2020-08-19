@@ -20,37 +20,30 @@
       <div id="body-row" v-for="file in files" :key="file.name">
         <div id="blank1"><a href="" >{{ file.name }}</a></div>
         <td id="blank2">{{ file.time }}</td>
-        <td id="blank3"><a href="" @click="cancel">取消收藏</a></td>
+        <td id="blank3"><a href="" @click.prevent="deleteCollect(file.id)">取消收藏</a></td>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name:"collect",
   data: function () {
     return {
       files:[
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档有很长的标题，没错很长的标题", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档有很长的标题，没错很长的标题", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档有很长的标题，没错很长的标题", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档有很长的标题，没错很长的标题", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
+        {id:0,name:"这是一个示例文档", time:"2020-08-10"},
+        {id:1,name:"这是一个示例文档",  time:"2020-08-12"},
+        {id:2,name:"这是一个示例文档有很长的标题，没错很长的标题",  time:"2020-08-14"},
+        {id:3,name:"这是一个示例文档", time:"2020-08-16"},
+        {id:4,name:"这是一个示例文档", time:"2020-08-18"},
       ]
     }	
   },
   methods: {
-    cancel: function() {
-      
+    deleteCollect: function(index){
+      this.files.splice(index,1);
     }
   }
 }

@@ -36,7 +36,8 @@ export default {
     },
     delFile() {
 
-    }
+    },
+
   },
   computed: {
     files() {
