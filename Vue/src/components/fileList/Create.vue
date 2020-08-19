@@ -18,10 +18,10 @@
     </tr>
     <div id="body" >
       <div id="body-row" v-for="file in files" :key="file.id">
-        <div id="blank1"><span class="file-name" @click="toFile(file)">{{ file.title }}</span></div>
-        <div id="blank2"><i class="el-icon-s-tools"></i></div>
-        <div id="blank3">{{ file.time.split("T")[0] }} {{ file.time.split("T")[1].split(".")[0] }}</div>
-        <div id="blank4"><span class="file-name" @click="delFile(file.id)">删除文档</span></div>
+        <div id="blank5"><span class="file-name" @click="toFile">{{ file.title }}</span></div>
+        <div id="blank6"><i class="el-icon-s-tools"></i></div>
+        <div id="blank7">{{ file.time.split("T")[0] }} {{ file.time.split("T")[1].split(".")[0] }}</div>
+        <div id="blank8"><span class="file-name" @click="delFile(file.id)">删除文档</span></div>
       </div>
     </div>
   </div>
@@ -116,6 +116,7 @@ export default {
   overflow-x: hidden ;
   bottom: 0;
 }
+
 #body-row {
   position: relative;
   top:1%;
@@ -123,7 +124,7 @@ export default {
   valign: bottom;
 }
 
-#blank1 {
+#blank5 {
   width: 50%;
   height: 100%;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
@@ -139,7 +140,7 @@ export default {
   text-align: left;
 }
 
-#blank2{
+#blank6 {
   position: absolute;
   height: 100%;
   left: 51%;
@@ -151,7 +152,7 @@ export default {
   text-align: left;
 }
 
-#blank3 {
+#blank7 {
   position: absolute;
   height: 100%;
   left: 56%;
@@ -170,7 +171,7 @@ export default {
   float: left;
 }
 
-#blank4 {
+#blank8 {
   position: absolute;
   height: 100%;
   left: 85%;
@@ -188,4 +189,5 @@ export default {
   text-align: left;
   float: left;
 }
+
 </style>

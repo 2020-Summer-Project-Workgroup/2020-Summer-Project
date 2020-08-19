@@ -16,11 +16,11 @@
         <hr size="1px" color="#CFCFCF" width="100%"/>
       </td>
     </tr>
-    <div id="body" >
+    <div id="body">
       <div id="body-row" v-for="file in files" :key="file.name">
-        <div id="blank1"><a href="" >{{ file.name }}</a></div>
-        <td id="blank2">{{ file.time }}</td>
-        <td id="blank3"><a href="" @click.prevent="deleteCollect(file.id)">取消收藏</a></td>
+        <div id="blank12"><a href="" >{{ file.name }}</a></div>
+        <td id="blank13">{{ file.time }}</td>
+        <td id="blank14"><a href="" @click.prevent="deleteCollect(file.id)">取消收藏</a></td>
       </div>
     </div>
   </div>
@@ -133,7 +133,7 @@ a {
   valign: bottom;
 }
 
-#blank1 {
+#blank12 {
   width: 50%;
   height: 100%;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
@@ -149,7 +149,7 @@ a {
   text-align: left;
 }
 
-#blank2 {
+#blank13 {
   position: absolute;
   height: 100%;
   left: 64%;
@@ -168,7 +168,7 @@ a {
   float: left;
 }
 
-#blank3 {
+#blank14 {
   position: absolute;
   height: 100%;
   left: 85%;

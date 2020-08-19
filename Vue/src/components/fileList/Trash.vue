@@ -18,9 +18,9 @@
     </tr>
     <div id="body" >
       <div id="body-row" v-for="file in files" :key="file.name">
-        <div id="blank1">{{ file.name }}</div>
-        <div id="blank2">{{ file.time }}</div>
-        <div id="blank3"><span class="file-name" @click="recovery(file.id)">恢复文档</span></div>
+        <div id="blank9">{{ file.title }}</div>
+        <div id="blank10">{{ file.time }}</div>
+        <div id="blank11">恢复文档</div>
       </div>
     </div>
   </div>
@@ -120,13 +120,16 @@ a {
   bottom: 0;
 }
 #body-row {
-  position: relative;
+  position: absolute;
   top:1%;
   height: 8%;
   valign: bottom;
 }
 
-#blank1 {
+#blank9 {
+  position: relative;
+  top:50%;
+
   width: 50%;
   height: 100%;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
@@ -142,8 +145,8 @@ a {
   text-align: left;
 }
 
-#blank2 {
-  position: absolute;
+#blank10 {
+  position: relative;
   height: 100%;
   left: 64%;
   margin-top: -5%;
@@ -161,8 +164,8 @@ a {
   float: left;
 }
 
-#blank3 {
-  position: absolute;
+#blank11 {
+  position: relative;
   height: 100%;
   left: 85%;
   margin-top: -5%;

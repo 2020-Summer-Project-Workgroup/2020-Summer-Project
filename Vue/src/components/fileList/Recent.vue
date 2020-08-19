@@ -18,9 +18,9 @@
     </tr>
     <div id="body" >
       <div id="body-row" v-for="file in files" :key="file.name">
-        <div id="blank1"><a href="" >{{ file.name }}</a></div>
-        <div id="blank2">{{ file.time }}</div>
-        <div id="blank3"><a href="" @click="delFile">删除记录</a></div>
+        <div id="blank15"><a href="" >{{ file.name }}</a></div>
+        <div id="blank16">{{ file.time }}</div>
+        <div id="blank17"><a href="" @click="delFile">删除记录</a></div>
       </div>
     </div>
   </div>
@@ -139,7 +139,7 @@ a {
   valign: bottom;
 }
 
-#blank1 {
+#blank15 {
   width: 50%;
   height: 100%;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
@@ -155,7 +155,7 @@ a {
   text-align: left;
 }
 
-#blank2 {
+#blank16 {
   position: absolute;
   height: 100%;
   left: 64%;
@@ -174,7 +174,7 @@ a {
   float: left;
 }
 
-#blank3 {
+#blank17 {
   position: absolute;
   height: 100%;
   left: 85%;
