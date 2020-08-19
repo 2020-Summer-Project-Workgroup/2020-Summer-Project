@@ -80,6 +80,9 @@ export default {
     },
     openManageMember() {
       this.$store.commit('openManageMember')
+    },
+    openNewTeam() {
+      this.$store.commit('openCreateTeam')
     }
   },
 };
