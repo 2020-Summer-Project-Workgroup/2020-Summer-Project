@@ -30,11 +30,11 @@
 export default {
   name: "Create",
   methods: {
-    toFile(fileId) {
+    toFile() {
 
     },
-    delFile(fileId) {
-      
+    delFile() {
+
     }
   },
   computed: {
