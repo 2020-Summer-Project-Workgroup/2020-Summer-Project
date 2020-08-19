@@ -1,23 +1,19 @@
 <template>
   <div id="RBar">
-    <button class="greenButton" @click="cl1" >
+    <button class="greenButton">
       新建
     </button>
-
-    <br />
-    <div class="button stdButton" id="from" @mouseenter="me2" @mouseleave="ml2" @click="cl2" :style="newStyle">
-      <span class="text">从模板新建</span>
-    </div>
-    <br />
+    <button class="stdButton">
+      从模板新建
+    </button>
     <tr id="line">
       <td>
         <hr size="1px" color="#CFCFCF" width="100%"/>
       </td>
     </tr>
-    <button class="ManageButton" id="from" @click="cl3">
+    <button class="ManageButton" @click="openManageMember">
       管理成员
     </button>
-    <br />
     <div class="dropdown">
       <button class="dropbtn">退出团队<i class="el-icon-caret-bottom"></i></button>
       <div class="dropdown-content">
@@ -25,28 +21,26 @@
         <span class="QuitFont"><a href="#">解散团队</a></span>
       </div>
     </div>
-    <!--
-    <div class="button QuitButton" id="from" @mouseenter="me4" @mouseleave="ml4" @click="cl4" :style="newStyle">
-      <span class="text">退出团队</span>
-    </div>
-    <br />
-    -->
     <div id="down" class="StdSecond">
       <span class="stdFont">最近浏览</span>
-      <span id="detail">
-        <a href /> 详情
+      <span id="detail" @click="showDetail">
+        详情
       </span>
     </div>
     <div class="RightBarBottom">
       <table>
         <tbody>
-        <tr v-for="file in files" :key="file.name" class="stdFont">
-          <i class="el-icon-user" v-if="file.type === 1"></i>
-          <i class="el-icon-user-solid" v-else-if="file.type === 2"></i>
-          <img src="../../assets/收藏.png" v-else-if="file.type === 3" />
-          {{ file.name }}
-          <i class="el-icon-s-tools"></i>
-        </tr>
+        <div v-for="file in files" :key="file.name" class="stdFont" >
+          <tr>
+            <div id="BottomHidden" >
+              <i class="el-icon-user" v-if="file.type === 1"></i>
+              <i class="el-icon-user-solid" v-else-if="file.type === 2"></i>
+              <img src="../../assets/收藏.png" v-else-if="file.type === 3" />
+              {{ file.name }}
+            </div>
+            <i class="el-icon-s-tools"></i>
+          </tr>
+        </div>
         </tbody>
       </table>
     </div>
@@ -77,22 +71,24 @@ export default {
       ],
     };
   },
-
   methods: {
-    cl1() {
-
+    showDetail() {
+      this.$router.push('/desktop/recent')
+    },
+    openManageMember() {
+      this.$store.commit('openManageMember')
     }
   },
 };
 </script>
 
 <style scoped>
+
 button:focus {
   outline: none
 }
+
 #RBar {
-  display: -webkit-flex;
-  display: flex;
   position: absolute;
   width: 19.9vw;
   height: calc(100vh - 68px);
@@ -102,24 +98,12 @@ button:focus {
   border: none;
 }
 
-
-.button {
-  width: 12.55vw;
-  height: 5.54vh;
-  border-radius: 5px;
-  border:none;
-}
-.text {
-  margin-top: 7.15vh;
-  line-height: 5.54vh;
-}
-
 .greenButton {
-  position: absolute;
-  width: 12.55vw;
-  height: 5.54vh;
-  left: 2.7vw;
-  top: 7.15vh;
+  position: relative;
+  width: 63.42%;
+  height: 6.01%;
+  left: 12.89%;
+  top: 8.02%;
   background: linear-gradient(180deg,
   rgba(255, 255, 255, 0.2) 0%,
   rgba(255, 255, 255, 0) 100%),
@@ -133,12 +117,18 @@ button:focus {
   color: rgb(255, 255, 255);
   border:none;
 }
+
+.greenButton:hover {
+  cursor: pointer;
+  background: #54A193;
+}
+
 .stdButton {
-  position: absolute;
-  width: 12.55vw;
-  height: 5.54vh;
-  left: 2.7vw;
-  top: 14.20vh;
+  position: relative;
+  width: 63.42%;
+  height: 6.01%;
+  left: 12.89%;
+  top: 10.66%;
   background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
   #e5e5e5;
   text-align: center;
@@ -149,18 +139,20 @@ button:focus {
   font-weight: normal;
   font-size: 22px;
   line-height: 25px;
-
-  /* 深灰 */
-
   color: #616161;
 }
 
+.stdButton:hover {
+  cursor: pointer;
+  background: #E5E5E5;
+}
+
 .ManageButton{
-  position: absolute;
-  width: 12.55vw;
-  height: 5.54vh;
-  left: 2.7vw;
-  top: 27.02vh;
+  position: relative;
+  width: 63.42%;
+  height: 6.01%;
+  left: 12.89%;
+  top: 16.66%;
   background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
   #e5e5e5;
   text-align: center;
@@ -171,10 +163,12 @@ button:focus {
   font-weight: normal;
   font-size: 22px;
   line-height: 25px;
-
-  /* 深灰 */
-
   color: #616161;
+}
+
+.ManageButton:hover {
+  cursor: pointer;
+  background: #E5E5E5;
 }
 
 .stdFont {
@@ -184,19 +178,6 @@ button:focus {
   font-weight: normal;
   font-size: 20px;
   color: rgba(97, 97, 97, 1);
-}
-
-
-#from {
-  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
-  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 22px;
-  line-height: 25px;
-  color: #616161;
-  align-content: center;
-  align-items: center;
 }
 
 #detail {
@@ -214,6 +195,7 @@ button:focus {
   left: 2.7vw;
   top: 53.07vh;
 }
+
 .RightBarBottom {
   position: absolute;
   height: 25vh;
@@ -222,7 +204,19 @@ button:focus {
   top: 57.38vh;
   line-height: 26px;
   overflow-y: auto;
+
 }
+
+#BottomHidden{
+  width: 10vw;
+  height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  float: left;
+}
+
 #line{
   position: absolute;
   width: 12.65vw;
@@ -231,6 +225,7 @@ button:focus {
   top:23.67vh;
   border: 0.2px solid #CFCFCF;
 }
+
 .dropbtn {
   background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
   #e5e5e5;
@@ -255,21 +250,21 @@ button:focus {
 
 /* 容器 <div> - 需要定位下拉内容 */
 .dropdown {
-  position: absolute;
-  width: 12.55vw;
-  height: 5.54vh;
-  left: 2.7vw;
-  top: 34.06vh;
+  position: relative;
+  width: 63.42%;
+  height: 6.01%;
+  left: 12.89%;
+  top: 18.5%;
   display: inline-block;
 }
 
 /* 下拉内容 (默认隐藏) */
 .dropdown-content {
   display: none;
-  position: absolute;
+  position: relative;
   background-color: #f9f9f9;
-  width: 12.55vw;
-  height: 3.54vh;
+  width: 100%;
+  height: 6.01%;
 }
 
 /* 下拉菜单的链接 */
@@ -279,12 +274,15 @@ button:focus {
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
-  line-height: 26px;
+  line-height: 85%;
   /* 深灰 */
   color: #616161;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* 鼠标移上去后修改下拉菜单链接颜色 */
@@ -293,11 +291,11 @@ button:focus {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
 /* 当下拉内容显示后修改下拉按钮的背景颜色 */
 .dropdown:hover .dropbtn {
   background-color: #F2F4F4;
 }
+
 .QuitFont{
   text-align: center;
   align-content: center;

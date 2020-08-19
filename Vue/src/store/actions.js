@@ -1,33 +1,21 @@
 import {
   retrieveUserByEmail,
   retrieveUserByTel,
-  updateEmailByTel,
-  updatePasswordByEmail,
-  updatePasswordByTel, updateTelByEmail,
-  updateUsernameByEmail,
-  updateUsernameByTel
+  updatePassword, updateUserInfo,
 } from "@/network/desktop";
 
 export default {
   updateUsername(context, username) {
-    if (!(context.getters.tel === '')) {
-      return updateUsernameByTel(context.getters.tel, username)
-    } else {
-      return updateUsernameByEmail(context.getters.email, username)
-    }
+    return updateUserInfo(context.getters.userId, username, 0)
   },
   updatePassword(context, password) {
-    if (!(context.getters.tel === '')) {
-      return updatePasswordByTel(context.getters.tel, password)
-    } else {
-      return updatePasswordByEmail(context.getters.email, password)
-    }
+    return updatePassword(context.getters.userId, context.getters.password, password)
   },
   updateTel(context, tel) {
-    return updateTelByEmail(context.getters.email, tel)
+    return updateUserInfo(context.getters.userId, tel, 2)
   },
   updateEmail(context, email) {
-    return updateEmailByTel(context.getters.tel, email)
+    return updateUserInfo(context.getters.userId, email, 1)
   },
   initState(context) {
     if (!(context.getters.tel === '')) {
