@@ -4,8 +4,8 @@
       <i class="message-avatar el-icon-message"></i>
       <div v-if="comment.type === 1">
         <span class="message-title">{{comment.sendName}} 邀请你加入：{{comment.content}}</span>
-        <button class="button-green button-left">接受</button>
-        <button class="button-grey button-right">拒绝</button>
+        <button class="button-green button-left" @click="accept">接受</button>
+        <button class="button-grey button-right" @click="refuse">拒绝</button>
       </div>
       <div v-else-if="comment.type === 2">
         <span class="message-title">{{comment.sendName}} 邀请你加入：{{comment.content}}</span>
@@ -27,33 +27,28 @@
 <script>
 export default {
   name: "Comments",
-  data() {
-    return {
-      comments: [
+  methods: {
+    accept(noticeId) {
+      this.$store.dispatch({
+        type: 'updateTeamNoticeStatus',
+        noticeId: noticeId,
+        status: 2
+      })
+    },
+    refuse(noticeId) {
+      this.$store.dispatch({
+        type: 'updateTeamNoticeStatus',
+        noticeId: noticeId,
+        status: 3
+      })
+    }
+  },
+  computed: {
+    comments() {
+      return [
         {
           id: '238yer19fiqrf81',
           type: 1,
-          sendName: '不知名灰烬',
-          content: '不知名灰烬',
-          time: '5月22日 18:43'
-        },
-        {
-          id: '238yer19fiqrf81',
-          type: 2,
-          sendName: '不知名灰烬',
-          content: '不知名灰烬',
-          time: '5月22日 18:43'
-        },
-        {
-          id: '238yer19fiqrf81',
-          type: 3,
-          sendName: '不知名灰烬',
-          content: '不知名灰烬',
-          time: '5月22日 18:43'
-        },
-        {
-          id: '238yer19fiqrf81',
-          type: 4,
           sendName: '不知名灰烬',
           content: '不知名灰烬',
           time: '5月22日 18:43'

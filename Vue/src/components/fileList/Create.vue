@@ -6,9 +6,6 @@
           我创建的
           <i class="el-icon-user"></i>
         </th>
-        <th id="Creater">
-          创建者
-        </th>
         <th id="CollectTime">
           修改时间
         </th>
@@ -20,11 +17,10 @@
       </td>
     </tr>
     <div id="body" >
-      <div id="body-row" v-for="file in files" :key="file.name">
-        <div id="blank1"><a href="" >{{ file.name }}</a></div>
-        <td id="blank2"><a href="">{{ file.writter }}</a> </td>
-        <td id="blank3">{{ file.time }}</td>
-        <td id="blank4"><a href="" @click="delFile">删除文档</a></td>
+      <div id="body-row" v-for="file in files" :key="file.id">
+        <div id="blank1"><span class="file-name" @click="toFile">{{ file.title }}</span></div>
+        <td id="blank3">{{ file.time.split("T")[0] }} {{ file.time.split("T")[1].split(".")[0] }}</td>
+        <td id="blank4"><span class="file-name" @click="delFile">删除文档</span></td>
       </div>
     </div>
   </div>
@@ -32,42 +28,31 @@
 
 <script>
 export default {
-  name:"create",
-  data: function () {
-    return {
-      files:[
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档有很长的标题，没错很长的标题", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档有很长的标题，没错很长的标题", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档有很长的标题，没错很长的标题", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档有很长的标题，没错很长的标题", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-      ]
+  name: "Create",
+  methods: {
+    toFile() {
+
+    },
+    delFile() {
+
     }
   },
-  methods: {
-    delFile: function() {
-      
+  computed: {
+    files() {
+      return this.$store.getters.files
     }
   }
 }
 </script>
 
 <style>
-a:hover {color: #54A193}
-
-a:link {color: #FFFFFF}
-
-a {
+.file-name {
   color: #616161;
   text-decoration: none;
+}
+.file-name:hover {
+  cursor: pointer;
+  color: #54A193
 }
 
 #create {
@@ -89,9 +74,11 @@ a {
   left: 6.40vw;
 }
 #MyCollectFont{
-  width: 8.28vw;
+  left: 115px;
+  width: 300px;
   height: 4.61vh;
-  font-family: Microsoft YaHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 3.23vh;
@@ -104,7 +91,8 @@ a {
   top: 1vh;
   width: 4vw;
   height: 3.23vh;
-  font-family: Microsoft YaHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.30vh;
@@ -117,7 +105,8 @@ a {
   height: 3.23vh;
   left: 35.66vw;
   top: 1vh;
-  font-family: Microsoft YaHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.30vh;
@@ -151,7 +140,8 @@ a {
 #blank1 {
   width: 25vw;
   height: 4.15vh;
-  font-family: Microsoft YaHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
@@ -167,7 +157,8 @@ a {
   position: absolute;
   left: 25.31vw;
   margin-top: -3.7vh;
-  font-family: Microsoft YaHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
@@ -179,7 +170,8 @@ a {
   position: absolute;
   left: 35.66vw;
   margin-top: -3.7vh;
-  font-family: Microsoft YaHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
@@ -191,7 +183,8 @@ a {
   position: absolute;
   left: 44.66vw;
   margin-top: -3.7vh;
-  font-family: Microsoft YaHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;

@@ -11,23 +11,21 @@
 <script>
 export default {
   name: "MessageTabBar",
-  data() {
-    return {
-      showCommentLine: true,
-      showNoticeLine: false
-    }
-  },
   methods: {
     showComment() {
-      this.showCommentLine = true
-      this.showNoticeLine = false
       this.$router.push('/desktop/message/comment')
     },
     showNotice() {
-      this.showCommentLine = false
-      this.showNoticeLine = true
       this.$router.push('/desktop/message/notice')
     }
+  },
+  computed: {
+    showCommentLine() {
+      return this.$route.path === '/desktop/message/comment'
+    },
+    showNoticeLine() {
+      return this.$route.path === '/desktop/message/notice'
+    },
   }
 }
 </script>

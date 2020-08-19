@@ -13,59 +13,9 @@
 <script>
 export default {
   name: "Comments",
-  data() {
-    return {
-      comments: [
-        {
-          id: 'y8e89413feqrq8',
-          sendName: '不知名灰烬',
-          title: 'Ko no dio da!',
-          content: '这是一条一条评论这是一条评论',
-          time: '5月22日 18:43'
-        },
-        {
-          id: '238yer19fiqrf81',
-          sendName: '不知名灰烬',
-          title: 'Ko no dio da!',
-          content: '这是一条评论',
-          time: '5月22日 18:43'
-        },
-        {
-          id: '238yer19fiqrf81',
-          sendName: '不知名灰烬',
-          title: 'Ko no dio da!',
-          content: '这是一条评论',
-          time: '5月22日 18:43'
-        },
-        {
-          id: '238yer19fiqrf81',
-          sendName: '不知名灰烬',
-          title: 'Ko no dio da!',
-          content: '这是一条评论',
-          time: '5月22日 18:43'
-        },
-        {
-          id: '238yer19fiqrf81',
-          sendName: '不知名灰烬',
-          title: 'Ko no dio da!',
-          content: '这是一条评论',
-          time: '5月22日 18:43'
-        },
-        {
-          id: '238yer19fiqrf81',
-          sendName: '不知名灰烬',
-          title: 'Ko no dio da!',
-          content: '这是一条评论',
-          time: '5月22日 18:43'
-        },
-        {
-          id: '238yer19fiqrf81',
-          sendName: '不知名灰烬',
-          title: 'Ko no dio da!',
-          content: '这是一条评论',
-          time: '5月22日 18:43'
-        }
-      ]
+  computed: {
+    comments() {
+      return this.$store.getters.notices
     }
   }
 }

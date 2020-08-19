@@ -42,7 +42,7 @@
         <tbody>
         <tr v-for="file in files" :key="file.name" class="stdFont">
           <i class="el-icon-user" v-if="file.type === 1"></i>
-          <i class="el-icon-user-solid" v-if="file.type === 2"></i>
+          <i class="el-icon-user-solid" v-else-if="file.type === 2"></i>
           <img src="../../assets/收藏.png" v-else-if="file.type === 3" />
           {{ file.name }}
           <i class="el-icon-s-tools"></i>
@@ -79,7 +79,9 @@ export default {
   },
 
   methods: {
+    cl1() {
 
+    }
   },
 };
 </script>
@@ -141,7 +143,8 @@ button:focus {
   #e5e5e5;
   text-align: center;
   border:none;
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
@@ -162,7 +165,8 @@ button:focus {
   #e5e5e5;
   text-align: center;
   border:none;
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
@@ -184,7 +188,8 @@ button:focus {
 
 
 #from {
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
@@ -233,7 +238,8 @@ button:focus {
   width: 12.55vw;
   height: 5.54vh;
   border-radius: 5px;
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
@@ -268,7 +274,8 @@ button:focus {
 
 /* 下拉菜单的链接 */
 .dropdown-content a {
-  font-family: Microsoft YaHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;

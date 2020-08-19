@@ -1,43 +1,45 @@
 <template>
-  <div class="ManageMemberDialog" v-if="bol_ManageMember" @click="close1">
-    <div class="ManageMemberBox" @click.stop="">
-      <div id="ManageMember-close">
-        <i class="el-icon-circle-close" ></i>
-      </div>
+  <div class="popup-container" v-if="showManageMember">
+    <div class="ManageMemberDialog">
+      <div class="ManageMemberBox">
+        <div id="ManageMember-close" @click="close">
+          <i class="el-icon-circle-close"></i>
+        </div>
 
-      <div class="ManageMemberHead">
+        <div class="ManageMemberHead">
           <span class="ManageMemberFont">
             协作者
           </span>
-        <tr id="line_co">
-          <td>
-            <hr size="1px" color="#CFCFCF" width="100%"/>
-          </td>
-        </tr>
+          <tr id="line_co">
+            <td>
+              <hr size="1px" color="#CFCFCF" width="100%"/>
+            </td>
+          </tr>
 
-      </div>
-      <div class="ManageMemberBody">
+        </div>
+        <div class="ManageMemberBody">
           <span class="ManageMemberFont">
             管理者
           </span>
-        <tr id="line_manage">
-          <td>
-            <hr size="1px" color="#CFCFCF" width="100%"/>
-          </td>
-        </tr>
-      </div>
-      <div class="DeleteArea">
+          <tr id="line_manage">
+            <td>
+              <hr size="1px" color="#CFCFCF" width="100%"/>
+            </td>
+          </tr>
+        </div>
+        <div class="DeleteArea">
           <span class="DeleteAreaFont">
             拖拽至此删除
           </span>
-      </div>
-      <button class="InviteButton" @click="cl_invite" >
-        邀请
-      </button>
+        </div>
+        <button class="InviteButton" @click="toInvite" >
+          邀请
+        </button>
 
-      <button class="ManageMemberACButton" >
-        确认
-      </button>
+        <button class="ManageMemberACButton" >
+          确认
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -52,19 +54,39 @@ export default {
       bol_ManageMember:true,
     };
   },
-
   methods: {
-    cl3(){
-      this.bol_ManageMember = true;
+    toInvite() {
+      this.$store.commit('changeMemberToInvite')
     },
-    close3(){
-      this.bol_ManageMember = false;
-    },
+    close() {
+      this.$store.commit('closeManageMember')
+    }
   },
+  computed: {
+    showManageMember() {
+      return this.$store.getters.showManageMember
+    }
+  }
 };
 </script>
 
 <style scoped>
+.popup-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(207, 207, 207, .3);
+  z-index: 50;
+}
+.popup-container i:hover {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none
+}
 .ManageMemberDialog{
   position: fixed;
   width: 24.63vw;
@@ -79,7 +101,8 @@ export default {
 
 }
 .ManageMemberFont{
-  font-family: Microsoft YaHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.30vh;
@@ -137,7 +160,8 @@ export default {
   height: 2.88vh;
   left: 4.20vw;
   top: 1.15vh;
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.54vh;
@@ -159,11 +183,10 @@ export default {
   /* 白_渐变 */
   background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #E5E5E5;
   /* 浅灰 */
-
-  border: 1px solid #CFCFCF;
   box-sizing: border-box;
   border-radius: 5px;
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.54vh;
@@ -181,7 +204,8 @@ export default {
   /* 按钮绿_渐变 */
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #54A293;
   border-radius: 5px;
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.54vh;

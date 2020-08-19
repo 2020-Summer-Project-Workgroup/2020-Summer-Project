@@ -1,5 +1,25 @@
 import {request} from "@/network/request";
 
+export async function retrieveUserByTel(tel) {
+  return request({
+    url: '/user/tel',
+    method: 'GET',
+    params: {
+      tel: tel
+    }
+  })
+}
+
+export async function retrieveUserByEmail(email) {
+  return request({
+    url: '/user/email',
+    method: 'GET',
+    params: {
+      email: email
+    }
+  })
+}
+
 export function updatePasswordByTel(tel, password) {
   return request({
     url: '/user/tel/password',
