@@ -21,7 +21,7 @@
     
       <div id="bottom">
         <div id="comments" v-for="comment in comments" :key="comment">
-          <el-avatar id="avatar" :src="comment.avatar + '.jpg'"></el-avatar>
+          <i class="el-icon-s-custom" id="avatar"></i>
           <div id="content">
             <div id="commentText">
               {{ comment.name }}
@@ -42,8 +42,8 @@
 
 <script>
 import Edit from '../fileEdit/Edit.vue'
-import addComment from '../../network/edit.js'
-import deleteComment from '../../network/edit.js'
+// import addComment from '../../network/edit.js'
+// import deleteComment from '../../network/edit.js'
 
 export default {
   name: "Comment",
@@ -56,7 +56,7 @@ export default {
       title: "",
       showDel: false,
       commentInput: "",
-      comments: []
+      comments: [{name: "李书实", text: "编辑器会自动进行上传，其需要服务器返回一个JSON数组，包含两个字段：uploaded(true / false)和url(相对路径)。举个例子如下。若没有返回内容或返回内容uploaded不为true，则会出现上传失败的情况。", time: "2020-08-19"}]
     }
   },
   methods: {
@@ -66,7 +66,7 @@ export default {
       //   this.comments.splice(index,1);
       // }
       // deleteComment(userId, fileId, this.commentInput);
-      console.log("Delete！");
+      console.log("Delete!");
     },
     // sendComment: function(userId, commentInput){
     //   
@@ -142,6 +142,7 @@ a {
 
 #avatar {
   flex-shrink: 0;
+  font-size: 2rem;
 }
 
 #content {

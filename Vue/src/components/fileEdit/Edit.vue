@@ -34,10 +34,8 @@ export default {
         // width: 1282.49,
         height: 600,
         readOnly: false,
-        
-        filebrowserImageBrowseUrl: '/browser/browse.php?type=Images',
-        filebrowserImageUploadUrl: '/uploader/upload.php?type=Images'
-        
+        filebrowserImageBrowseUrl: '/temp',
+        filebrowserImageUploadUrl: 'localhost:8036/img'
       }
     };
   },
