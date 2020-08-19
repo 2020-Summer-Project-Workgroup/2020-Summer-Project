@@ -10,6 +10,7 @@
     <router-view/>
     <div class="v-line" id="right-separator"></div>
     <RightSideBar/>
+    <Invite/>
   </div>
 </template>
 
@@ -21,9 +22,10 @@ import LeftSideBar from "@/components/leftSideBar/LeftSideBar";
 import RightSideBar from "@/components/rightSideBar/RightSideBar";
 import AddEmail from "@/components/userspace/AddEmail";
 import AddTel from "@/components/userspace/AddTel";
+import Invite from "@/components/Team/Invite";
 export default {
   name: "Desktop",
-  components: {AddTel, AddEmail, RightSideBar, LeftSideBar, ChangePassword, UserSpace, TabBar}
+  components: {AddTel, AddEmail, RightSideBar, LeftSideBar, ChangePassword, UserSpace, TabBar, Invite}
 }
 </script>
 
