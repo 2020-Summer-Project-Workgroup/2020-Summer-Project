@@ -13,5 +13,8 @@ export default {
   },
   password(state) {
     return state.password
+  },
+  currentGroup(state) {
+    return state.currentGroup
   }
 }
