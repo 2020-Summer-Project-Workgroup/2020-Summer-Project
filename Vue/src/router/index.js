@@ -10,6 +10,7 @@ const Team = () => import('components/fileList/Team')
 const Message = () => import('components/message/Message')
 const CommentMessage = () => import('components/message/Comments')
 const NoticeMessage = () => import('components/message/Notice')
+const Trash = () => import('components/fileList/Trash')
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,10 @@ const routes = [
       {
         path: 'team',
         component: Team
+      },
+      {
+        path: 'trash',
+        component: Trash
       },
       {
         path: 'message',

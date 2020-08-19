@@ -21,10 +21,10 @@ export default {
   },
   computed: {
     showCommentLine() {
-      return this.$route.path === 'comment'
+      return this.$route.path === '/desktop/message/comment'
     },
     showNoticeLine() {
-      return this.$route.path === 'notice'
+      return this.$route.path === '/desktop/message/notice'
     },
   }
 }
