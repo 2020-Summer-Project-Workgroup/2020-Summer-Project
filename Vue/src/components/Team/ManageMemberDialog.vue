@@ -1,43 +1,45 @@
 <template>
-  <div class="ManageMemberDialog" v-if="bol_ManageMember" @click="close1">
-    <div class="ManageMemberBox" @click.stop="">
-      <div id="ManageMember-close">
-        <i class="el-icon-circle-close" ></i>
-      </div>
+  <div class="popup-container" v-if="showManageMember">
+    <div class="ManageMemberDialog">
+      <div class="ManageMemberBox">
+        <div id="ManageMember-close" @click="close">
+          <i class="el-icon-circle-close"></i>
+        </div>
 
-      <div class="ManageMemberHead">
+        <div class="ManageMemberHead">
           <span class="ManageMemberFont">
             协作者
           </span>
-        <tr id="line_co">
-          <td>
-            <hr size="1px" color="#CFCFCF" width="100%"/>
-          </td>
-        </tr>
+          <tr id="line_co">
+            <td>
+              <hr size="1px" color="#CFCFCF" width="100%"/>
+            </td>
+          </tr>
 
-      </div>
-      <div class="ManageMemberBody">
+        </div>
+        <div class="ManageMemberBody">
           <span class="ManageMemberFont">
             管理者
           </span>
-        <tr id="line_manage">
-          <td>
-            <hr size="1px" color="#CFCFCF" width="100%"/>
-          </td>
-        </tr>
-      </div>
-      <div class="DeleteArea">
+          <tr id="line_manage">
+            <td>
+              <hr size="1px" color="#CFCFCF" width="100%"/>
+            </td>
+          </tr>
+        </div>
+        <div class="DeleteArea">
           <span class="DeleteAreaFont">
             拖拽至此删除
           </span>
-      </div>
-      <button class="InviteButton" @click="cl_invite" >
-        邀请
-      </button>
+        </div>
+        <button class="InviteButton" @click="toInvite" >
+          邀请
+        </button>
 
-      <button class="ManageMemberACButton" >
-        确认
-      </button>
+        <button class="ManageMemberACButton" >
+          确认
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -52,19 +54,36 @@ export default {
       bol_ManageMember:true,
     };
   },
-
   methods: {
-    cl3(){
-      this.bol_ManageMember = true;
+    toInvite() {
+      this.$store.commit('changeMemberToInvite')
     },
-    close3(){
-      this.bol_ManageMember = false;
-    },
+    close() {
+      this.$store.commit('closeManageMember')
+    }
   },
+  computed: {
+    showManageMember() {
+      return this.$store.getters.showManageMember
+    }
+  }
 };
 </script>
 
 <style scoped>
+.popup-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(207, 207, 207, .3);
+  z-index: 50;
+}
+.popup-container i:hover {
+  cursor: pointer;
+}
+
 button:focus {
   outline: none
 }

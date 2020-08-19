@@ -42,7 +42,7 @@
         <tbody>
         <tr v-for="file in files" :key="file.name" class="stdFont">
           <i class="el-icon-user" v-if="file.type === 1"></i>
-          <i class="el-icon-user-solid" v-if="file.type === 2"></i>
+          <i class="el-icon-user-solid" v-else-if="file.type === 2"></i>
           <img src="../../assets/收藏.png" v-else-if="file.type === 3" />
           {{ file.name }}
           <i class="el-icon-s-tools"></i>
@@ -79,7 +79,9 @@ export default {
   },
 
   methods: {
+    cl1() {
 
+    }
   },
 };
 </script>
