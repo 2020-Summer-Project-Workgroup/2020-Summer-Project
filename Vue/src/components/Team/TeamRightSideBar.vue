@@ -141,7 +141,8 @@ button:focus {
   #e5e5e5;
   text-align: center;
   border:none;
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
@@ -162,7 +163,8 @@ button:focus {
   #e5e5e5;
   text-align: center;
   border:none;
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
@@ -184,7 +186,8 @@ button:focus {
 
 
 #from {
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
@@ -233,7 +236,8 @@ button:focus {
   width: 12.55vw;
   height: 5.54vh;
   border-radius: 5px;
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
@@ -268,7 +272,8 @@ button:focus {
 
 /* 下拉菜单的链接 */
 .dropdown-content a {
-  font-family: Microsoft YaHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;

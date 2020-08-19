@@ -65,6 +65,9 @@ export default {
 </script>
 
 <style scoped>
+button:focus {
+  outline: none
+}
 .ManageMemberDialog{
   position: fixed;
   width: 24.63vw;
@@ -79,7 +82,8 @@ export default {
 
 }
 .ManageMemberFont{
-  font-family: Microsoft YaHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.30vh;
@@ -137,7 +141,8 @@ export default {
   height: 2.88vh;
   left: 4.20vw;
   top: 1.15vh;
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.54vh;
@@ -159,11 +164,10 @@ export default {
   /* 白_渐变 */
   background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #E5E5E5;
   /* 浅灰 */
-
-  border: 1px solid #CFCFCF;
   box-sizing: border-box;
   border-radius: 5px;
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.54vh;
@@ -181,7 +185,8 @@ export default {
   /* 按钮绿_渐变 */
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #54A293;
   border-radius: 5px;
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.54vh;
