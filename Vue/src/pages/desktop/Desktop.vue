@@ -35,7 +35,10 @@ export default {
     PrivilegeSettingsDialog,
     ManageMemberDialog,
     CreateTeamDialog, TeamRightSideBar, AddTel, AddEmail,
-    LeftSideBar, ChangePassword, UserSpace, TabBar, Invite}
+    LeftSideBar, ChangePassword, UserSpace, TabBar, Invite},
+  created: async function () {
+    await this.$store.dispatch()
+  }
 }
 </script>
 

@@ -1,4 +1,5 @@
 import {
+  retrieveUserByTel,
   updateEmailByTel,
   updatePasswordByEmail,
   updatePasswordByTel, updateTelByEmail,
@@ -29,7 +30,15 @@ export default {
   },
   initState(context) {
     if (!(context.getters.tel === '')) {
-      //
+      retrieveUserByTel(context.getters.tel).then(res => {
+        context.commit('setUserId', res.id)
+        context.commit('updateUsername', res.name)
+        context.commit('updatePassword', res.password)
+        context.commit('updateTel', res.tel)
+        context.commit('updateEmail', res.email)
+      }).catch(err => {
+        console.log(err)
+      })
     } else {
       //
     }
