@@ -7,16 +7,40 @@
 </template>
 
 <script>
+import {readNotice, readTeamNotice} from "@/network/message";
+
 export default {
   name: "Message",
   methods: {
     watch() {
       this.$router.push('/desktop/message')
+      if (this.value > 0) {
+        readNotice(this.userId, this.firstNotice).then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
+        readTeamNotice(this.userId, this.firstTeamNotice).then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
+        this.$store.commit('setNoticeNum', 0)
+      }
     }
   },
   computed: {
+    userId() {
+      return this.$store.getters.userId
+    },
+    firstNotice() {
+      return this.$store.getters.notices[0].id
+    },
+    firstTeamNotice() {
+      return this.$store.getters.teamNotices[0].id
+    },
     value() {
-      return 12
+      return this.$store.getters.noticeNum
     },
     isHidden() {
       return !(this.value > 0)
