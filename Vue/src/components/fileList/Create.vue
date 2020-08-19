@@ -21,7 +21,7 @@
         <div id="blank1"><span class="file-name" @click="toFile">{{ file.title }}</span></div>
         <div id="blank2"><i class="el-icon-s-tools"></i></div>
         <div id="blank3">{{ file.time.split("T")[0] }} {{ file.time.split("T")[1].split(".")[0] }}</div>
-        <div id="blank4"><span class="file-name" @click="delFile">删除文档</span></div>
+        <div id="blank4"><span class="file-name" @click="delFile(file.id)">删除文档</span></div>
       </div>
     </div>
   </div>
@@ -34,8 +34,9 @@ export default {
     toFile() {
 
     },
-    delFile() {
-
+    delFile(fileId) {
+      console.log(fileId)
+      this.$store.commit('moveToTrash', fileId)
     },
 
   },

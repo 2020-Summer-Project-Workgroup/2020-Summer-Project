@@ -18,9 +18,9 @@
     </tr>
     <div id="body" >
       <div id="body-row" v-for="file in files" :key="file.name">
-        <div id="blank1"><a href="" >{{ file.name }}</a></div>
+        <div id="blank1">{{ file.name }}</div>
         <div id="blank2">{{ file.time }}</div>
-        <div id="blank3"><a href="" @click="recovery">恢复文档</a></div>
+        <div id="blank3">恢复文档</div>
       </div>
     </div>
   </div>
@@ -29,28 +29,14 @@
 <script>
 export default {
   name:"create",
-  data: function () {
-    return {
-      files:[
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档有很长的标题，没错很长的标题", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档有很长的标题，没错很长的标题", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档有很长的标题，没错很长的标题", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档有很长的标题，没错很长的标题", writter:"李书实", time:"2020-08-12"},
-        {name:"这是一个示例文档", writter:"李书实", time:"2020-08-12"},
-      ]
-    }
-  },
   methods: {
     recovery: function() {
       
+    }
+  },
+  computed: {
+    files() {
+      return this.$store.getters.trash
     }
   }
 }

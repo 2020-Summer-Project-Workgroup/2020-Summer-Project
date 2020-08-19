@@ -25,8 +25,6 @@ export default {
         context.commit('updatePassword', res.password)
         context.commit('updateTel', res.tel)
         context.commit('updateEmail', res.email)
-        context.commit('setFiles', res.files)
-        context.commit('setFavorites', res.favorites)
         console.log(context.getters.userId)
         context.dispatch('updateNoticeNum', context.getters.userId)
         context.dispatch('updateNotices', context.getters.userId)

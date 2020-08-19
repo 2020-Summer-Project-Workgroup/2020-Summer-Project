@@ -17,7 +17,8 @@ const state = {
   tel: '15911103365',
   email: '',
   password: 'a123456',
-  currentGroup: ''
+  currentGroup: '',
+  currentFile: {}
 }
 
 const store = new Vuex.Store({
