@@ -1,4 +1,7 @@
 export default {
+  setUserId(state, userId) {
+    state.userId = userId
+  },
   updateUsername(state, username) {
     state.username = username
   },

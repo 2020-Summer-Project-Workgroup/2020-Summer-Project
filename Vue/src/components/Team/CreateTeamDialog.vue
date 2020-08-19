@@ -1,15 +1,17 @@
 <template>
-  <div class="CreateTeamDialog" v-if="bol_CreateTeam" @click="close1">
-    <div class="CreateTeamBox" @click.stop="">
-      <div class="NewTeamHead">
+  <div class="popup-container" v-if="showCreateTeam">
+    <div class="CreateTeamDialog" v-if="bol_CreateTeam" @click="close1">
+      <div class="CreateTeamBox" @click.stop="">
+        <div class="NewTeamHead">
           <span class="NewTeamHeadFont">
             新建团队
           </span>
+        </div>
+        <input type="text" value="请输入团队名称" class="InputCreateTeam">
+        <button class="CreateTeamButton" >
+          新建
+        </button>
       </div>
-      <input type="text" value="请输入团队名称" class="InputCreateTeam">
-      <button class="CreateTeamButton" >
-        新建
-      </button>
     </div>
   </div>
 </template>
@@ -30,11 +32,32 @@ export default {
     close1(){
       this.bol_CreateTeam = false;
     },
+  },
+  computed: {
+    showCreateTeam() {
+      return this.$store.getters.showCreateTeam
+    }
   }
 }
 </script>
 
 <style scoped>
+.popup-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(207, 207, 207, .3);
+  z-index: 50;
+}
+.popup-container i:hover {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none
+}
 .CreateTeamDialog{
   position: fixed;
   width: 32.23vw;
@@ -60,7 +83,8 @@ export default {
   top: 5.77vh;
 }
 .NewTeamHeadFont{
-  font-family: Microsoft YaHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 3.23vh;
@@ -80,7 +104,8 @@ export default {
   /* 内外输入框阴影 */
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05), inset 0px 5px 5px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
-  font-family: Microsoft YaHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.30vh;
@@ -97,7 +122,8 @@ export default {
   top: 20.09vh;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #54A293;
   border-radius: 5px;
-  font-family: SimHei;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 2.07vh;

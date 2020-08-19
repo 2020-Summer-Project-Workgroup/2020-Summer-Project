@@ -36,16 +36,6 @@ export function getFile(userId, fileId) {
   })
 }
 
-export function recycleFile(fileId) {
-  return request({
-    url: '/file/user',
-    method: 'post',
-    params: {
-      fileId: fileId
-    }
-  })
-}
-
 export function deleteFile(userId, fileId) {
   return request({
     url: '/file/user',
