@@ -11,6 +11,9 @@
         <hr size="1px" color="#CFCFCF" width="100%"/>
       </td>
     </tr>
+    <button class="NewTeamButton" @click="openNewTeam">
+      新建团队
+    </button>
     <button class="ManageButton" @click="openManageMember">
       管理成员
     </button>
@@ -147,12 +150,36 @@ button:focus {
   background: #E5E5E5;
 }
 
-.ManageButton{
+.NewTeamButton{
   position: relative;
   width: 63.42%;
   height: 6.01%;
   left: 12.89%;
   top: 16.66%;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+  #e5e5e5;
+  text-align: center;
+  border:none;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 25px;
+  color: #616161;
+}
+
+.NewTeamButton:hover {
+  cursor: pointer;
+  background: #E5E5E5;
+}
+
+.ManageButton{
+  position: relative;
+  width: 63.42%;
+  height: 6.01%;
+  left: 12.89%;
+  top: 18.66%;
   background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
   #e5e5e5;
   text-align: center;
@@ -193,7 +220,7 @@ button:focus {
   position: absolute;
   height: 3vh;
   left: 2.7vw;
-  top: 53.07vh;
+  top: 58.07vh;
 }
 
 .RightBarBottom {
@@ -201,10 +228,10 @@ button:focus {
   height: 25vh;
   width:16vw;
   left: 2.5vw;
-  top: 57.38vh;
+  top: 62.38vh;
   line-height: 26px;
   overflow-y: auto;
-
+  border: 0.2px solid #CFCFCF;
 }
 
 #BottomHidden{
@@ -248,13 +275,18 @@ button:focus {
   border:none;
 }
 
+.dropbtn:hover {
+  cursor: pointer;
+  background: #E5E5E5;
+}
+
 /* 容器 <div> - 需要定位下拉内容 */
 .dropdown {
   position: relative;
   width: 63.42%;
   height: 6.01%;
   left: 12.89%;
-  top: 18.5%;
+  top: 20.66%;
   display: inline-block;
 }
 
