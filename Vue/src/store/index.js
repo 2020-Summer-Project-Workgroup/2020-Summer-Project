@@ -16,7 +16,8 @@ const state = {
   username: 'hzy',
   tel: '15911103365',
   email: '',
-  password: 'a123456'
+  password: 'a123456',
+  currentGroup: ''
 }
 
 const store = new Vuex.Store({
