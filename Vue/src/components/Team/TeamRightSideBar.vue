@@ -1,6 +1,6 @@
 <template>
   <div id="RBar">
-    <button class="greenButton">
+    <button class="greenButton" @click="openCreateFile">
       新建
     </button>
     <button class="stdButton">
@@ -83,6 +83,9 @@ export default {
     },
     openNewTeam() {
       this.$store.commit('openCreateTeam')
+    },
+    openCreateFile() {
+      this.$router.push('/desktop/edit')
     }
   },
 };
