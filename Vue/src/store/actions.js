@@ -27,9 +27,10 @@ export default {
         context.commit('updateEmail', res.email)
         context.commit('setFiles', res.files)
         context.commit('setFavorites', res.favorites)
-        context.dispatch('updateNoticeNum')
-        context.dispatch('updateNotices')
-        context.dispatch('updateTeamNotices')
+        console.log(context.getters.userId)
+        context.dispatch('updateNoticeNum', context.getters.userId)
+        context.dispatch('updateNotices', context.getters.userId)
+        context.dispatch('updateTeamNotices', context.getters.userId)
       }).catch(err => {
         console.log(err)
       })
