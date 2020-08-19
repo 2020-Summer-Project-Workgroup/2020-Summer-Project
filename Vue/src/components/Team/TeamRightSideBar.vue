@@ -3,7 +3,7 @@
     <button class="greenButton" @click="openCreateFile">
       新建
     </button>
-    <button class="stdButton">
+    <button class="stdButton" @click="openFollowFile">
       从模板新建
     </button>
     <tr id="line">
@@ -86,6 +86,9 @@ export default {
     },
     openCreateFile() {
       this.$router.push('/desktop/edit')
+    },
+    openFollowFile(){
+      this.$router.push('/desktop/followTeamplate')
     }
   },
 };
