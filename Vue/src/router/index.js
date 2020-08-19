@@ -11,6 +11,7 @@ const Message = () => import('components/message/Message')
 const CommentMessage = () => import('components/message/Comments')
 const NoticeMessage = () => import('components/message/Notice')
 const Trash = () => import('components/fileList/Trash')
+const Recent = () => import('components/fileList/Recent')
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,10 @@ const routes = [
       {
         path: '',
         redirect: 'collect'
+      },
+      {
+        path: 'recent',
+        component: Recent
       },
       {
         path: 'collect',

@@ -9,7 +9,10 @@
     <div class="v-line" id="left-separator"></div>
     <router-view/>
     <div class="v-line" id="right-separator"></div>
-    <RightSideBar/>
+    <TeamRightSideBar/>
+    <CreateTeamDialog/>
+    <PrivilegeSettingsDialog/>
+    <ManageMemberDialog/>
     <Invite/>
   </div>
 </template>
@@ -19,13 +22,20 @@ import TabBar from "@/components/tabBar/TabBar";
 import UserSpace from "@/components/userspace/UserSpace";
 import ChangePassword from "@/components/userspace/ChangePassword";
 import LeftSideBar from "@/components/leftSideBar/LeftSideBar";
-import RightSideBar from "@/components/rightSideBar/RightSideBar";
 import AddEmail from "@/components/userspace/AddEmail";
 import AddTel from "@/components/userspace/AddTel";
 import Invite from "@/components/Team/Invite";
+import TeamRightSideBar from "@/components/Team/TeamRightSideBar";
+import CreateTeamDialog from "@/components/Team/CreateTeamDialog";
+import ManageMemberDialog from "@/components/Team/ManageMemberDialog";
+import PrivilegeSettingsDialog from "@/components/Team/PrivilegeSettingsDialog";
 export default {
   name: "Desktop",
-  components: {AddTel, AddEmail, RightSideBar, LeftSideBar, ChangePassword, UserSpace, TabBar, Invite}
+  components: {
+    PrivilegeSettingsDialog,
+    ManageMemberDialog,
+    CreateTeamDialog, TeamRightSideBar, AddTel, AddEmail,
+    LeftSideBar, ChangePassword, UserSpace, TabBar, Invite}
 }
 </script>
 

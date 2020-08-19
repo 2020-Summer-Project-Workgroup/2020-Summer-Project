@@ -1,15 +1,17 @@
 <template>
-  <div class="CreateTeamDialog" v-if="bol_CreateTeam" @click="close1">
-    <div class="CreateTeamBox" @click.stop="">
-      <div class="NewTeamHead">
+  <div class="popup-container" v-if="showCreateTeam">
+    <div class="CreateTeamDialog" v-if="bol_CreateTeam" @click="close1">
+      <div class="CreateTeamBox" @click.stop="">
+        <div class="NewTeamHead">
           <span class="NewTeamHeadFont">
             新建团队
           </span>
+        </div>
+        <input type="text" value="请输入团队名称" class="InputCreateTeam">
+        <button class="CreateTeamButton" >
+          新建
+        </button>
       </div>
-      <input type="text" value="请输入团队名称" class="InputCreateTeam">
-      <button class="CreateTeamButton" >
-        新建
-      </button>
     </div>
   </div>
 </template>
@@ -30,11 +32,29 @@ export default {
     close1(){
       this.bol_CreateTeam = false;
     },
+  },
+  computed: {
+    showCreateTeam() {
+      return this.$store.getters.showCreateTeam
+    }
   }
 }
 </script>
 
 <style scoped>
+.popup-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(207, 207, 207, .3);
+  z-index: 50;
+}
+.popup-container i:hover {
+  cursor: pointer;
+}
+
 button:focus {
   outline: none
 }

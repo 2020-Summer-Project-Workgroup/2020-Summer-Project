@@ -1,72 +1,74 @@
 <template>
-  <div class="ManageMemberDialog" v-if="bol_ManageMember" @click="close1">
-    <div class="ManageMemberBox" @click.stop="">
-      <div id="PrivilegeSettings-close">
-        <i class="el-icon-circle-close" ></i>
-      </div>
-      <div class="PrivilegeSettingsHead">
-        这是文件名
-      </div>
-      <div class="choose">
-        <label class="radio">仅团队内访问<input type="radio" name="radio" value="1" checked><i></i></label>
-        <label class="radio">向团队外开放<input type="radio" value="2" name="radio"><i></i></label>
-      </div>
-      <tr id="line">
-        <td>
-          <hr size="1px" color="#CFCFCF" width="100%"/>
-        </td>
-      </tr>
-      <div class="PrivilegeTableHead">
+  <div class="popup-container" v-if="showPrivSetting">
+    <div class="ManageMemberDialog">
+      <div class="ManageMemberBox">
+        <div id="PrivilegeSettings-close" @click="close">
+          <i class="el-icon-circle-close" ></i>
+        </div>
+        <div class="PrivilegeSettingsHead">
+          这是文件名
+        </div>
+        <div class="choose">
+          <label class="radio">仅团队内访问<input type="radio" name="radio" value="1" checked><i></i></label>
+          <label class="radio">向团队外开放<input type="radio" value="2" name="radio"><i></i></label>
+        </div>
+        <tr id="line">
+          <td>
+            <hr size="1px" color="#CFCFCF" width="100%"/>
+          </td>
+        </tr>
+        <div class="PrivilegeTableHead">
         <span class="PrivilegeTableHead-member">
           成员
         </span>
-        <span class="PrivilegeTableHead-view">
+          <span class="PrivilegeTableHead-view">
           查看
         </span>
-        <span class="PrivilegeTableHead-edit">
+          <span class="PrivilegeTableHead-edit">
           编辑
         </span>
-      </div>
-<!--
-      <div class="NewStyleCheckbox">
-        <input type="checkbox" value="1" id="check1" name=""/>
-        <label for="check1"></label>
-      </div>
--->
-      <div class="PrivilegeTableBody">
-        <tr class="PersonHeight">
-          <span class="Privilege-Username">melon1</span>
-          <span class="space-NameAndView"></span>
-          <input type="CheckBox" name="view" value="1" iconColor="#54A193"/>
-          <span class="space-ViewAndEdit"></span>
-          <input type="CheckBox" name="edit" value="2" />
-        </tr>
-        <tr class="PersonHeight">
-          <span class="Privilege-Username">melon2</span>
-          <span class="space-NameAndView"></span>
-          <input type="CheckBox" name="view" value="1"/>
-          <span class="space-ViewAndEdit"></span>
-          <input type="CheckBox" name="edit" value="2" />
-        </tr>
-        <tr class="PersonHeight">
-          <span class="Privilege-Username">melon3</span>
-          <span class="space-NameAndView"></span>
-          <input type="CheckBox" name="view" value="1"/>
-          <span class="space-ViewAndEdit"></span>
-          <input type="CheckBox" name="edit" value="2" />
-        </tr>
-        <tr class="PersonHeight">
-          <span class="Privilege-Username">melon4</span>
-          <span class="space-NameAndView"></span>
-          <input type="CheckBox" name="view" value="1"/>
-          <span class="space-ViewAndEdit"></span>
-          <input type="CheckBox" name="edit" value="2" />
-        </tr>
-      </div>
+        </div>
+        <!--
+              <div class="NewStyleCheckbox">
+                <input type="checkbox" value="1" id="check1" name=""/>
+                <label for="check1"></label>
+              </div>
+        -->
+        <div class="PrivilegeTableBody">
+          <tr class="PersonHeight">
+            <span class="Privilege-Username">melon1</span>
+            <span class="space-NameAndView"></span>
+            <input type="CheckBox" name="view" value="1" iconColor="#54A193"/>
+            <span class="space-ViewAndEdit"></span>
+            <input type="CheckBox" name="edit" value="2" />
+          </tr>
+          <tr class="PersonHeight">
+            <span class="Privilege-Username">melon2</span>
+            <span class="space-NameAndView"></span>
+            <input type="CheckBox" name="view" value="1"/>
+            <span class="space-ViewAndEdit"></span>
+            <input type="CheckBox" name="edit" value="2" />
+          </tr>
+          <tr class="PersonHeight">
+            <span class="Privilege-Username">melon3</span>
+            <span class="space-NameAndView"></span>
+            <input type="CheckBox" name="view" value="1"/>
+            <span class="space-ViewAndEdit"></span>
+            <input type="CheckBox" name="edit" value="2" />
+          </tr>
+          <tr class="PersonHeight">
+            <span class="Privilege-Username">melon4</span>
+            <span class="space-NameAndView"></span>
+            <input type="CheckBox" name="view" value="1"/>
+            <span class="space-ViewAndEdit"></span>
+            <input type="CheckBox" name="edit" value="2" />
+          </tr>
+        </div>
 
-      <button class="ManageMemberACButton" >
-        确认
-      </button>
+        <button class="ManageMemberACButton" >
+          确认
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -87,14 +89,32 @@ export default {
     cl3(){
       this.bol_ManageMember = true;
     },
-    close3(){
-      this.bol_ManageMember = false;
-    },
+    close() {
+      this.$store.commit('closePrivSetting')
+    }
   },
+  computed: {
+    showPrivSetting() {
+      return this.$store.getters.showPrivSetting
+    }
+  }
 };
 </script>
 
 <style scoped>
+.popup-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(207, 207, 207, .3);
+  z-index: 50;
+}
+.popup-container i:hover {
+  cursor: pointer;
+}
+
 button:focus {
   outline: none
 }
