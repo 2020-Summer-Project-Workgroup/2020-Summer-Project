@@ -13,5 +13,8 @@ export default {
   },
   updateEmail(state, email) {
     state.email = email
+  },
+  setCurrentFile(state, file) {
+    state.currentFile = file
   }
 }

@@ -30,8 +30,8 @@
 export default {
   name:"create",
   methods: {
-    recovery: function() {
-      
+    recovery(fileId) {
+      this.$store.commit('recovery', fileId)
     }
   },
   computed: {

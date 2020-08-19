@@ -31,8 +31,8 @@
 export default {
   name: "Create",
   methods: {
-    toFile() {
-
+    toFile(file) {
+      this.$store.commit('setCurrentFile', file)
     },
     delFile(fileId) {
       console.log(fileId)
