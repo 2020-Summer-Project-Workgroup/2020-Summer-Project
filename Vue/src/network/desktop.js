@@ -20,68 +20,26 @@ export async function retrieveUserByEmail(email) {
   })
 }
 
-export function updatePasswordByTel(tel, password) {
+export function updatePassword(id, oldPassword, newPassword) {
   return request({
-    url: '/user/tel/password',
+    url: '/user/password',
     method: 'PUT',
     params: {
-      tel: tel,
-      password: password
+      id: id,
+      oldPassword: oldPassword,
+      newPassword: newPassword
     }
   })
 }
 
-export function updatePasswordByEmail(email, password) {
+export function updateUserInfo(id, field, type) {
   return request({
-    url: '/user/email/password',
+    url: '/user/info',
     method: 'PUT',
     params: {
-      email: email,
-      password: password
-    }
-  })
-}
-
-export function updateUsernameByTel(tel, username) {
-  return request({
-    url: '/user/tel/username',
-    method: 'PUT',
-    params: {
-      tel: tel,
-      username: username
-    }
-  })
-}
-
-export function updateUsernameByEmail(email, username) {
-  return request({
-    url: '/user/email/username',
-    method: 'PUT',
-    params: {
-      email: email,
-      username: username
-    }
-  })
-}
-
-export function updateTelByEmail(email, tel) {
-  return request({
-    url: '/user/email/tel',
-    method: 'PUT',
-    params: {
-      email: email,
-      tel: tel
-    }
-  })
-}
-
-export function updateEmailByTel(tel, email) {
-  return request({
-    url: '/user/tel/email',
-    method: 'PUT',
-    params: {
-      tel: tel,
-      email: email
+      id: id,
+      field: field,
+      type: type
     }
   })
 }
