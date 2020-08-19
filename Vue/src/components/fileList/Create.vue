@@ -18,7 +18,7 @@
     </tr>
     <div id="body" >
       <div id="body-row" v-for="file in files" :key="file.id">
-        <div id="blank1"><span class="file-name" @click="toFile">{{ file.title }}</span></div>
+        <div id="blank1"><span class="file-name" @click="toFile(file)">{{ file.title }}</span></div>
         <div id="blank2"><i class="el-icon-s-tools"></i></div>
         <div id="blank3">{{ file.time.split("T")[0] }} {{ file.time.split("T")[1].split(".")[0] }}</div>
         <div id="blank4"><span class="file-name" @click="delFile(file.id)">删除文档</span></div>
@@ -31,8 +31,8 @@
 export default {
   name: "Create",
   methods: {
-    toFile() {
-
+    toFile(file) {
+      this.$store.commit('setCurrentFile', file)
     },
     delFile(fileId) {
       console.log(fileId)
