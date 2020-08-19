@@ -108,6 +108,11 @@ a {
   /* padding-top: 4.61vh;
   padding-left: 4.53vw; */
   overflow-y: auto;
+  position: absolute;
+  left:17.6vw;
+  bottom: 0;
+  width: 62.5vw;
+  height: calc(100vh - 68px);
 }
 
 #top {
@@ -121,8 +126,10 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-top: 48rem;
-  width: 90%;
+  position: relative;
+  margin-top: 50rem;
+  left: 25px;
+  width: 80%;
 }
 
 #font_comment {
