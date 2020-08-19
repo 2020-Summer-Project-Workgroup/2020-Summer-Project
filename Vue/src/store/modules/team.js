@@ -1,6 +1,6 @@
 export default {
   state: {
-    showInvite: false,
+    showInvite: true,
     showManageMember: false,
     showPrivSetting: false,
     showCreateTeam: false
