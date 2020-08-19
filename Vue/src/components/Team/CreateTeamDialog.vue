@@ -1,7 +1,7 @@
 <template>
   <div class="popup-container" v-if="showCreateTeam">
     <div class="CreateTeamDialog" >
-      <i class="el-icon-circle-close" id="close-invite" @click="close"></i>
+      <i class="el-icon-circle-close" id="close-create-team" @click="close"></i>
       <div class="CreateTeamBox">
         <div class="NewTeamHead">
           <span class="NewTeamHeadFont">
@@ -21,12 +21,9 @@
 <script>
 export default {
   methods: {
-    cl1(){
-      this.bol_CreateTeam = true;
-    },
-    close1(){
-      this.bol_CreateTeam = false;
-    },
+    close() {
+      this.$store.commit('closeCreateTeam')
+    }
   },
   computed: {
     showCreateTeam() {
@@ -48,6 +45,14 @@ export default {
 }
 .popup-container i:hover {
   cursor: pointer;
+}
+
+#close-create-team {
+  position: absolute;
+  right: 5.26%;
+  top: 4.86%;
+  font-size: 30px;
+  color: #CFCFCF;
 }
 
 button:focus {
