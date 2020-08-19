@@ -15,8 +15,25 @@
               <hr size="1px" color="#CFCFCF" width="100%"/>
             </td>
           </tr>
-
         </div>
+
+        <div class="CoMember_Person">
+            <div class="OneUser_ma">
+              <i class="el-icon-s-custom" id="avatar"></i>
+              <div class="UserName">
+                LSSSSSSS
+              </div>
+              <i class="el-icon-setting" id="tool"></i>
+            </div>
+          <div class="OneUser_ma">
+            <i class="el-icon-s-custom" id="avatar"></i>
+            <div class="UserName">
+              LSSSSSSS
+            </div>
+            <i class="el-icon-setting" id="tool"></i>
+          </div>
+        </div>
+
         <div class="ManageMemberBody">
           <span class="ManageMemberFont">
             管理者
@@ -27,11 +44,36 @@
             </td>
           </tr>
         </div>
+        <div class="ManageMember_Person">
+          <div class="OneUser_co">
+            <i class="el-icon-s-custom" id="avatar"></i>
+            <div class="UserName">
+              LSSSSSSS
+            </div>
+            <i class="el-icon-setting" id="tool"></i>
+          </div>
+          <div class="OneUser_co">
+            <i class="el-icon-s-custom" id="avatar"></i>
+            <div class="UserName">
+              LSSSSSSS
+            </div>
+            <i class="el-icon-setting" id="tool"></i>
+          </div>
+          <div class="OneUser_co">
+            <i class="el-icon-s-custom" id="avatar"></i>
+            <div class="UserName">
+              LSSSSSSS
+            </div>
+            <i class="el-icon-setting" id="tool"></i>
+          </div>
+        </div>
+        <!--
         <div class="DeleteArea">
           <span class="DeleteAreaFont">
             拖拽至此删除
           </span>
         </div>
+        -->
         <button class="InviteButton" @click="toInvite" >
           邀请
         </button>
@@ -71,6 +113,7 @@ export default {
 </script>
 
 <style scoped>
+
 .popup-container {
   position: absolute;
   top: 0;
@@ -114,16 +157,67 @@ button:focus {
   top:5.85vh;
   left:3.02vw;
   width:18.38vw;
-  height:12.81vh;
-
+  height:3.75vh;
 }
 .ManageMemberBody{
   position: absolute;
   width: 18.38vw;
-  height: 17.55vh;
+  height: 3.75vh;
   left:3.02vw;
   top:20.5vh;
-
+}
+.CoMember_Person{
+  position: absolute;
+  width: 280px;
+  height: 60px;
+  left: 47px;
+  top: 75px;
+  overflow-y: auto;
+}
+.ManageMember_Person{
+  position: absolute;
+  width: 280px;
+  height: 140px;
+  left: 47px;
+  top: 180px;
+  overflow-y: auto;
+}
+.OneUser_ma {
+  position: relative;
+  top: 1px;
+  width: 255px;
+  height: 50px;
+}
+.OneUser_co{
+  position: relative;
+  top: 1px;
+  width: 255px;
+  height: 50px;
+}
+#avatar {
+  top:5px;
+  position: absolute;
+  left: 5px;
+  font-size: 2rem;
+}
+#tool{
+  top:5px;
+  position: absolute;
+  left: 210px;
+  font-size: 2rem;
+}
+.UserName{
+  position: absolute;
+  top:8px;
+  left: 70px;
+  font-family: "Microsoft YaHei", "微软雅黑";
+  font-size: 20px;
+  width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  float: left;
 }
 #line_co{
   position: absolute;
