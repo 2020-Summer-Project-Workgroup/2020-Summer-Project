@@ -14,7 +14,7 @@
           <span class="invite-user-name">{{user.name}}</span>
           <span class="invite-user-contact" v-if="!(user.tel === '')">{{user.tel}}</span>
           <span class="invite-user-contact" v-else>{{user.email}}</span>
-          <button class="button-invite">邀请</button>
+          <button class="button-invite" @click="inviteUser(user.id)">邀请</button>
         </div>
       </div>
     </div>
@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import {inviteUser, searchUser} from "@/network/team";
+
 export default {
   name: "Invite",
   data() {
@@ -56,7 +58,25 @@ export default {
     },
     // 网络请求相关
     search() {
-      this.userList[0].name = this.userId
+      searchUser(this.userId).then(res => {
+        if (!(res instanceof undefined)) {
+          this.userList = res
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    inviteUser(userId) {
+      inviteUser(userId, this.$store.getters.currentGroup).then(res => {
+        if (res === 'Yes') {
+          this.$message({
+            message: '邀请成功！',
+            type: 'success'
+          })
+        } else {
+          this.$message.error('网络错误，邀请失败！')
+        }
+      })
     }
   },
   computed: {

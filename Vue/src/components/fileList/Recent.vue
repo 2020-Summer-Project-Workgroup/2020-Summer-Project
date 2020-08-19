@@ -1,13 +1,10 @@
 <template>
-  <div id="create">
+  <div id="collect">
     <div id="head">
       <tr>
         <th id="MyCollectFont">
           最近浏览
-          <i class="el-icon-user"></i>
-        </th>
-        <th id="Creater">
-          创建者
+          <i class="el-icon-time"></i>
         </th>
         <th id="CollectTime">
           修改时间
@@ -22,9 +19,8 @@
     <div id="body" >
       <div id="body-row" v-for="file in files" :key="file.name">
         <div id="blank1"><a href="" >{{ file.name }}</a></div>
-        <td id="blank2"><a href="">{{ file.writter }}</a> </td>
-        <td id="blank3">{{ file.time }}</td>
-        <td id="blank4"><a href="" @click="delFile">删除记录</a></td>
+        <div id="blank2">{{ file.time }}</div>
+        <div id="blank3"><a href="" @click="delFile">删除记录</a></div>
       </div>
     </div>
   </div>
@@ -70,12 +66,15 @@ a {
   text-decoration: none;
 }
 
-#create {
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
+.file-name {
+  color: #616161;
+  text-decoration: none;
+}
+.file-name:hover {
+  cursor: pointer;
+  color: #54A193
+}
+#collect {
   position: absolute;
   left:17.6vw;
   bottom: 0;
@@ -85,73 +84,66 @@ a {
 }
 #head{
   position: absolute;
-  bottom: 82.90vh;
-  left: 6.40vw;
+  bottom: 91%;
+  left: 10%;
 }
 #MyCollectFont{
-  width: 8.28vw;
-  height: 4.61vh;
-  font-family: Microsoft YaHei;
+  height: 40px;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 3.23vh;
-  line-height: 4.27vh;
+  font-size: 28px;
+  line-height: 37px;
   color: #616161;
 }
-#Creater{
-  position: absolute;
-  left: 25.31vw;
-  top: 1vh;
-  width: 4vw;
-  height: 3.23vh;
-  font-family: Microsoft YaHei;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 2.30vh;
-  line-height: 3.02vh;
-  color: #CFCFCF;
-}
+
 #CollectTime{
-  position: absolute;
-  width: 6.56vw;
-  height: 3.23vh;
-  left: 35.66vw;
-  top: 1vh;
-  font-family: Microsoft YaHei;
+  position: relative;
+  width: 60%;
+  height: 60%;
+  left: 75%;
+  top: 50%;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 2.30vh;
-  line-height: 3.02vh;
+  font-size: 20px;
+  line-height: 26px;
   color: #CFCFCF;
 }
+
 #line{
   position: absolute;
-  width: 49.94vw;
+  width: 80%;
   height: 0;
-  left: 5.10vw;
-  bottom: 81.29vh;
+  left: 10%;
+  bottom: 89%;
   border: 0.2px solid #CFCFCF;
 }
+
 #body{
   position: absolute;
-  height: 78vh;
-  width: 56vw;
-  left: 6.40vw;
-  top: 11.66vh;
+  height: 85%;
+  width: 80%;
+  left: 10%;
+  top:13%;
   overflow-y: auto;
   overflow-x: hidden ;
   bottom: 0;
 }
 #body-row {
-  top:0.5vh;
-  height: 3rem;
+  position: relative;
+  top:1%;
+  height: 8%;
   valign: bottom;
 }
 
 #blank1 {
-  width: 25vw;
-  height: 4.15vh;
-  font-family: Microsoft YaHei;
+  width: 50%;
+  height: 100%;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
@@ -165,40 +157,39 @@ a {
 
 #blank2 {
   position: absolute;
-  left: 25.31vw;
-  margin-top: -3.7vh;
-  font-family: Microsoft YaHei;
+  height: 100%;
+  left: 64%;
+  margin-top: -5%;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 26px;
   color: #616161;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  float: left;
 }
 
 #blank3 {
   position: absolute;
-  left: 35.66vw;
-  margin-top: -3.7vh;
-  font-family: Microsoft YaHei;
+  height: 100%;
+  left: 85%;
+  margin-top: -5%;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 26px;
   color: #616161;
-}
-
-#blank4 {
-  position: absolute;
-  left: 44.66vw;
-  margin-top: -3.7vh;
-  font-family: Microsoft YaHei;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 26px;
-
-  /* 深灰 */
-
-  color: #616161;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  float: left;
 }
 </style>
