@@ -1,4 +1,4 @@
-import {getNotice, getNoticeNum, getTeamNotice} from "@/network/message";
+import {getNotice, getNoticeNum, getTeamNotice, updateTeamNoticeStatus} from "@/network/message";
 
 export default {
   state: {
@@ -15,6 +15,13 @@ export default {
     },
     setTeamNotices(state, teamNotices) {
       state.teamNotices = teamNotices
+    },
+    updateTeamNoticeStatus(state, payload) {
+      for(let notice of state.notices) {
+        if (payload.noticeId === notice.id) {
+          notice.type = payload.status
+        }
+      }
     }
   },
   actions: {
@@ -47,9 +54,30 @@ export default {
       }).catch(err => {
         console.log(err)
       })
+    },
+    updateTeamNoticeStatus(context, payload) {
+      updateTeamNoticeStatus(payload.noticeId, payload.type).then(res => {
+        if (res === 'Yes') {
+          context.commit({
+            type: 'updateTeamNoticeStatus',
+            noticeId: payload.noticeId,
+            status: payload.type
+          })
+        }
+      }).catch(err => {
+        console.log(err)
+      })
     }
   },
   getters: {
-
+    noticeNum(state) {
+      return state.noticeNum
+    },
+    notices(state) {
+      return state.notices
+    },
+    teamNotices(state) {
+      return state.teamNotices
+    }
   }
 }

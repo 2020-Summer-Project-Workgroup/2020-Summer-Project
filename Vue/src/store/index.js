@@ -10,6 +10,7 @@ import message from "@/store/modules/message";
 Vue.use(Vuex)
 
 const state = {
+  userId: '',
   username: 'hzy',
   tel: '15911103365',
   email: '',

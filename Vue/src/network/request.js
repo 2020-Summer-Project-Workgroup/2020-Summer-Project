@@ -21,7 +21,7 @@ export function request(config) {
   axios.defaults.withCredentials = true; // 携带cookie
   axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'; // 判断是否为ajax请求
   const instance = axios.create({
-    baseURL: 'http://localhost:8036',
+    baseURL: 'http://39.97.237.71/:8036',
     timeout: 10000
   })
   instance.interceptors.request.use(config => {
