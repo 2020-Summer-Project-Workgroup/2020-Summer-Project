@@ -43,7 +43,7 @@ name: "FollowTemplate"
 }
 #line{
   position: absolute;
-  width: 983.04px;
+  width: 42.5vw;
   height: 0px;
   left: 95.98px;
   bottom: 708.38px;
@@ -57,7 +57,7 @@ name: "FollowTemplate"
   position: absolute;
   width: 170px;
   height: 228px;
-  left: 162px;
+  left: 120px;
   top: 149px;
   /* 浅绿 */
   background: #F2F4F4;
@@ -66,14 +66,14 @@ name: "FollowTemplate"
   position: absolute;
   width: 170px;
   height: 228px;
-  left: 505px;
+  left: 350px;
   top: 149px;
 }
 #icon3{
   position: absolute;
   width: 170px;
   height: 228px;
-  left:854px;
+  left:580px;
   top:149px;
 }
 </style>

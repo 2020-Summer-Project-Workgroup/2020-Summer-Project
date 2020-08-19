@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import FollowTemplate from "../components/followTemplate/FollowTemplate";
 
 const Login = () => import('pages/login/Login')
 const Register = () => import('pages/register/Register')
@@ -60,6 +61,10 @@ const routes = [
       {
         path: 'edit',
         component: Comment
+      },
+      {
+        path: 'followTeamplate',
+        component: FollowTemplate
       },
       {
         path: 'message',
