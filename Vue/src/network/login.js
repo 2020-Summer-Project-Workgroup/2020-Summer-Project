@@ -21,23 +21,3 @@ export function loginByEmail(email, password) {
     }
   })
 }
-
-export function retrieveUserByTel(tel) {
-  return request({
-    url: '/user/tel',
-    method: 'GET',
-    params: {
-      tel: tel
-    }
-  })
-}
-
-export function retrieveUserByEmail(email) {
-  return request({
-    url: '/user/email',
-    method: 'GET',
-    params: {
-      email: email
-    }
-  })
-}

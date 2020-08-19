@@ -5,6 +5,7 @@ import actions from "@/store/actions";
 import getters from "@/store/getters";
 import desktop from "@/store/modules/desktop";
 import team from "@/store/modules/team";
+import message from "@/store/modules/message";
 
 Vue.use(Vuex)
 
@@ -22,7 +23,8 @@ const store = new Vuex.Store({
   getters,
   modules: {
     desktop,
-    team
+    team,
+    message
   }
 })
 
