@@ -1,7 +1,8 @@
 <template>
   <div class="popup-container" v-if="showCreateTeam">
-    <div class="CreateTeamDialog" v-if="bol_CreateTeam" @click="close1">
-      <div class="CreateTeamBox" @click.stop="">
+    <div class="CreateTeamDialog" >
+      <i class="el-icon-circle-close" id="close-invite" @click="close"></i>
+      <div class="CreateTeamBox">
         <div class="NewTeamHead">
           <span class="NewTeamHeadFont">
             新建团队
@@ -19,12 +20,6 @@
 
 <script>
 export default {
-  data () {
-    return {
-      bol_CreateTeam:false,
-    }
-  },
-
   methods: {
     cl1(){
       this.bol_CreateTeam = true;

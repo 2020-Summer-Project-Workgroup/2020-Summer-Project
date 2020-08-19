@@ -12,6 +12,7 @@ const CommentMessage = () => import('components/message/Comments')
 const NoticeMessage = () => import('components/message/Notice')
 const Trash = () => import('components/fileList/Trash')
 const Recent = () => import('components/fileList/Recent')
+const Edit = () => import('components/fileEdit/Edit')
 
 Vue.use(VueRouter)
 
@@ -55,6 +56,10 @@ const routes = [
       {
         path: 'trash',
         component: Trash
+      },
+      {
+        path: 'trash',
+        component: Edit
       },
       {
         path: 'message',
