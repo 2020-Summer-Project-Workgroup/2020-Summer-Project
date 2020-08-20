@@ -45,15 +45,7 @@ export default {
   },
   computed: {
     comments() {
-      return [
-        {
-          id: '238yer19fiqrf81',
-          type: 1,
-          sendName: '不知名灰烬',
-          content: '不知名灰烬',
-          time: '5月22日 18:43'
-        }
-      ]
+      return this.$store.getters.teamNotices
     }
   }
 }

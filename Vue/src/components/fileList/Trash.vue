@@ -20,7 +20,7 @@
       <div id="body-row5" v-for="file in files" :key="file.name">
         <div id="blank9">{{ file.title }}</div>
         <div id="blank10">{{ file.time }}</div>
-        <div id="blank11">恢复文档</div>
+        <div id="blank11" class="file-name" @click="recovery(file.id)">恢复文档</div>
       </div>
     </div>
   </div>
@@ -30,8 +30,8 @@
 export default {
   name:"create",
   methods: {
-    recovery: function() {
-      
+    recovery(fileId) {
+      this.$store.commit('recovery', fileId)
     }
   },
   computed: {
@@ -119,6 +119,7 @@ a {
   overflow-x: hidden ;
   bottom: 0;
 }
+
 #body-row5 {
   position: absolute;
   top:1%;
