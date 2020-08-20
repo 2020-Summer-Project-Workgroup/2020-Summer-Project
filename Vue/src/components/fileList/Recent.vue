@@ -1,23 +1,23 @@
 <template>
-  <div id="collect">
-    <div id="head">
+  <div id="collect3">
+    <div id="head3">
       <tr>
-        <th id="MyCollectFont">
+        <th id="MyCollectFont3">
           最近浏览
           <i class="el-icon-time"></i>
         </th>
-        <th id="CollectTime">
+        <th id="CollectTime3">
           修改时间
         </th>
       </tr>
     </div>
-    <tr id="line">
+    <tr id="line3">
       <td>
         <hr size="1px" color="#CFCFCF" width="100%"/>
       </td>
     </tr>
-    <div id="body" >
-      <div id="body-row" v-for="file in files" :key="file.name">
+    <div id="body3" >
+      <div id="body-row3" v-for="file in files" :key="file.name">
         <div id="blank15"><a href="" >{{ file.name }}</a></div>
         <div id="blank16">{{ file.time }}</div>
         <div id="blank17"><a href="" @click="delFile">删除记录</a></div>
@@ -74,7 +74,7 @@ a {
   cursor: pointer;
   color: #54A193
 }
-#collect {
+#collect3 {
   position: absolute;
   left:17.6vw;
   bottom: 0;
@@ -82,12 +82,12 @@ a {
   height: calc(100vh - 68px);
   background-color: rgba(242, 244, 244, 1);
 }
-#head{
+#head3{
   position: absolute;
   bottom: 91%;
   left: 10%;
 }
-#MyCollectFont{
+#MyCollectFont3{
   height: 40px;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -98,7 +98,7 @@ a {
   color: #616161;
 }
 
-#CollectTime{
+#CollectTime3{
   position: relative;
   width: 60%;
   height: 60%;
@@ -113,7 +113,7 @@ a {
   color: #CFCFCF;
 }
 
-#line{
+#line3{
   position: absolute;
   width: 80%;
   height: 0;
@@ -122,7 +122,7 @@ a {
   border: 0.2px solid #CFCFCF;
 }
 
-#body{
+#body3{
   position: absolute;
   height: 85%;
   width: 80%;
@@ -132,7 +132,7 @@ a {
   overflow-x: hidden ;
   bottom: 0;
 }
-#body-row {
+#body-row3 {
   position: relative;
   top:1%;
   height: 8%;
