@@ -16,5 +16,8 @@ export default {
   },
   currentGroup(state) {
     return state.currentGroup
+  },
+  currentFile(state) {
+    return state.currentFile
   }
 }

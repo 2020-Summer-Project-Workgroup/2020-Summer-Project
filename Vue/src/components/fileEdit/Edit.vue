@@ -6,7 +6,7 @@
          <div id="blank"></div>
          <el-button id="save" :plain="true" @click="upload">保存</el-button>
       </div>
-      <ckeditor id="middle" v-model="editorData" :config="editorConfig"></ckeditor> 
+      <ckeditor id="middle" v-model="editorData" :config="editorConfig"></ckeditor>
     </div>
     
    </div>
@@ -17,7 +17,6 @@ import Vue from 'vue'
 import CKEditor from 'ckeditor4-vue'
 import newFile from '../../network/edit.js'
 // import updateFile from '../../network/edit.js'
-import getFile from '../../network/edit.js'
 
 Vue.use(CKEditor);
 // CKEditor.config.readOnly = true;
@@ -59,11 +58,13 @@ export default {
     }
   },
   created() {
-    getFile(this.$store.getters.userId, this.$store.getters.fileId).then(res => {
-        console.log(res);
-      }).catch(err => {
-         console.log(err);
-      });
+    this.title = this.file.title
+    this.editorData = this.file.content
+  },
+  computed: {
+    file() {
+      return this.$store.getters.currentFile
+    }
   }
   
 }
