@@ -15,7 +15,7 @@
 <script>
 import Vue from 'vue'
 import CKEditor from 'ckeditor4-vue'
-import newFile from '../../network/edit.js'
+import { newFile } from '@/network/edit.js'
 // import updateFile from '../../network/edit.js'
 
 Vue.use(CKEditor);
