@@ -33,6 +33,7 @@ export default {
   methods: {
     toFile(file) {
       this.$store.commit('setCurrentFile', file)
+      this.$router.push('/desktop/edit')
     },
     delFile(fileId) {
       console.log(fileId)
