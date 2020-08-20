@@ -1,23 +1,23 @@
 <template>
-  <div id="trash">
-    <div id="head">
+  <div id="trash5">
+    <div id="head5">
       <tr>
-        <th id="MyCollectFont">
+        <th id="MyCollectFont5">
           我丢弃的
           <i class="el-icon-delete"></i>
         </th>
-        <th id="CollectTime">
+        <th id="CollectTime5">
           修改时间
         </th>
       </tr>
     </div>
-    <tr id="line">
+    <tr id="line5">
       <td>
         <hr size="1px" color="#CFCFCF" width="100%"/>
       </td>
     </tr>
-    <div id="body" >
-      <div id="body-row" v-for="file in files" :key="file.name">
+    <div id="body5" >
+      <div id="body-row5" v-for="file in files" :key="file.name">
         <div id="blank9">{{ file.title }}</div>
         <div id="blank10">{{ file.time }}</div>
         <div id="blank11">恢复文档</div>
@@ -61,7 +61,7 @@ a {
   color: #54A193
 }
 
-#trash {
+#trash5 {
   position: absolute;
   left:17.6vw;
   bottom: 0;
@@ -69,12 +69,12 @@ a {
   height: calc(100vh - 68px);
   background-color: rgba(242, 244, 244, 1);
 }
-#head{
+#head5{
   position: absolute;
   bottom: 91%;
   left: 10%;
 }
-#MyCollectFont{
+#MyCollectFont5{
   height: 40px;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -85,7 +85,7 @@ a {
   color: #616161;
 }
 
-#CollectTime{
+#CollectTime5{
   position: relative;
   width: 60%;
   height: 60%;
@@ -100,7 +100,7 @@ a {
   color: #CFCFCF;
 }
 
-#line{
+#line5{
   position: absolute;
   width: 80%;
   height: 0;
@@ -109,7 +109,7 @@ a {
   border: 0.2px solid #CFCFCF;
 }
 
-#body{
+#body5{
   position: absolute;
   height: 85%;
   width: 80%;
@@ -119,7 +119,7 @@ a {
   overflow-x: hidden ;
   bottom: 0;
 }
-#body-row {
+#body-row5 {
   position: absolute;
   top:1%;
   height: 8%;

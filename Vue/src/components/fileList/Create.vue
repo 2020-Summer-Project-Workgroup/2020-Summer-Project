@@ -1,23 +1,23 @@
 <template>
-  <div id="create">
-    <div id="head">
+  <div id="create1">
+    <div id="head1">
       <tr>
-        <th id="MyCollectFont">
+        <th id="MyCollectFont1">
           我创建的
           <i class="el-icon-user"></i>
         </th>
-        <th id="CollectTime">
+        <th id="CollectTime1">
           修改时间
         </th>
       </tr>
     </div>
-    <tr id="line">
+    <tr id="line1">
       <td>
         <hr size="1px" color="#CFCFCF" width="100%"/>
       </td>
     </tr>
-    <div id="body" >
-      <div id="body-row" v-for="file in files" :key="file.id">
+    <div id="body1" >
+      <div id="body-row1" v-for="file in files" :key="file.id">
         <div id="blank5"><span class="file-name" @click="toFile">{{ file.title }}</span></div>
         <div id="blank6"><i class="el-icon-s-tools"></i></div>
         <div id="blank7">{{ file.time.split("T")[0] }} {{ file.time.split("T")[1].split(".")[0] }}</div>
@@ -58,7 +58,7 @@ export default {
   color: #54A193
 }
 
-#create {
+#create1 {
   position: absolute;
   left:17.6vw;
   bottom: 0;
@@ -66,12 +66,12 @@ export default {
   height: calc(100vh - 68px);
   background-color: rgba(242, 244, 244, 1);
 }
-#head{
+#head1{
   position: absolute;
   bottom: 91%;
   left: 10%;
 }
-#MyCollectFont{
+#MyCollectFont1{
   height: 40px;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -82,7 +82,7 @@ export default {
   color: #616161;
 }
 
-#CollectTime{
+#CollectTime1{
   position: relative;
   width: 60%;
   height: 60%;
@@ -97,7 +97,7 @@ export default {
   color: #CFCFCF;
 }
 
-#line{
+#line1{
   position: absolute;
   width: 80%;
   height: 0;
@@ -106,7 +106,7 @@ export default {
   border: 0.2px solid #CFCFCF;
 }
 
-#body{
+#body1{
   position: absolute;
   height: 85%;
   width: 80%;
@@ -117,7 +117,7 @@ export default {
   bottom: 0;
 }
 
-#body-row {
+#body-row1 {
   position: relative;
   top:1%;
   height: 8%;

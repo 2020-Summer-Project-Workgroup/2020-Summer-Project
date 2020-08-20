@@ -1,23 +1,23 @@
 <template>
-  <div id="team">
-    <div id="head">
+  <div id="team4">
+    <div id="head4">
       <tr>
-        <th id="MyCollectFont">
+        <th id="MyCollectFont4">
           {{teamName}}
           <i class="el-icon-user-solid"></i>
         </th>
-        <th id="CollectTime">
+        <th id="CollectTime4">
           创建时间
         </th>
       </tr>
     </div>
-    <tr id="line">
+    <tr id="line4">
       <td>
         <hr size="1px" color="#CFCFCF" width="100%"/>
       </td>
     </tr>
-    <div id="body" >
-      <div id="body-row" v-for="file in files" :key="file.name">
+    <div id="body4" >
+      <div id="body-row4" v-for="file in files" :key="file.name">
         <div id="blank1"><a href="" >{{ file.name }}</a></div>
         <div id="blank2">{{ file.time }}</div>
         <div id="blank3"><a href="" @click="delFile">删除文档</a></div>
@@ -77,7 +77,7 @@ a {
   color: #54A193
 }
 
-#team {
+#team4 {
   position: absolute;
   left:17.6vw;
   bottom: 0;
@@ -85,12 +85,12 @@ a {
   height: calc(100vh - 68px);
   background-color: rgba(242, 244, 244, 1);
 }
-#head{
+#head4{
   position: absolute;
   bottom: 91%;
   left: 10%;
 }
-#MyCollectFont{
+#MyCollectFont4{
   height: 40px;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -101,7 +101,7 @@ a {
   color: #616161;
 }
 
-#CollectTime{
+#CollectTime4{
   position: relative;
   width: 60%;
   height: 60%;
@@ -116,7 +116,7 @@ a {
   color: #CFCFCF;
 }
 
-#line{
+#line4{
   position: absolute;
   width: 80%;
   height: 0;
@@ -125,7 +125,7 @@ a {
   border: 0.2px solid #CFCFCF;
 }
 
-#body{
+#body4{
   position: absolute;
   height: 85%;
   width: 80%;
@@ -135,7 +135,7 @@ a {
   overflow-x: hidden ;
   bottom: 0;
 }
-#body-row {
+#body-row4 {
   position: relative;
   top:1%;
   height: 8%;
