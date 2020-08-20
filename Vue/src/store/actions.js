@@ -18,6 +18,52 @@ export default {
     return updateUserInfo(context.getters.userId, email, 1)
   },
   initState(context) {
+    const notices = [
+      {
+        id: '238yer19fiqrf81',
+        type: 1,
+        sendName: '不知名灰烬',
+        content: '不知名灰烬',
+        time: '5月22日 18:43'
+      },
+      {
+        id: '238y8932yr9heiudqw',
+        type: 2,
+        sendName: '猫奴',
+        content: '养猫学会',
+        time: '5月22日 18:43'
+      },
+      {
+        id: 'ihdq983ehoef81',
+        type: 3,
+        sendName: '猫奴',
+        content: '养狗学会',
+        time: '5月22日 18:43'
+      },
+      {
+        id: 'q3he0wdhdwdoq',
+        type: 4,
+        sendName: '猫奴',
+        content: '养猫学会',
+        time: '5月22日 18:43'
+      },
+    ]
+    const comment = [
+      {
+        id: 'duqfggdgqwgdqgd892ey1929e',
+        sendName: '猫奴',
+        title: '分享一只可爱的橘猫',
+        content: '有空一块去撸猫',
+        time: '5月22日 18:44'
+      },
+      {
+        id: 'duqfggdgqwgdqgd892ey1929e',
+        sendName: '猫奴',
+        title: '分享一只可爱的橘猫',
+        content: '我也喜欢小橘猫！~',
+        time: '5月22日 18:43'
+      }
+    ]
     if (!(context.getters.tel === '')) {
       retrieveUserByTel(context.getters.tel).then(res => {
         context.commit('setUserId', res.id)
@@ -26,9 +72,9 @@ export default {
         context.commit('updateTel', res.tel)
         context.commit('updateEmail', res.email)
         console.log(context.getters.userId)
-        context.dispatch('updateNoticeNum', context.getters.userId)
-        context.dispatch('updateNotices', context.getters.userId)
-        context.dispatch('updateTeamNotices', context.getters.userId)
+        context.commit('setNoticeNum', 6)
+        context.commit('setNotices', comment)
+        context.commit('setTeamNotices', notices)
       }).catch(err => {
         console.log(err)
       })
@@ -41,9 +87,9 @@ export default {
         context.commit('updateEmail', res.email)
         context.commit('setFiles', res.files)
         context.commit('setFavorites', res.favorites)
-        context.dispatch('updateNoticeNum')
-        context.dispatch('updateNotices')
-        context.dispatch('updateTeamNotices')
+        context.commit('setNoticeNum', 6)
+        context.commit('setNotices', comment)
+        context.commit('setTeamNotices', notices)
       }).catch(err => {
         console.log(err)
       })

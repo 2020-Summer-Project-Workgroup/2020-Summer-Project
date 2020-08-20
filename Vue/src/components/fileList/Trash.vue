@@ -20,7 +20,7 @@
       <div id="body-row" v-for="file in files" :key="file.name">
         <div id="blank9">{{ file.title }}</div>
         <div id="blank10">{{ file.time }}</div>
-        <div id="blank11">恢复文档</div>
+        <div id="blank11" class="file-name" @click="recovery(file.id)">恢复文档</div>
       </div>
     </div>
   </div>
