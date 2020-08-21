@@ -7,14 +7,17 @@
       </div>
       <ckeditor id="ckeditor" v-model="content" :config="editorConfig"></ckeditor>
     </div>
-    <div class="message-box">
-      <div class="message-item" v-for="comment in comments" :key="comment.id">
-        <el-avatar class="message-avatar" icon="el-icon-user-solid" :size="64"></el-avatar>
-        <span class="message-title">{{comment.sendName}} 回复了 {{comment.title}}</span>
-        <span class="message-time">{{comment.time}}</span>
-        <span class="message-content">{{comment.content}}</span>
-        <div class="aline"></div>
+    <div id="comment-commit">
+      <span id="comment-title">评论</span>
+      <div id="comment-edit-page">
+        <el-input
+            type="textarea"
+            :rows="5"
+            placeholder="请输入评论"
+            v-model="comment">
+        </el-input>
       </div>
+      <button id="send-comment" @click="sendComment">发送</button>
     </div>
   </div>
 </template>
@@ -32,6 +35,7 @@ export default {
       fileId: '',
       title: '',
       content: '',
+      comment: '',
       editorConfig: {
         // The configuration of the editor.
         // width: 1282.49,
@@ -74,6 +78,12 @@ export default {
         title: this.title,
         content: this.content
       })
+    },
+    sendComment() {
+      this.$store.dispatch({
+        type: 'addComment',
+        comment: this.comment
+      })
     }
   },
   computed: {
@@ -99,39 +109,92 @@ export default {
 }
 
 #edit {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
-
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
-  "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
 
-#edit-top {
-  position: absolute;
-  left: 3%;
-  width: 94%;
-  height: 36px;
-}
 #edit-top input {
+  position: absolute;
+  top: 19px;
+  right: 6%;
+  width: 20%;
   font-size: 20px;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #ffffff;
+  border: 1px solid #cfcfcf;
+  border-radius: 5px;
+  box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+#edit-top input:hover {
+  border: 1px solid #54A293;
+  background-color: #F2F4F4;
+}
+#edit-top input:focus {
+  outline: none;
+  border: 1px solid #54A293;
+  background-color: #F2F4F4;
 }
 
 #edit-save {
+  position: absolute;
+  top: 57px;
+  right: 6%;
   width: 96px;
   height: 28px;
-  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #E5E5E5;
-  border: 1px solid #CFCFCF;
-  box-sizing: border-box;
+  border: none;
   border-radius: 5px;
-  font-size: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%,
+  rgba(255, 255, 255, 0) 100%), #54A293;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: #FFFFFF;
+  z-index: 10;
+}
+#edit-save:hover {
+  background-color: #368375;
+  cursor: pointer;
+}
+#edit-save:active {
+  outline: none;
+  background-color: #368375;
 }
 
 #ckeditor {
   position: absolute;
-  top: 36px;
+  top: 15px;
+  width: 94%;
+  height: 700px;
+  left: 3%;
+}
+
+#comment-commit {
+  position: relative;
+  top: 732px;
   width: 94%;
   left: 3%;
+  height: 300px;
+}
+
+#comment-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 43px;
+  color: #616161;
+}
+
+#comment-edit-page {
+
 }
 </style>

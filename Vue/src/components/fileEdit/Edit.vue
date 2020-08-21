@@ -31,7 +31,7 @@ export default {
       editorConfig: {
         // The configuration of the editor.
         // width: 1282.49,
-        height: 600,
+        height: '600px',
         readOnly: false,
         filebrowserImageBrowseUrl: '/temp',
         filebrowserImageUploadUrl: 'localhost:8036/img'

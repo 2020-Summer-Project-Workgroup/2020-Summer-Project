@@ -1,4 +1,4 @@
-import {newFile, updateFile} from "@/network/edit";
+import {addComment, newFile, updateFile} from "@/network/edit";
 import {getUserFavoriteFiles, getUserFiles, getUserRecycleBin} from "@/network/files";
 
 export default {
@@ -102,6 +102,16 @@ export default {
       updateFile(context.getters.userId,
         context.getters.currentFile.id,
         payload.title, payload.content).then(res => {
+          context.commit('updateFile', res)
+          context.commit('setCurrentFile', res)
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    addComment(context, payload) {
+      addComment(context.getters.currentFile.id,
+        context.getters.userId,
+        payload.comment).then(res => {
           context.commit('updateFile', res)
           context.commit('setCurrentFile', res)
       }).catch(err => {
