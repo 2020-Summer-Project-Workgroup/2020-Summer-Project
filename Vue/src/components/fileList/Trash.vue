@@ -1,26 +1,23 @@
 <template>
-  <div id="trash5">
-    <div id="head5">
-      <tr>
-        <th id="MyCollectFont5">
-          我丢弃的
-          <i class="el-icon-delete"></i>
-        </th>
-        <th id="CollectTime5">
-          修改时间
-        </th>
-      </tr>
+  <div id="my-create">
+    <div id="head1">
+      <div id="MyCollectFont1">
+        我丢弃的
+        <i class="el-icon-delete"></i>
+      </div>
+      <span class="file-time-title">修改时间</span>
     </div>
-    <tr id="line5">
+    <tr id="line1">
       <td>
         <hr size="1px" color="#CFCFCF" width="100%"/>
       </td>
     </tr>
-    <div id="body5" >
-      <div id="body-row5" v-for="file in files" :key="file.name">
-        <div id="blank9">{{ file.title }}</div>
-        <div id="blank10">{{ file.time }}</div>
-        <div id="blank11" class="file-name" @click="recovery(file.id)">恢复文档</div>
+    <div class="file-list">
+      <div class="file-item" v-for="(file, index) in files" :key="file.id">
+        <div class="file-name" @click="toFile(file)">{{ file.title }}</div>
+        <i class="el-icon-s-tools file-setting"></i>
+        <div class="file-time">{{ file.time.split("T")[0] }} {{ file.time.split("T")[1].split(".")[0] }}</div>
+        <span class="file-delete" @click="recovery(index)">恢复文档</span>
       </div>
     </div>
   </div>
@@ -28,10 +25,14 @@
 
 <script>
 export default {
-  name:"create",
+  name: "Trash",
   methods: {
-    recovery(fileId) {
-      this.$store.commit('recovery', fileId)
+    toFile(file) {
+      this.$store.commit('setCurrentFile', file)
+      this.$router.push('/desktop/edit')
+    },
+    recovery(index) {
+      this.$store.commit('recovery', index)
     }
   },
   computed: {
@@ -43,39 +44,25 @@ export default {
 </script>
 
 <style>
-a:hover {color: #54A193}
-
-a:link {color: #FFFFFF}
-
-a {
-  color: #616161;
-  text-decoration: none;
-}
-
-.file-name {
-  color: #616161;
-  text-decoration: none;
-}
-.file-name:hover {
-  cursor: pointer;
-  color: #54A193
-}
-
-#trash5 {
+#my-create {
   position: absolute;
-  left:17.6vw;
+  left: 17.6vw;
   bottom: 0;
   width: 62.5vw;
   height: calc(100vh - 68px);
   background-color: rgba(242, 244, 244, 1);
 }
-#head5{
+#head1{
   position: absolute;
+  top: 0;
   bottom: 91%;
   left: 10%;
+  right: 10%;
 }
-#MyCollectFont5{
-  height: 40px;
+#MyCollectFont1{
+  position: absolute;
+  top: 35px;
+  left: 0;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -85,12 +72,10 @@ a {
   color: #616161;
 }
 
-#CollectTime5{
-  position: relative;
-  width: 60%;
-  height: 60%;
-  left: 75%;
-  top: 50%;
+.file-time-title {
+  position: absolute;
+  left: 48%;
+  top: 41px;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -100,57 +85,64 @@ a {
   color: #CFCFCF;
 }
 
-#line5{
+#line1{
   position: absolute;
   width: 80%;
   height: 0;
   left: 10%;
   bottom: 89%;
-  border: 0.2px solid #CFCFCF;
+  border: 1px solid #CFCFCF;
 }
 
-#body5{
+.file-list {
   position: absolute;
-  height: 85%;
-  width: 80%;
+  top: 10.94%;
   left: 10%;
-  top:13%;
-  overflow-y: auto;
-  overflow-x: hidden ;
+  right: 10%;
   bottom: 0;
+  overflow-y: auto;
 }
 
-#body-row5 {
-  position: absolute;
-  top:1%;
-  height: 8%;
-  valign: bottom;
-}
-
-#blank9 {
+.file-item {
   position: relative;
-  top:50%;
+  left: 0;
+  width: 100%;
+  padding-top: 20px;
+  min-height: 40px;
+}
 
-  width: 50%;
-  height: 100%;
+.file-name {
+  width: 40%;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #616161;
+  text-decoration: none;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
   line-height: 33px;
-  color: #616161;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: left;
 }
+.file-name:hover {
+  cursor: pointer;
+  color: #54A193
+}
 
-#blank10 {
-  position: relative;
-  height: 100%;
-  left: 64%;
-  margin-top: -5%;
+.file-setting {
+  position: absolute;
+  left: 42%;
+  top: 27px;
+  font-size: 20px;
+}
+
+.file-time {
+  position: absolute;
+  top: 23px;
+  left: 48%;
+  width: 37%;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -162,14 +154,12 @@ a {
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: left;
-  float: left;
 }
 
-#blank11 {
-  position: relative;
-  height: 100%;
+.file-delete {
+  position: absolute;
+  top: 23px;
   left: 85%;
-  margin-top: -5%;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -177,10 +167,9 @@ a {
   font-size: 20px;
   line-height: 26px;
   color: #616161;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: left;
-  float: left;
+}
+.file-delete:hover {
+  cursor: pointer;
+  color: #54A193
 }
 </style>

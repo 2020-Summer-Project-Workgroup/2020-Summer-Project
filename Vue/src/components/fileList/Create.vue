@@ -13,11 +13,11 @@
       </td>
     </tr>
     <div class="file-list">
-      <div class="file-item" v-for="file in files" :key="file.id">
+      <div class="file-item" v-for="(file, index) in files" :key="file.id">
         <div class="file-name" @click="toFile(file)">{{ file.title }}</div>
         <i class="el-icon-s-tools file-setting"></i>
         <div class="file-time">{{ file.time.split("T")[0] }} {{ file.time.split("T")[1].split(".")[0] }}</div>
-        <span class="file-delete" @click="delFile(file.id)">删除文档</span>
+        <span class="file-delete" @click="delFile(index)">删除文档</span>
       </div>
     </div>
   </div>
@@ -31,9 +31,8 @@ export default {
       this.$store.commit('setCurrentFile', file)
       this.$router.push('/desktop/edit')
     },
-    delFile(fileId) {
-      console.log(fileId)
-      this.$store.commit('moveToTrash', fileId)
+    delFile(index) {
+      this.$store.commit('moveToTrash', index)
     }
   },
   computed: {
@@ -47,7 +46,7 @@ export default {
 <style>
 #my-create {
   position: absolute;
-  left:17.6vw;
+  left: 17.6vw;
   bottom: 0;
   width: 62.5vw;
   height: calc(100vh - 68px);
@@ -62,7 +61,7 @@ export default {
 }
 #MyCollectFont1{
   position: absolute;
-  top: 40px;
+  top: 35px;
   left: 0;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -76,7 +75,7 @@ export default {
 .file-time-title {
   position: absolute;
   left: 48%;
-  top: 46px;
+  top: 41px;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;

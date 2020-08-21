@@ -32,27 +32,20 @@ export default {
         }
       }
     ],
-    trash: []
+    trash: [],
+    favorites: []
   },
   mutations: {
     setFiles(state, files) {
       state.files = files
     },
-    moveToTrash(state, fileId) {
-      for (let index in state.files) {
-        if (state.files[index].id === fileId) {
-          state.trash.splice(0, 0, state.files[index])
-          state.files.splice(index, 1)
-        }
-      }
+    moveToTrash(state, index) {
+      state.trash.splice(0, 0, state.files[index])
+      state.files.splice(index, 1)
     },
-    recovery(state, fileId) {
-      for (let index in state.trash) {
-        if (state.trash[index].id === fileId) {
-          state.files.splice(0, 0, state.files[index])
-          state.trash.splice(index, 1)
-        }
-      }
+    recovery(state, index) {
+      state.files.splice(0, 0, state.trash[index])
+      state.trash.splice(index, 1)
     }
   },
   actions: {
