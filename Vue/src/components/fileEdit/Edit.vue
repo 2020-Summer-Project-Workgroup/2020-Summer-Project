@@ -8,37 +8,35 @@
       </div>
       <ckeditor id="middle" v-model="editorData" :config="editorConfig"></ckeditor>
     </div>
-    
-   </div>
+  </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import CKEditor from 'ckeditor4-vue'
-import newFile from '../../network/edit.js'
-// import updateFile from '../../network/edit.js'
+import { newFile } from '@/network/edit.js'
 
 Vue.use(CKEditor);
-// CKEditor.config.readOnly = true;
+
 export default {
   name: 'Edit',
   components: {
-    // Use the <ckeditor> component in this view.
     ckeditor: CKEditor.component,
   },
   data() {
     return {
-      title: "默认标题",
-      editorData: '',
+      isNew: false,
+      title: '',
+      content: '',
       editorConfig: {
         // The configuration of the editor.
         // width: 1282.49,
-        height: 600,
+        height: '600px',
         readOnly: false,
         filebrowserImageBrowseUrl: '/temp',
         filebrowserImageUploadUrl: 'localhost:8036/img'
       }
-    };
+    }
   },
   methods:{
     upload: function() {
@@ -58,15 +56,21 @@ export default {
     }
   },
   created() {
-    this.title = this.file.title
-    this.editorData = this.file.content
+    if (this.file === null) {
+      this.isNew = true
+      this.title = ''
+      this.editorData = ''
+    } else {
+      this.isNew = false
+      this.title = this.file.title
+      this.editorData = this.file.content
+    }
   },
   computed: {
     file() {
       return this.$store.getters.currentFile
     }
   }
-  
 }
 </script>
 
@@ -131,26 +135,9 @@ export default {
 #blank {
   flex-basis: 2rem;
 }
-#save {
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 8.0625rem;
-  height: 2.25rem;
-  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #E5E5E5;
-  border: 1px solid #CFCFCF;
-  box-sizing: border-box;
-  border-radius: 5px;
-  font-size: 20px;
-}
 
-#middle {
-  width: 95%;
-  flex-grow: 0;
-  flex-shrink: 0;
-}
+
+
 
 #comment {
   background-color: #54A293;

@@ -1,88 +1,68 @@
 <template>
-  <div id="collect2">
-    <div id="head2">
-      <tr>
-        <th id="MyCollectFont2">
-          我收藏的
-          <i class="el-icon-star-off"></i>
-        </th>
-        <th id="CollectTime2">
-          收藏时间
-        </th>
-      </tr>
+  <div id="my-create">
+    <div id="head1">
+      <div id="MyCollectFont1">
+        我收藏的
+        <i class="el-icon-star-off"></i>
+      </div>
+      <span class="file-time-title">修改时间</span>
     </div>
-    <tr id="line2">
+    <tr id="line1">
       <td>
         <hr size="1px" color="#CFCFCF" width="100%"/>
       </td>
     </tr>
-    <div id="body2">
-      <div id="body-row2" v-for="file in files" :key="file.name">
-        <div id="blank12"><a href="" >{{ file.name }}</a></div>
-        <td id="blank13">{{ file.time }}</td>
-        <td id="blank14"><a href="" @click.prevent="deleteCollect(file.id)">取消收藏</a></td>
+    <div class="file-list">
+      <div class="file-item" v-for="(file, index) in files" :key="file.id">
+        <div class="file-name" @click="toFile(file)">{{ file.title }}</div>
+        <i class="el-icon-s-tools file-setting"></i>
+        <div class="file-time">{{ file.time.split("T")[0] }} {{ file.time.split("T")[1].split(".")[0] }}</div>
+        <span class="file-delete" @click="deleteCollect(index)">取消收藏</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
-  name:"collect",
-  data: function () {
-    return {
-      files:[
-        {id:0,name:"这是一个示例文档", time:"2020-08-10"},
-        {id:1,name:"这是一个示例文档",  time:"2020-08-12"},
-        {id:2,name:"这是一个示例文档有很长的标题，没错很长的标题",  time:"2020-08-14"},
-        {id:3,name:"这是一个示例文档", time:"2020-08-16"},
-        {id:4,name:"这是一个示例文档", time:"2020-08-18"},
-      ]
-    }	
-  },
+  name: "Collect",
   methods: {
-    deleteCollect: function(index){
+    toFile(file) {
+      this.$store.commit('setCurrentFile', file)
+      this.$router.push('/desktop/edit')
+    },
+    deleteCollect(index){
       this.files.splice(index,1);
+    }
+  },
+  computed: {
+    files() {
+      return this.$store.getters.favorites
     }
   }
 }
 </script>
 
 <style>
-a:hover {color: #54A193}
-
-a:link {color: #FFFFFF}
-
-a {
-  color: #616161;
-  text-decoration: none;
-}
-
-.file-name {
-  color: #616161;
-  text-decoration: none;
-}
-.file-name:hover {
-  cursor: pointer;
-  color: #54A193
-}
-
-#collect2 {
+#my-create {
   position: absolute;
-  left:17.6vw;
+  left: 17.6vw;
   bottom: 0;
   width: 62.5vw;
   height: calc(100vh - 68px);
   background-color: rgba(242, 244, 244, 1);
 }
-#head2{
+#head1{
   position: absolute;
+  top: 0;
   bottom: 91%;
   left: 10%;
+  right: 10%;
 }
-#MyCollectFont2{
-  height: 40px;
+#MyCollectFont1{
+  position: absolute;
+  top: 35px;
+  left: 0;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -92,12 +72,10 @@ a {
   color: #616161;
 }
 
-#CollectTime2{
-  position: relative;
-  width: 60%;
-  height: 60%;
-  left: 75%;
-  top: 50%;
+.file-time-title {
+  position: absolute;
+  left: 48%;
+  top: 41px;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -107,53 +85,64 @@ a {
   color: #CFCFCF;
 }
 
-#line2{
+#line1{
   position: absolute;
   width: 80%;
   height: 0;
   left: 10%;
   bottom: 89%;
-  border: 0.2px solid #CFCFCF;
+  border: 1px solid #CFCFCF;
 }
 
-#body2{
+.file-list {
   position: absolute;
-  height: 85%;
-  width: 80%;
+  top: 10.94%;
   left: 10%;
-  top:13%;
-  overflow-y: auto;
-  overflow-x: hidden ;
+  right: 10%;
   bottom: 0;
-}
-#body-row2 {
-  position: relative;
-  top:1%;
-  height: 8%;
-  valign: bottom;
+  overflow-y: auto;
 }
 
-#blank12 {
-  width: 50%;
-  height: 100%;
+.file-item {
+  position: relative;
+  left: 0;
+  width: 100%;
+  padding-top: 20px;
+  min-height: 40px;
+}
+
+.file-name {
+  width: 40%;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #616161;
+  text-decoration: none;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
   line-height: 33px;
-  color: #616161;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: left;
 }
+.file-name:hover {
+  cursor: pointer;
+  color: #54A193
+}
 
-#blank13 {
+.file-setting {
   position: absolute;
-  height: 100%;
-  left: 64%;
-  margin-top: -5%;
+  left: 42%;
+  top: 27px;
+  font-size: 20px;
+}
+
+.file-time {
+  position: absolute;
+  top: 23px;
+  left: 48%;
+  width: 37%;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -165,14 +154,12 @@ a {
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: left;
-  float: left;
 }
 
-#blank14 {
+.file-delete {
   position: absolute;
-  height: 100%;
+  top: 23px;
   left: 85%;
-  margin-top: -5%;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -180,10 +167,9 @@ a {
   font-size: 20px;
   line-height: 26px;
   color: #616161;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: left;
-  float: left;
+}
+.file-delete:hover {
+  cursor: pointer;
+  color: #54A193
 }
 </style>

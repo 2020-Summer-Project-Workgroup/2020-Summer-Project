@@ -85,24 +85,14 @@ export default {
       this.$store.commit('openCreateTeam')
     },
     openCreateFile() {
-      const empty = {
-        id: "",
-        title: "",
-        content:"",
-        time:"",
-        comments:[],
-        access:{
-          '5f3d23697086051e66f7a1b0': "Owner"
-        }
-      }
-      this.$store.commit('setCurrentFile', empty)
+      this.$store.commit('setCurrentFile', null)
       this.$router.push('/desktop/edit')
     },
     openFollowFile(){
       this.$router.push('/desktop/followTeamplate')
     }
   },
-};
+}
 </script>
 
 <style scoped>

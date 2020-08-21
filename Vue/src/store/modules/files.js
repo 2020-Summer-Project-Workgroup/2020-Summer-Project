@@ -1,3 +1,6 @@
+import {addComment, newFile, updateFile} from "@/network/edit";
+import {getUserFavoriteFiles, getUserFiles, getUserRecycleBin} from "@/network/files";
+
 export default {
   state: {
     files: [
@@ -32,31 +35,89 @@ export default {
         }
       }
     ],
-    trash: []
+    recycleBin: [],
+    favorites: []
   },
   mutations: {
-    setFiles(state, files) {
+    setUserFiles(state, files) {
       state.files = files
     },
-    moveToTrash(state, fileId) {
-      for (let index in state.files) {
-        if (state.files[index].id === fileId) {
-          state.trash.splice(0, 0, state.files[index])
-          state.files.splice(index, 1)
-        }
-      }
+    setUserFavoriteFiles(state, files) {
+      state.favorites = files
     },
-    recovery(state, fileId) {
-      for (let index in state.trash) {
-        if (state.trash[index].id === fileId) {
-          state.files.splice(0, 0, state.files[index])
-          state.trash.splice(index, 1)
+    setRecycleBin(state, files) {
+      state.recycleBin = files
+    },
+    moveToTrash(state, index) {
+      state.recycleBin.splice(0, 0, state.files[index])
+      state.files.splice(index, 1)
+    },
+    recovery(state, index) {
+      state.files.splice(0, 0, state.trash[index])
+      state.recycleBin.splice(index, 1)
+    },
+    createFile(state, file) {
+      state.files.splice(0, 0, file)
+    },
+    updateFile(state, file) {
+      for (let i = 0; i < state.files.length; i++) {
+        if (state.files[i].id === file.id) {
+          state.files[i] = file
+          break
         }
       }
     }
   },
   actions: {
-
+    setUserFiles(context) {
+      getUserFiles(context.getters.userId).then(res => {
+        context.commit('setUserFiles', res)
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    setUserFavoriteFiles(context) {
+      getUserFavoriteFiles(context.getters.userId).then(res => {
+        context.commit('setUserFavoriteFiles', res)
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    setRecycleBin(context) {
+      getUserRecycleBin(context.getters.userId).then(res => {
+        context.commit('setRecycleBin', res)
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    createFile(context, payload) {
+      newFile(context.getters.userId, payload.title, payload.content).then(res => {
+        context.commit('createFile', res)
+        context.commit('setCurrentFile', res)
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    updateFile(context, payload) {
+      updateFile(context.getters.userId,
+        context.getters.currentFile.id,
+        payload.title, payload.content).then(res => {
+          context.commit('updateFile', res)
+          context.commit('setCurrentFile', res)
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    addComment(context, payload) {
+      addComment(context.getters.currentFile.id,
+        context.getters.userId,
+        payload.comment).then(res => {
+          context.commit('updateFile', res)
+          context.commit('setCurrentFile', res)
+      }).catch(err => {
+        console.log(err)
+      })
+    }
   },
   getters: {
     files(state) {
