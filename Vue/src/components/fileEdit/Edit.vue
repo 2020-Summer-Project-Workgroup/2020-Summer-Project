@@ -15,21 +15,19 @@
 import Vue from 'vue'
 import CKEditor from 'ckeditor4-vue'
 import { newFile } from '@/network/edit.js'
-// import updateFile from '../../network/edit.js'
 
 Vue.use(CKEditor);
-// CKEditor.config.readOnly = true;
+
 export default {
   name: 'Edit',
   components: {
-    // Use the <ckeditor> component in this view.
     ckeditor: CKEditor.component,
   },
   data() {
     return {
       isNew: false,
       title: '',
-      editorData: '',
+      content: '',
       editorConfig: {
         // The configuration of the editor.
         // width: 1282.49,
@@ -38,7 +36,7 @@ export default {
         filebrowserImageBrowseUrl: '/temp',
         filebrowserImageUploadUrl: 'localhost:8036/img'
       }
-    };
+    }
   },
   methods:{
     upload: function() {
@@ -137,26 +135,9 @@ export default {
 #blank {
   flex-basis: 2rem;
 }
-#save {
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 8.0625rem;
-  height: 2.25rem;
-  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #E5E5E5;
-  border: 1px solid #CFCFCF;
-  box-sizing: border-box;
-  border-radius: 5px;
-  font-size: 20px;
-}
 
-#middle {
-  width: 95%;
-  flex-grow: 0;
-  flex-shrink: 0;
-}
+
+
 
 #comment {
   background-color: #54A293;
