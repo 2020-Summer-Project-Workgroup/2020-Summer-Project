@@ -7,7 +7,8 @@
         active-text-color="#54A193"
         router
         @open="handleOpen"
-        @close="handleClose">
+        @close="handleClose"
+        >
       <el-submenu index="1" id="team-space">
         <template slot="title">
           <div class="left-side-bar-item">
@@ -23,16 +24,22 @@
         </el-menu-item-group>
       </el-submenu>
       <el-menu-item class="left-side-bar-item" :index="path[1]" >
-        <i class="el-icon-user"></i>
-        <span slot="title">我创建的</span>
+        <div class="left-side-bar-item-hover">
+          <i class="el-icon-user"></i>
+          <span slot="title">我创建的</span>
+        </div>
       </el-menu-item>
       <el-menu-item class="left-side-bar-item" :index="path[2]">
-        <i class="el-icon-star-off"></i>
-        <span slot="title">我收藏的</span>
+        <div class="left-side-bar-item-hover">
+          <i class="el-icon-star-off"></i>
+          <span slot="title">我收藏的</span>
+        </div>
       </el-menu-item>
       <el-menu-item class="left-side-bar-item" :index="path[3]">
-        <i class="el-icon-delete"></i>
-        <span slot="title">回收站</span>
+        <div class="left-side-bar-item-hover">
+          <i class="el-icon-delete"></i>
+          <span slot="title">回收站</span>
+        </div>
       </el-menu-item>
     </el-menu>
   </div>
@@ -102,7 +109,18 @@ export default {
   cursor: pointer;
 }
 
+.left-side-bar-item-hover:hover{
+  color: #54A193;
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
 .el-menu-vertical .left-side-bar-item:focus {
+  color: #54A193;
+  background: rgba(0, 0, 0, 0);
+}
+
+.left-side-bar-item-hover:focus{
   color: #54A193;
   background: rgba(0, 0, 0, 0);
 }
@@ -121,4 +139,5 @@ export default {
   padding-top: 20px;
   padding-bottom: 5px;
 }
+
 </style>
