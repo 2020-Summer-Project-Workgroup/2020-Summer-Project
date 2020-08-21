@@ -1,10 +1,6 @@
 import { request } from "@/network/request";
 
 export function newFile(userId, title, content) {
-  console.log("OK");
-  console.log(userId);
-  console.log(title);
-  console.log(content);
   return request({
     url: '/file/user',
     method: 'post',

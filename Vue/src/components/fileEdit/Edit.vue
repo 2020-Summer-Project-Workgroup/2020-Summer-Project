@@ -8,8 +8,7 @@
       </div>
       <ckeditor id="middle" v-model="editorData" :config="editorConfig"></ckeditor>
     </div>
-    
-   </div>
+  </div>
 </template>
 
 <script>
@@ -28,7 +27,8 @@ export default {
   },
   data() {
     return {
-      title: "默认标题",
+      isNew: false,
+      title: '',
       editorData: '',
       editorConfig: {
         // The configuration of the editor.
@@ -58,15 +58,21 @@ export default {
     }
   },
   created() {
-    this.title = this.file.title
-    this.editorData = this.file.content
+    if (this.file === null) {
+      this.isNew = true
+      this.title = ''
+      this.editorData = ''
+    } else {
+      this.isNew = false
+      this.title = this.file.title
+      this.editorData = this.file.content
+    }
   },
   computed: {
     file() {
       return this.$store.getters.currentFile
     }
   }
-  
 }
 </script>
 

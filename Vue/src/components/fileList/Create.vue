@@ -1,27 +1,23 @@
 <template>
-  <div id="create1">
+  <div id="my-create">
     <div id="head1">
-      <tr>
-        <th id="MyCollectFont1">
-          我创建的
-          <i class="el-icon-user"></i>
-        </th>
-        <th id="CollectTime1">
-          修改时间
-        </th>
-      </tr>
+      <div id="MyCollectFont1">
+        我创建的
+        <i class="el-icon-user"></i>
+      </div>
+      <span class="file-time-title">修改时间</span>
     </div>
     <tr id="line1">
       <td>
         <hr size="1px" color="#CFCFCF" width="100%"/>
       </td>
     </tr>
-    <div id="body1" >
-      <div id="body-row1" v-for="file in files" :key="file.id">
-        <div id="blank5"><span class="file-name" @click="toFile">{{ file.title }}</span></div>
-        <div id="blank6"><i class="el-icon-s-tools"></i></div>
-        <div id="blank7">{{ file.time.split("T")[0] }} {{ file.time.split("T")[1].split(".")[0] }}</div>
-        <div id="blank8"><span class="file-name" @click="delFile(file.id)">删除文档</span></div>
+    <div class="file-list">
+      <div class="file-item" v-for="file in files" :key="file.id">
+        <div class="file-name" @click="toFile(file)">{{ file.title }}</div>
+        <i class="el-icon-s-tools file-setting"></i>
+        <div class="file-time">{{ file.time.split("T")[0] }} {{ file.time.split("T")[1].split(".")[0] }}</div>
+        <span class="file-delete" @click="delFile(file.id)">删除文档</span>
       </div>
     </div>
   </div>
@@ -38,8 +34,7 @@ export default {
     delFile(fileId) {
       console.log(fileId)
       this.$store.commit('moveToTrash', fileId)
-    },
-
+    }
   },
   computed: {
     files() {
@@ -50,16 +45,7 @@ export default {
 </script>
 
 <style>
-.file-name {
-  color: #616161;
-  text-decoration: none;
-}
-.file-name:hover {
-  cursor: pointer;
-  color: #54A193
-}
-
-#create1 {
+#my-create {
   position: absolute;
   left:17.6vw;
   bottom: 0;
@@ -69,11 +55,15 @@ export default {
 }
 #head1{
   position: absolute;
+  top: 0;
   bottom: 91%;
   left: 10%;
+  right: 10%;
 }
 #MyCollectFont1{
-  height: 40px;
+  position: absolute;
+  top: 40px;
+  left: 0;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -83,12 +73,10 @@ export default {
   color: #616161;
 }
 
-#CollectTime1{
-  position: relative;
-  width: 60%;
-  height: 60%;
-  left: 75%;
-  top: 50%;
+.file-time-title {
+  position: absolute;
+  left: 48%;
+  top: 46px;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -104,60 +92,58 @@ export default {
   height: 0;
   left: 10%;
   bottom: 89%;
-  border: 0.2px solid #CFCFCF;
+  border: 1px solid #CFCFCF;
 }
 
-#body1{
+.file-list {
   position: absolute;
-  height: 85%;
-  width: 80%;
+  top: 10.94%;
   left: 10%;
-  top:13%;
-  overflow-y: auto;
-  overflow-x: hidden ;
+  right: 10%;
   bottom: 0;
+  overflow-y: auto;
 }
 
-#body-row1 {
+.file-item {
   position: relative;
-  top:1%;
-  height: 8%;
-  valign: bottom;
+  left: 0;
+  width: 100%;
+  padding-top: 20px;
+  min-height: 40px;
 }
 
-#blank5 {
-  width: 50%;
-  height: 100%;
+.file-name {
+  width: 40%;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #616161;
+  text-decoration: none;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
   line-height: 33px;
-  color: #616161;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: left;
 }
+.file-name:hover {
+  cursor: pointer;
+  color: #54A193
+}
 
-#blank6 {
+.file-setting {
   position: absolute;
-  height: 100%;
-  left: 51%;
-  margin-top: -5%;
+  left: 42%;
+  top: 27px;
   font-size: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: left;
 }
 
-#blank7 {
+.file-time {
   position: absolute;
-  height: 100%;
-  left: 56%;
-  margin-top: -5%;
+  top: 23px;
+  left: 48%;
+  width: 37%;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -169,14 +155,12 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: left;
-  float: left;
 }
 
-#blank8 {
+.file-delete {
   position: absolute;
-  height: 100%;
+  top: 23px;
   left: 85%;
-  margin-top: -5%;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
   "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -184,11 +168,9 @@ export default {
   font-size: 20px;
   line-height: 26px;
   color: #616161;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: left;
-  float: left;
 }
-
+.file-delete:hover {
+  cursor: pointer;
+  color: #54A193
+}
 </style>
