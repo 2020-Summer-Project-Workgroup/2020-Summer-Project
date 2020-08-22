@@ -8,8 +8,8 @@
             新建团队
           </span>
         </div>
-        <input type="text" value="请输入团队名称" class="InputCreateTeam">
-        <button class="CreateTeamButton" >
+        <input type="text" class="InputCreateTeam" v-model="groupName">
+        <button class="CreateTeamButton" @click="addGroup">
           新建
         </button>
       </div>
@@ -20,7 +20,20 @@
 
 <script>
 export default {
+  data() {
+    return {
+      groupName: ''
+    }
+  },
   methods: {
+    addGroup() {
+      this.$store.dispatch({
+        type: 'addGroup',
+        groupName: this.groupName
+      })
+      this.$router.push('/desktop/team')
+      this.close()
+    },
     close() {
       this.$store.commit('closeCreateTeam')
     }

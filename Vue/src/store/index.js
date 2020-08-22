@@ -8,6 +8,7 @@ import team from "@/store/modules/team";
 import message from "@/store/modules/message";
 import files from "@/store/modules/files";
 import favorites from "@/store/modules/favorites";
+import group from "@/store/modules/group";
 
 Vue.use(Vuex)
 
@@ -31,7 +32,8 @@ const store = new Vuex.Store({
     team,
     message,
     files,
-    favorites
+    favorites,
+    group
   }
 })
 

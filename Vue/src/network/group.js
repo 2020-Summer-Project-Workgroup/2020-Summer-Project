@@ -87,3 +87,13 @@ export function getFileRights(groupId, fileId) {
     }
   })
 }
+
+export function getUserGroups(userId) {
+  return request({
+    url: '/user/groups',
+    method: 'GET',
+    params: {
+      userId: userId
+    }
+  })
+}

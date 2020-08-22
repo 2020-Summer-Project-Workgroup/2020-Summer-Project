@@ -109,6 +109,8 @@ export default {
       return this.$store.getters.currentFile === null
     },
     comments() {
+      if (this.$store.getters.currentFile === null)
+        return []
       return this.$store.getters.currentFile.comments
     }
   }

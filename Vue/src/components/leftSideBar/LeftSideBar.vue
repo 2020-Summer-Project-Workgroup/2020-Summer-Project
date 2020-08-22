@@ -18,7 +18,7 @@
         </template>
         <el-menu-item-group>
           <template slot="title"></template>
-          <el-menu-item v-for="team in teams" :index="path[0]" :key="team.id">
+          <el-menu-item v-for="team in teams" :index="path[0]" :key="team.id" @click="setGroup(team)">
             {{team.name}}
           </el-menu-item>
         </el-menu-item-group>
@@ -64,20 +64,14 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    },
+    setGroup(group) {
+      this.$store.commit('setCurrentGroup', group)
     }
   },
   computed: {
     teams() {
-      return [
-        {
-          id: 'iuwegq93e923',
-          name: '金刚石文档'
-        },
-        {
-          id: 'iuweddqwdqwdq',
-          name: '轻松文档团队'
-        }
-      ]
+      return this.$store.getters.groups
     }
   }
 }
