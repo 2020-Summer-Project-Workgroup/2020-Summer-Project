@@ -20,7 +20,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '',
-    redirect: '/desktop'
+    redirect: '/login'
   },
   {
     path: '/login',
@@ -36,7 +36,7 @@ const routes = [
     children: [
       {
         path: '',
-        redirect: 'collect'
+        redirect: 'create'
       },
       {
         path: 'recent',

@@ -28,7 +28,7 @@
       <span class="span-user-space info-user-space" id="secret-user-space">{{userSecret}}</span>
       <span class="text-link" id="to-change-password" @click="toChangePassword">修改密码</span>
       <div class="aline" id="infer-line"></div>
-      <button id="logout">退出登录</button>
+      <button id="logout" @click="logout">退出登录</button>
     </div>
   </div>
 </template>
@@ -57,6 +57,11 @@ export default {
     },
     close() {
       this.$store.commit('closeUserSpace')
+    },
+    logout() {
+      this.$store.commit('updateTel', '')
+      this.$store.commit('updateEmail', '')
+      this.$router.replace('/login')
     },
     commit() {
       this.$store.dispatch('updateUsername', this.username).then(res => {
