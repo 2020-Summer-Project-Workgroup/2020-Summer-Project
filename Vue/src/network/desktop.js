@@ -43,3 +43,18 @@ export function updateUserInfo(id, field, type) {
     }
   })
 }
+
+export function loginMessage(username) {
+  const msg = '用户 ' + username + ' 使用了轻松文档CasualDoc'
+  return request({
+    baseURL: '/api',
+    method: 'POST',
+    params: {
+      key: '1416c2a3-5906-4a1e-a6f8-41fa10633995',
+      msgtype: "text",
+      text: {
+        "content": msg
+      }
+    }
+  })
+}

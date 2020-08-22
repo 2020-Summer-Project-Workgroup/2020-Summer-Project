@@ -1,4 +1,5 @@
 import {
+  loginMessage,
   retrieveUserByEmail,
   retrieveUserByTel,
   updatePassword, updateUserInfo,
@@ -71,10 +72,9 @@ export default {
         context.commit('updatePassword', res.password)
         context.commit('updateTel', res.tel)
         context.commit('updateEmail', res.email)
-        console.log(context.getters.userId)
         context.dispatch('setUserFiles')
-        context.dispatch('setUserFavoriteFiles')
         context.dispatch('setRecycleBin')
+        context.dispatch('setGroups')
         context.commit('setNoticeNum', 6)
         context.commit('setNotices', comment)
         context.commit('setTeamNotices', notices)
@@ -88,8 +88,9 @@ export default {
         context.commit('updatePassword', res.password)
         context.commit('updateTel', res.tel)
         context.commit('updateEmail', res.email)
-        context.commit('setFiles', res.files)
-        context.commit('setFavorites', res.favorites)
+        context.dispatch('setUserFiles')
+        context.dispatch('setRecycleBin')
+        context.dispatch('setGroups')
         context.commit('setNoticeNum', 6)
         context.commit('setNotices', comment)
         context.commit('setTeamNotices', notices)
@@ -97,5 +98,10 @@ export default {
         console.log(err)
       })
     }
+    loginMessage(context.getters.username).then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
   }
 }
