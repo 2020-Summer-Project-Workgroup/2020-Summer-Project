@@ -2,8 +2,8 @@
   <div id="file-view-container">
     <div id="edit">
       <div id="edit-top">
-        <input type="text" v-model="title" placeholder="标题"/>
-        <button id="edit-save" @click="upload">保存</button>
+        <input type="text" v-model="title" placeholder="请输入文档标题"/>
+        <button id="edit-save" @click="upload">保存文档</button>
       </div>
       <ckeditor id="ckeditor" v-model="content" :config="editorConfig"></ckeditor>
     </div>
@@ -18,6 +18,15 @@
         </el-input>
       </div>
       <button id="send-comment" @click="sendComment">发送</button>
+    </div>
+    <div id="comment-container">
+      <div class="comment-item" v-for="comment in comments" :key="comment.id">
+        <el-avatar class="comment-avatar" icon="el-icon-user-solid" :size="48"></el-avatar>
+        <span class="comment-content">{{comment.reviewer}} : {{comment.content}}</span>
+        <span class="comment-time">{{ comment.time.split("T")[0] }} {{ comment.time.split("T")[1].split(".")[0] }}</span>
+        <i class="el-icon-delete comment-delete" @click="deleteComment(comment.id)"></i>
+        <div class="aline"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -84,6 +93,12 @@ export default {
         type: 'addComment',
         comment: this.comment
       })
+    },
+    deleteComment(commentId) {
+      this.$store.dispatch({
+        type: 'deleteComment',
+        commentId: commentId
+      })
     }
   },
   computed: {
@@ -92,6 +107,9 @@ export default {
     },
     isNew() {
       return this.$store.getters.currentFile === null
+    },
+    comments() {
+      return this.$store.getters.currentFile.comments
     }
   }
 }
@@ -106,6 +124,31 @@ export default {
   height: calc(100vh - 68px);
   background-color: rgba(242, 244, 244, 1);
   overflow-y: auto;
+}
+
+#file-view-container button {
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%,
+  rgba(255, 255, 255, 0) 100%), #54A293;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: #FFFFFF;
+  z-index: 10;
+}
+#file-view-container button:hover {
+  background-color: #368375;
+  cursor: pointer;
+}
+#file-view-container button:active {
+  outline: none;
+  background-color: #368375;
+}
+
+#file-view-container i:hover {
+  cursor: pointer;
 }
 
 #edit {
@@ -145,24 +188,6 @@ export default {
   right: 6%;
   width: 96px;
   height: 28px;
-  border: none;
-  border-radius: 5px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%,
-  rgba(255, 255, 255, 0) 100%), #54A293;
-  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
-  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  color: #FFFFFF;
-  z-index: 10;
-}
-#edit-save:hover {
-  background-color: #368375;
-  cursor: pointer;
-}
-#edit-save:active {
-  outline: none;
-  background-color: #368375;
 }
 
 #ckeditor {
@@ -195,6 +220,81 @@ export default {
 }
 
 #comment-edit-page {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+}
 
+#send-comment {
+  position: absolute;
+  top: 167px;
+  right: 0;
+  width: 96px;
+  height: 28px;
+}
+
+#comment-container {
+  position: absolute;
+  width: 94%;
+  left: 3%;
+  top: 930px;
+}
+
+.comment-item {
+  position: relative;
+  left: 10.09%;
+  width: 75.86%;
+  margin-top: 20px;
+  min-height: 160px;
+}
+
+.comment-avatar {
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.comment-content {
+  position: absolute;
+  top: 10px;
+  left: 12.5%;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 26px;
+  color: #616161;
+}
+
+.comment-time {
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #616161;
+}
+
+.aline {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #CFCFCF;
+  transform: rotate(-0.13deg);
+}
+
+.comment-delete {
+  position: absolute;
+  right: 190px;
+  bottom: 20px;
+  color: #54A193;
+  font-size: 22px;
 }
 </style>

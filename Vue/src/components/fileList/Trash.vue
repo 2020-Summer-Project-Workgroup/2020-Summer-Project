@@ -32,12 +32,12 @@ export default {
       this.$router.push('/desktop/edit')
     },
     recovery(index) {
-      this.$store.commit('recovery', index)
+      this.$store.dispatch('recovery', index)
     }
   },
   computed: {
     files() {
-      return this.$store.getters.trash
+      return this.$store.getters.recycleBin
     }
   }
 }

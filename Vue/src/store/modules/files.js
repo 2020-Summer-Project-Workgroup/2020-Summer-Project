@@ -1,4 +1,4 @@
-import {addComment, newFile, updateFile} from "@/network/edit";
+import {addComment, deleteComment, newFile, recycleFile, updateFile} from "@/network/edit";
 import {getUserFavoriteFiles, getUserFiles, getUserRecycleBin} from "@/network/files";
 
 export default {
@@ -53,7 +53,7 @@ export default {
       state.files.splice(index, 1)
     },
     recovery(state, index) {
-      state.files.splice(0, 0, state.trash[index])
+      state.files.splice(0, 0, state.recycleBin[index])
       state.recycleBin.splice(index, 1)
     },
     createFile(state, file) {
@@ -98,6 +98,14 @@ export default {
         console.log(err)
       })
     },
+    recovery(context, index) {
+      recycleFile(context.getters.recycleBin[index].id)
+      context.commit('recovery', index)
+    },
+    moveToTrash(context, index) {
+      recycleFile(context.getters.files[index].id)
+      context.commit('moveToTrash', index)
+    },
     updateFile(context, payload) {
       updateFile(context.getters.userId,
         context.getters.currentFile.id,
@@ -117,14 +125,22 @@ export default {
       }).catch(err => {
         console.log(err)
       })
+    },
+    deleteComment(context, payload) {
+      deleteComment(context.getters.currentFile.id, payload.commentId).then(res => {
+        context.commit('updateFile', res)
+        context.commit('setCurrentFile', res)
+      }).catch(err => {
+        console.log(err)
+      })
     }
   },
   getters: {
     files(state) {
       return state.files
     },
-    trash(state) {
-      return state.trash
+    recycleBin(state) {
+      return state.recycleBin
     }
   }
 }

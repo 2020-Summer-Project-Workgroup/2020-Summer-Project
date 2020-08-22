@@ -32,7 +32,7 @@ export default {
       this.$router.push('/desktop/edit')
     },
     delFile(index) {
-      this.$store.commit('moveToTrash', index)
+      this.$store.dispatch('moveToTrash', index)
     }
   },
   computed: {

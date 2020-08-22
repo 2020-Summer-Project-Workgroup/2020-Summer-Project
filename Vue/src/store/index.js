@@ -13,10 +13,10 @@ Vue.use(Vuex)
 
 const state = {
   userId: '',
-  username: 'hzy',
-  tel: '15911103365',
+  username: '',
+  tel: '',
   email: '',
-  password: 'a123456',
+  password: '',
   currentGroup: '',
   currentFile: {}
 }
