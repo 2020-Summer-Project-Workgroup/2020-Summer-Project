@@ -18,19 +18,29 @@
         </div>
 
         <div class="CoMember_Person">
-            <div class="OneUser_ma">
-              <i class="el-icon-s-custom" id="avatar"></i>
-              <div class="UserName">
-                LSSSSSSS
-              </div>
-              <i class="el-icon-setting" id="tool"></i>
-            </div>
           <div class="OneUser_ma">
-            <i class="el-icon-s-custom" id="avatar"></i>
+            <div class="avatar">
+              <el-avatar v-if="avatar!=null" :src="avatar"></el-avatar>
+              <el-avatar v-else icon="el-icon-user-solid"></el-avatar>
+            </div>
             <div class="UserName">
               LSSSSSSS
             </div>
-            <i class="el-icon-setting" id="tool"></i>
+            <div class="tools">
+              <i class="el-icon-s-tools"></i>
+            </div>
+          </div>
+          <div class="OneUser_ma">
+            <div class="avatar">
+              <el-avatar v-if="avatar!=null" :src="avatar"></el-avatar>
+              <el-avatar v-else icon="el-icon-user-solid"></el-avatar>
+            </div>
+            <div class="UserName">
+              LSSSSSSS
+            </div>
+            <div class="tools">
+              <i class="el-icon-s-tools"></i>
+            </div>
           </div>
         </div>
 
@@ -46,34 +56,43 @@
         </div>
         <div class="ManageMember_Person">
           <div class="OneUser_co">
-            <i class="el-icon-s-custom" id="avatar"></i>
+            <div class="avatar">
+              <el-avatar v-if="avatar!=null" :src="avatar"></el-avatar>
+              <el-avatar v-else icon="el-icon-user-solid"></el-avatar>
+            </div>
             <div class="UserName">
               LSSSSSSS
             </div>
-            <i class="el-icon-setting" id="tool"></i>
+            <div class="tools">
+              <i class="el-icon-s-tools"></i>
+            </div>
           </div>
           <div class="OneUser_co">
-            <i class="el-icon-s-custom" id="avatar"></i>
+            <div class="avatar">
+              <el-avatar v-if="avatar!=null" :src="avatar"></el-avatar>
+              <el-avatar v-else icon="el-icon-user-solid"></el-avatar>
+            </div>
             <div class="UserName">
               LSSSSSSS
             </div>
-            <i class="el-icon-setting" id="tool"></i>
+            <div class="tools">
+              <i class="el-icon-s-tools"></i>
+            </div>
           </div>
           <div class="OneUser_co">
-            <i class="el-icon-s-custom" id="avatar"></i>
+            <div class="avatar">
+              <el-avatar v-if="avatar!=null" :src="avatar"></el-avatar>
+              <el-avatar v-else icon="el-icon-user-solid"></el-avatar>
+            </div>
             <div class="UserName">
               LSSSSSSS
             </div>
-            <i class="el-icon-setting" id="tool"></i>
+            <div class="tools">
+              <i class="el-icon-s-tools"></i>
+            </div>
           </div>
         </div>
-        <!--
-        <div class="DeleteArea">
-          <span class="DeleteAreaFont">
-            拖拽至此删除
-          </span>
-        </div>
-        -->
+
         <button class="InviteButton" @click="toInvite" >
           邀请
         </button>
@@ -81,6 +100,7 @@
         <button class="ManageMemberACButton" >
           确认
         </button>
+
       </div>
     </div>
   </div>
@@ -130,6 +150,7 @@ export default {
 button:focus {
   outline: none
 }
+
 .ManageMemberDialog{
   position: fixed;
   width: 24.63vw;
@@ -168,51 +189,41 @@ button:focus {
 }
 .CoMember_Person{
   position: absolute;
-  width: 280px;
-  height: 60px;
-  left: 47px;
-  top: 75px;
+  width: 74.19%;
+  height: 16.35%;
+  left: 12.3%;
+  top: 19.15%;
   overflow-y: auto;
 }
 .ManageMember_Person{
   position: absolute;
-  width: 280px;
-  height: 140px;
-  left: 47px;
-  top: 180px;
+  width: 74.19%;
+  height: 38%;
+  left: 12.3%;
+  top: 46%;
   overflow-y: auto;
 }
 .OneUser_ma {
   position: relative;
   top: 1px;
-  width: 255px;
-  height: 50px;
+  width: 98%;
+  height: 90%;
 }
 .OneUser_co{
   position: relative;
   top: 1px;
-  width: 255px;
-  height: 50px;
+  width: 98%;
+  height: 40%;
 }
-#avatar {
-  top:5px;
-  position: absolute;
-  left: 5px;
-  font-size: 2rem;
-}
-#tool{
-  top:5px;
-  position: absolute;
-  left: 210px;
-  font-size: 2rem;
-}
+
 .UserName{
   position: absolute;
-  top:8px;
-  left: 70px;
-  font-family: "Microsoft YaHei", "微软雅黑";
+  top:15%;
+  left: 25%;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
-  width: 130px;
+  width: 50%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -222,7 +233,7 @@ button:focus {
 #line_co{
   position: absolute;
   width: 18.36vw;
-  height: 0px;
+  height: 0;
   top:3.69vh;
   border: 1px solid #CFCFCF;
   transform: matrix(1, 0, 0, 1, 0, 0);
@@ -230,44 +241,27 @@ button:focus {
 #line_manage{
   position: absolute;
   width: 18.36vw;
-  height: 0px;
+  height: 0;
   top:3.69vh;
   border: 1px solid #CFCFCF;
   transform: matrix(1, 0, 0, 1, 0, 0);
 }
-.DeleteArea{
-  position: absolute;
-  width: 18.38vw;
-  height: 5.08vh;
-  left: 3.1vw;
-  top:39.2vh;
-  text-align: center;
-  align-content: center;
-  align-items: center;
-  /* 浅绿 */
 
-  background: #F2F4F4;
-}
-.DeleteAreaFont{
+.tools{
   position: absolute;
-  width: 10.13vw;
-  height: 2.88vh;
-  left: 4.20vw;
-  top: 1.15vh;
-  font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
-  "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 2.54vh;
-  line-height: 2.88vh;
-  /* identical to box height */
-  /* 浅灰 */
-  color: #CFCFCF;
-  text-align: center;
-  align-content: center;
-  align-items: center;
-
+  height: 40%;
+  left:87%;
+  font-size: 20px;
+  top:15%;
 }
+
+.avatar{
+  position: absolute;
+  top:7%;
+  height: 70%;
+  width: 16%;
+}
+
 .InviteButton{
   position: absolute;
   width: 6.66vw;
@@ -308,6 +302,17 @@ button:focus {
   color: #FFFFFF;
   border:none;
 }
+
+.InviteButton:hover {
+  cursor: pointer;
+  background: #E5E5E5;
+}
+
+.ManageMemberACButton:hover {
+  cursor: pointer;
+  background: #54A193;
+}
+
 #ManageMember-close{
   position: absolute;
   width: 1.82vw;
