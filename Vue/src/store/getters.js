@@ -14,9 +14,6 @@ export default {
   password(state) {
     return state.password
   },
-  currentGroup(state) {
-    return state.currentGroup
-  },
   currentFile(state) {
     return state.currentFile
   }
