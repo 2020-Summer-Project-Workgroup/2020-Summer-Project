@@ -30,20 +30,7 @@ export default {
     return {
       teamName: '',
       userId: '',
-      userList: [
-        {
-          id: 'y91e19qgw9dgq8w',
-          name: 'hzy',
-          email: '',
-          tel: '15911103365'
-        },
-        {
-          id: 'y91e19qgw9dgq8w',
-          name: 'hzy',
-          email: 'h56983577@126.com',
-          tel: ''
-        }
-      ]
+      userList: []
     }
   },
   created() {
@@ -59,9 +46,8 @@ export default {
     // 网络请求相关
     search() {
       searchUser(this.userId).then(res => {
-        if (!(res instanceof undefined)) {
-          this.userList = res
-        }
+        console.log(res)
+        this.userList = res
       }).catch(err => {
         console.log(err)
       })
