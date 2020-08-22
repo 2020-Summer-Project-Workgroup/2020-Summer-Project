@@ -28,13 +28,9 @@ export default {
   name: "Invite",
   data() {
     return {
-      teamName: '',
       userId: '',
       userList: []
     }
-  },
-  created() {
-    this.teamName = '金刚石文档'
   },
   methods: {
     close() {
@@ -53,7 +49,7 @@ export default {
       })
     },
     inviteUser(userId) {
-      inviteUser(userId, this.$store.getters.currentGroup).then(res => {
+      inviteUser(userId, this.$store.getters.currentGroup.id).then(res => {
         if (res === 'Yes') {
           this.$message({
             message: '邀请成功！',
@@ -68,6 +64,9 @@ export default {
   computed: {
     showInvite() {
       return this.$store.getters.showInvite
+    },
+    teamName() {
+      return this.$store.getters.currentGroup.name
     }
   },
   watch: {

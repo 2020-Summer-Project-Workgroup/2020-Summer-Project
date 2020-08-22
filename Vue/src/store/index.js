@@ -18,7 +18,6 @@ const state = {
   tel: '',
   email: '',
   password: '',
-  currentGroup: '',
   currentFile: {}
 }
 
