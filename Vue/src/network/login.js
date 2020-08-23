@@ -2,7 +2,7 @@ import {request} from "@/network/request";
 
 export function loginByTel(tel, password) {
   return request({
-    url: '/session/tel',
+    url: '/api/session/tel',
     method: 'POST',
     params: {
       tel: tel,
@@ -13,7 +13,7 @@ export function loginByTel(tel, password) {
 
 export function loginByEmail(email, password) {
   return request({
-    url: '/session/email',
+    url: '/api/session/email',
     method: 'POST',
     params: {
       email: email,
