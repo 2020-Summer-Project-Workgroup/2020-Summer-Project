@@ -79,7 +79,8 @@ export default {
         if (this.isTel) {
           addUserByTel(this.tel, this.password).then(res => {
             if (res === "Yes") {
-              this.$store.commit('updateTel', this.tel)
+              sessionStorage.setItem('tel', this.tel)
+              sessionStorage.setItem('email', this.email)
               this.$router.replace('/desktop')
             } else if (res === "No") {
               this.$message.error('用户已存在，请登录！')
@@ -92,7 +93,8 @@ export default {
         } else {
           addUserByEmail(this.email, this.password).then(res => {
             if (res === "Yes") {
-              this.$store.commit('updateEmail', this.email)
+              sessionStorage.setItem('tel', this.tel)
+              sessionStorage.setItem('email', this.email)
               this.$router.replace('/desktop')
             } else if (res === "No") {
               this.$message.error('用户已存在，请登录！')
