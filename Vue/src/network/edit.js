@@ -3,7 +3,7 @@ import { request } from "@/network/request";
 export function newFile(userId, title, content) {
   console.log('has run.')
   return request({
-    url: '/file/user',
+    url: '/api/file/user',
     method: 'POST',
     params: {
       userId: userId,
@@ -15,7 +15,7 @@ export function newFile(userId, title, content) {
 
 export function updateFile(userId, fileId, title, content) {
   return request({
-    url: '/file/user',
+    url: '/api/file/user',
     method: 'put',
     params: {
       userId: userId,
@@ -28,7 +28,7 @@ export function updateFile(userId, fileId, title, content) {
 
 export function getFile(userId, fileId) {
   return request({
-    url: '/file/user/all',
+    url: '/api/file/user/all',
     method: 'get',
     params: {
       userId: userId,
@@ -39,7 +39,7 @@ export function getFile(userId, fileId) {
 
 export function getFavorite(userId) {
   return request({
-    url: '/file/user/favorite',
+    url: '/api/file/user/favorite',
     method: 'get',
     params: {
       userId: userId
@@ -49,7 +49,7 @@ export function getFavorite(userId) {
 
 export function updateFavorite(userId, fileId) {
   return request({
-    url: '/file/user/favorite',
+    url: '/api/file/user/favorite',
     method: 'put',
     params: {
       userId: userId,
@@ -60,7 +60,7 @@ export function updateFavorite(userId, fileId) {
 
 export function recycleFile(fileId) {
   return request({
-    url: '/file/user/recycle',
+    url: '/api/file/user/recycle',
     method: 'put',
     params: {
       fileId: fileId
@@ -70,7 +70,7 @@ export function recycleFile(fileId) {
 
 export function getRecycle(userId) {
   return request({
-    url: '/user/recycle',
+    url: '/api/user/recycle',
     method: 'get',
     params: {
       userId: userId
@@ -80,7 +80,7 @@ export function getRecycle(userId) {
 
 export function deleteFile(userId, fileId) {
   return request({
-    url: '/file/user',
+    url: '/api/file/user',
     method: 'delete',
     params: {
       userId: userId,
@@ -91,7 +91,7 @@ export function deleteFile(userId, fileId) {
 
 export function addComment(fileId, reviewerId, content) {
   return request({
-    url: '/comment/file',
+    url: '/api/comment/file',
     method: 'post',
     params: {
       fileId: fileId,
@@ -103,7 +103,7 @@ export function addComment(fileId, reviewerId, content) {
 
 export function deleteComment(fileId, commentId) {
   return request({
-    url: '/comment/file',
+    url: '/api/comment/file',
     method: 'delete',
     params: {
       fileId: fileId,

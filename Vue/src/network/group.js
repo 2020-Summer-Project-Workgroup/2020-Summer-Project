@@ -2,7 +2,7 @@ import {request} from "@/network/request";
 
 export function addGroup(userId, groupName) {
   return request({
-    url: '/group',
+    url: '/api/group',
     method: 'POST',
     params: {
       userId: userId,
@@ -13,7 +13,7 @@ export function addGroup(userId, groupName) {
 
 export function addMember(groupId, memberId) {
   return request({
-    url: '/group/members',
+    url: '/api/group/members',
     method: 'PUT',
     params: {
       groupId: groupId,
@@ -24,7 +24,7 @@ export function addMember(groupId, memberId) {
 
 export function addFile(groupId, ownerId) {
   return request({
-    url: '/group/files/plain',
+    url: '/api/group/files/plain',
     method: 'POST',
     params: {
       groupId: groupId,
@@ -35,7 +35,7 @@ export function addFile(groupId, ownerId) {
 
 export function makeFilePublic(groupId, fileId) {
   return request({
-    url: '/group/files/outer',
+    url: '/api/group/files/outer',
     method: 'PUT',
     params: {
       groupId: groupId,
@@ -46,7 +46,7 @@ export function makeFilePublic(groupId, fileId) {
 
 export function updateFileRights(groupId, fileId, viewMembers, editMembers) {
   return request({
-    url: '/group/files/inner',
+    url: '/api/group/files/inner',
     method: 'PUT',
     params: {
       groupId: groupId,
@@ -59,7 +59,7 @@ export function updateFileRights(groupId, fileId, viewMembers, editMembers) {
 
 export function getFiles(groupId) {
   return request({
-    url: '/group/files',
+    url: '/api/group/files',
     method: 'GET',
     params: {
       groupId: groupId
@@ -69,7 +69,7 @@ export function getFiles(groupId) {
 
 export function getMembers(groupId) {
   return request({
-    url: '/group/members',
+    url: '/api/group/members',
     method: 'GET',
     params: {
       groupId: groupId
@@ -79,7 +79,7 @@ export function getMembers(groupId) {
 
 export function getFileRights(groupId, fileId) {
   return request({
-    url: '/group/rights',
+    url: '/api/group/rights',
     method: 'GET',
     params: {
       groupId: groupId,
@@ -90,7 +90,7 @@ export function getFileRights(groupId, fileId) {
 
 export function getUserGroups(userId) {
   return request({
-    url: '/user/groups',
+    url: '/api/user/groups',
     method: 'GET',
     params: {
       userId: userId

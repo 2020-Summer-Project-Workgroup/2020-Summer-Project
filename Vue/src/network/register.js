@@ -2,7 +2,7 @@ import {request} from "@/network/request";
 
 export function addUserByTel(tel, password) {
   return request({
-    url: '/user/tel',
+    url: '/api/user/tel',
     method: 'POST',
     params: {
       tel: tel,
@@ -13,7 +13,7 @@ export function addUserByTel(tel, password) {
 
 export function addUserByEmail(email, password) {
   return request({
-    url: '/user/email',
+    url: '/api/user/email',
     method: 'POST',
     params: {
       email: email,
@@ -24,7 +24,7 @@ export function addUserByEmail(email, password) {
 
 export function sendCodeToTel(tel) {
   return request({
-    url: '/code/tel',
+    url: '/api/code/tel',
     method: 'POST',
     params: {
       tel: tel
@@ -34,7 +34,7 @@ export function sendCodeToTel(tel) {
 
 export function sendCodeToEmail(email) {
   return request({
-    url: '/code/email',
+    url: '/api/code/email',
     method: 'POST',
     params: {
       email: email
@@ -44,7 +44,7 @@ export function sendCodeToEmail(email) {
 
 export function checkCodeToTel(tel, code) {
   return request({
-    url: '/code/tel',
+    url: '/api/code/tel',
     method: 'GET',
     params: {
       tel: tel,
@@ -55,7 +55,7 @@ export function checkCodeToTel(tel, code) {
 
 export function checkCodeToEmail(email, code) {
   return request({
-    url: '/code/email',
+    url: '/api/code/email',
     method: 'GET',
     params: {
       email: email,

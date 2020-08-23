@@ -2,7 +2,7 @@ import {request} from "@/network/request";
 
 export function searchUser(userId) {
   return request({
-    url: '/user/regex',
+    url: '/api/user/regex',
     method: 'GET',
     params: {
       userId: userId
@@ -12,7 +12,7 @@ export function searchUser(userId) {
 
 export function inviteUser(userId, groupId) {
   return request({
-    url: '/user/notice/team',
+    url: '/api/user/notice/team',
     method: 'POST',
     params: {
       userId: userId,
