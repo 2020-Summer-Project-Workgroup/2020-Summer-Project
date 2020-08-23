@@ -38,7 +38,14 @@ export default {
     LeftSideBar, ChangePassword, UserSpace, TabBar, Invite
   },
   created() {
-    this.$store.dispatch('initState')
+    this.$store.commit('updateTel', sessionStorage.getItem('tel'))
+    this.$store.commit('updateEmail', sessionStorage.getItem('email'))
+    if (this.$store.getters.tel === "null" && this.$store.getters.email === "null") {
+      this.$router.replace('/login')
+      this.$message.error('请先登录！')
+    } else {
+      this.$store.dispatch('initState')
+    }
   }
 }
 </script>

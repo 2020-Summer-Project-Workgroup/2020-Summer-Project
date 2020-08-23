@@ -61,6 +61,8 @@ export default {
     logout() {
       this.$store.commit('updateTel', '')
       this.$store.commit('updateEmail', '')
+      sessionStorage.setItem('tel', "null")
+      sessionStorage.setItem('email', "null")
       this.$router.replace('/login')
     },
     commit() {
